@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Version>0.5.0</Version>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>lishewen</Authors>
+    <IsPackable>true</IsPackable>
+    <Description>
+      Blazor版本的ECharts图表组件
+      使用方式见Demo项目
+    </Description>
+    <AssemblyName>Blazor.ECharts</AssemblyName>
+    <RootNamespace>Blazor.ECharts</RootNamespace>
+    <PackageTags>Blazor,.net core,ECharts</PackageTags>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <SupportedPlatform Include="browser" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.4" />
+  </ItemGroup>
+
+</Project>
