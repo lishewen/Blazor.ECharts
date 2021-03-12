@@ -1,0 +1,39 @@
+﻿@page "/bar/bar1"
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using B = Blazor.ECharts.Options.Series.Bar
+
+<div class="chart-container">
+    <EBar Option="@Option1" Class="chart-fill"></EBar>
+</div>
+
+@code{
+    private EChartsOption<B.Bar> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new EChartsOption<B.Bar>()
+        {
+            Color = new[] { "#8EC9EB" },
+            Legend = new Blazor.ECharts.Options.Legend() { Data = "高度(km)与气温(°C)变化关系" },
+            Grid = new List<Grid>()
+            {
+                new Grid(){Left="3%",Right="4%",Bottom="3%",ContainLabel=true}
+            },
+            Series = new List<object>()
+            {
+                new B.Bar()
+                {
+                    Name="高度(km)与气温(°C)变化关系",
+                    Smooth=true,
+                    BarCategoryGap=25,
+                    LineStyle=new {normal=new {width=3,shadowColor="rgba(0,0,0,0.4)",shadowBlur=10,shadowOffsetY=10 } },
+                    Data=new []{ 15, -50, -56.5, -46.5, -22.1, -2.5, -27.7, -55.7, -76.5}
+                }
+            }
+
+        };
+    }
+}
