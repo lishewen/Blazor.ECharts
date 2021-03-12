@@ -11,20 +11,33 @@ namespace Blazor.ECharts
     // This class can be registered as scoped DI service and then injected into Blazor
     // components for use.
 
-    public class ExampleJsInterop : IAsyncDisposable
+    public class JsInterop : IAsyncDisposable
     {
         private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 
-        public ExampleJsInterop(IJSRuntime jsRuntime)
+        public JsInterop(IJSRuntime jsRuntime)
         {
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", "./_content/Blazor.ECharts/exampleJsInterop.js").AsTask());
+               "import", "./_content/Blazor.ECharts/core.js").AsTask());
         }
 
         public async ValueTask<string> Prompt(string message)
         {
             var module = await moduleTask.Value;
             return await module.InvokeAsync<string>("showPrompt", message);
+        }
+
+        /// <summary>
+        /// 初始化Echarts
+        /// </summary>
+        /// <param name="jsRuntime"></param>
+        /// <param name="id">ECharts容器ID</param>
+        /// <returns></returns>
+        public async Task InitChart(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(id, "echarts控件id不能为空");
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("echartsFunctions.initChart", id);
         }
 
         public async ValueTask DisposeAsync()
