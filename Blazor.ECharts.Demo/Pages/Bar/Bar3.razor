@@ -1,0 +1,46 @@
+﻿@page "/bar/bar3"
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using B = Blazor.ECharts.Options.Series.Bar
+
+<div class="chart-container">
+    <EBar Option="@Option1" Class="chart-fill"></EBar>
+</div>
+
+@code{
+    private EChartsOption<B.Bar> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new EChartsOption<B.Bar>()
+        {
+            Title = new()
+            {
+                Text = "ECharts 入门示例"
+            },
+            Tooltip = new(),
+            Legend = new()
+            {
+                Data = new[] { "销量" }
+            },
+            XAxis = new()
+            {
+                new() { Data = new[] { "衬衫", "羊毛衫", "雪纺衫", "裤子", "高跟鞋", "袜子" } }
+            },
+            YAxis = new()
+            {
+                new()
+            },
+            Series = new()
+            {
+                new B.Bar
+                {
+                    Name = "销量",
+                    Data = new[] { 5, 20, 36, 10, 10, 20 }
+                }
+            }
+        };
+    }
+}
