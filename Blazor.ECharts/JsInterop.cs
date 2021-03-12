@@ -17,16 +17,20 @@ namespace Blazor.ECharts
     public class JsInterop : IAsyncDisposable
     {
         private readonly Lazy<Task<IJSObjectReference>> moduleTask;
-        private readonly JsonSerializerOptions jsonSerializerOptions = new() {
+        private readonly JsonSerializerOptions jsonSerializerOptions = new()
+        {
             PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull
+            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+            Converters =
+            {
+                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+            }
         };
 
         public JsInterop(IJSRuntime jsRuntime)
         {
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
                "import", "./_content/Blazor.ECharts/core.js").AsTask());
-            jsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
         }
 
         public async ValueTask<string> Prompt(string message)
