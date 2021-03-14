@@ -1,0 +1,113 @@
+﻿@page "/line/line1"
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using L = Blazor.ECharts.Options.Series.Line
+
+<div class="chart-container">
+    <ELine Option="@Option1" Class="chart-normal"></ELine>
+    <ELine Option="@Option2" Class="chart-normal"></ELine>
+    <ELine Option="@Option3" Class="chart-normal"></ELine>
+</div>
+
+@code{
+    private EChartsOption<L.Line> Option1;
+    private EChartsOption<L.Line> Option2;
+    private EChartsOption<L.Line> Option3;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new()
+        {
+            Title = new()
+            {
+                Text = "折线图"
+            },
+            YAxis = new()
+            {
+                new()
+                {
+                    Type = AxisType.Value
+                }
+            },
+            XAxis = new()
+            {
+                new()
+                {
+                    Type = AxisType.Category,
+                    Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" }
+                }
+            },
+            Series = new() {
+                new L.Line()
+                {
+                    Type = "line",
+                    Data = new[] { 820, 932, 901, 934, 1290, 1330, 1320 }
+                }
+            }
+        };
+        Option2 = new()
+        {
+            Title = new()
+            {
+                Text = "区域图"
+            },
+            YAxis = new()
+            {
+                new()
+                {
+                    Type = AxisType.Value
+                }
+            },
+            XAxis = new()
+            {
+                new()
+                {
+                    Type = AxisType.Category,
+                    Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" },
+                    BoundaryGap = false
+                }
+            },
+            Series = new() {
+                new L.Line()
+                {
+                    Type = "line",
+                    Data = new[] { 820, 932, 901, 934, 1290, 1330, 1320 },
+                    AreaStyle = new AreaStyle()
+                }
+            }
+        };
+        Option3 = new()
+        {
+            Title = new()
+            {
+                Text = "平滑折线图"
+            },
+            YAxis = new()
+            {
+                new()
+                {
+                    Type = AxisType.Value
+                }
+            },
+            XAxis = new()
+            {
+                new()
+                {
+                    Type = AxisType.Category,
+                    Data = new[] { "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" }
+                }
+            },
+            Series = new()
+            {
+                new L.Line()
+                {
+                    Type = "line",
+                    Data = new[] { 820, 932, 901, 934, 1290, 1330, 1320 },
+                    Smooth = true
+                }
+            }
+        };
+    }
+}
