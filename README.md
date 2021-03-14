@@ -1,4 +1,4 @@
-# Blazor.Charts
+# Blazor.ECharts
 
 ## 介绍
 
@@ -16,16 +16,53 @@ ECharts配置请参考：
 
 ## 使用方式
 1. 创建Blazor项目。
-2. 在NuGet中安装包`Rakor.Blazor.ECharts` [![NuGet](https://img.shields.io/nuget/v/Rakor.Blazor.ECharts.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Rakor.Blazor.ECharts/) ![downloads](https://img.shields.io/nuget/dt/Rakor.Blazor.ECharts.svg)。
-3. 在 _Imports.razor 中添加`@using Rakor.Blazor.ECharts.Component`。
-4. 在 Pages/_Host.cshtml文件的Body中引入下面两段代码：
+2. 在NuGet中安装包`Blazor.ECharts` [![NuGet](https://img.shields.io/nuget/v/Rakor.Blazor.ECharts.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Rakor.Blazor.ECharts/) ![downloads](https://img.shields.io/nuget/dt/Rakor.Blazor.ECharts.svg)。
+3. 在`_Imports.razor`中添加`@using Blazor.ECharts.Component`。
+4. 在`wwwroot/index.html`文件的`Head`中引入：
 ```html
-<script src="/_content/Rakor.Blazor.ECharts/js/echarts-4.5.min.js"></script>
-<script src="/_content/Rakor.Blazor.ECharts/js/core.js"></script>
+<script crossorigin="anonymous" integrity="sha512-t9GZbGKCH5MuYUFsq5AdrhllT0kdnc2fNMizKDgLXBBXgHP2dXxjRPOzYJauAXW9OXLlSYELUqWD30k7cb0Mkg==" src="https://lib.baomitu.com/echarts/5.0.2/echarts.min.js"></script>
 ```
-5. 在页面中使用组件（可参考Demo项目）。
+5. 在`wwwroot/index.html`文件的`Body`中引入：
+```html
+<script type="module" src="_content/Blazor.ECharts/core.js"></script>
+```
+6. 修改`Program.cs`增加
+```csharp
+builder.Services.AddECharts();
+```
+7. 在页面中使用组件（可参考Demo项目）。
 
 **注意：因为没有设置默认的样式，所以需要在组件上设置`Class`或者`Style`来控制宽度和高度**
+
+Demo中也提供示范样式
+```css
+.chart-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-left: 20px;
+    padding-bottom: 20px;
+    padding-right: 0px;
+    padding-top: 0px;
+    height: 95%;
+    width: 95%;
+}
+
+.chart-normal {
+    border-radius: 4px;
+    height: 300px;
+    width: 400px;
+    margin-top: 20px;
+}
+
+.chart-fill {
+    width: 100%;
+    height: 720px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+```
 
 ## 功能实现进度
 - [ ] **公共配置**
