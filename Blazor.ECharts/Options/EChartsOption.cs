@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options
 {
-    public class EChartsOption<T>
+    public record EChartsOption<T>
     {
+        public EChartsBaseOption<T> BaseOption { get; set; }
+        public List<EChartsOption<T>> Options { get; set; }
         /// <summary>
         /// 标题组件，可以存在任意多个标题组件，这在需要标题进行排版，或者单个实例中的多个图表都需要标题时会比较有用。
         /// </summary>
@@ -31,7 +33,7 @@ namespace Blazor.ECharts.Options
         /// <summary>
         /// 系列列表。每个系列通过 type 决定自己的图表类型
         /// </summary>
-        public List<object> Series { set; get; } = new List<object>();
+        public List<object> Series { set; get; }
 
         /// <summary>
         /// 图例组件。

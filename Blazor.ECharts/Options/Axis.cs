@@ -10,7 +10,7 @@ namespace Blazor.ECharts.Options
     /// <summary>
     /// 直角坐标系
     /// </summary>
-    public class Axis
+    public record Axis
     {
         /// <summary>
         /// 坐标轴名称。
@@ -101,7 +101,7 @@ namespace Blazor.ECharts.Options
 
         public SplitArea SplitArea { set; get; }
     }
-    public class XAxis : Axis
+    public record XAxis : Axis
     {
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Blazor.ECharts.Options
         /// </summary>
         public PositionX? Position { set; get; }
     }
-    public class YAxis : Axis
+    public record YAxis : Axis
     {
 
         /// <summary>

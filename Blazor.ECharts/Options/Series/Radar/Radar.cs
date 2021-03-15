@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options.Series.Radar
 {
-    public class Radar : SeriesBase
+    public record Radar : SeriesBase
     {
         public Radar() : base("radar") { }
-
-        public List<object> Data { set; get; }
 
         public LineStyle LineStyle { set; get; }
 

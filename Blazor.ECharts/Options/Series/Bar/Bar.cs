@@ -9,7 +9,7 @@ namespace Blazor.ECharts.Options.Series.Bar
     /// <summary>
     /// 柱状图
     /// </summary>
-    public class Bar : SeriesBase
+    public record Bar : SeriesBase
     {
         public Bar() : base("bar") { }
 
@@ -38,8 +38,6 @@ namespace Blazor.ECharts.Options.Series.Bar
         public int? YAxisIndex { set; get; }
 
         public string BarWidth { get; set; }
-
-        public object Data { set; get; }
 
         public Encode Encode { get; set; }
     }

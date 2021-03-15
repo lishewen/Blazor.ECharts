@@ -9,7 +9,7 @@ namespace Blazor.ECharts.Options.Series.Pie
     /// <summary>
     /// 饼图
     /// </summary>
-    public class Pie : SeriesBase
+    public record Pie : SeriesBase
     {
         public Pie() : base("pie") { }
 
@@ -49,7 +49,5 @@ namespace Blazor.ECharts.Options.Series.Pie
         /// <para>可使用枚举值 SelectedMode</para>
         /// </summary>
         public object SelectedMode { set; get; }
-
-        public List<object> Data { set; get; }
     }
 }

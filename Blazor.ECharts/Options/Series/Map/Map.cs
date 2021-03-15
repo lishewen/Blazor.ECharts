@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options.Series.Map
 {
-    public class Map : SeriesBase
+    public record Map : SeriesBase
     {
         public Map() : base("map") { }
 
         public string MapType { set; get; }
         public Label Label { set; get; }
-
-        public List<object> Data { set; get; }
 
         /// <summary>
         /// 自定义地区的名称映射

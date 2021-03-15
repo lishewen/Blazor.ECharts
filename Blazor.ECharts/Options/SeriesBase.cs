@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options
 {
-    public class SeriesBase
+    public record SeriesBase
     {
         public SeriesBase(string type, string id = null, string name = null)
         {
@@ -35,5 +35,11 @@ namespace Blazor.ECharts.Options
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-bar.markPoint.animationDelay">此处</see>查看详细设置</para>
         /// </summary>
         public object AnimationDelay { set; get; }
+
+        /// <summary>
+        /// 系列中的数据内容数组。数组项通常为具体的数据项。
+        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.data ">此处</see>查看详细设置</para>
+        /// </summary>
+        public object Data { set; get; }
     }
 }

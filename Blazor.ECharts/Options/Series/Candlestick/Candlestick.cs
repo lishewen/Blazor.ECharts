@@ -9,7 +9,7 @@ namespace Blazor.ECharts.Options.Series.Candlestick
     /// <summary>
     /// K线图
     /// </summary>
-    public class Candlestick : SeriesBase
+    public record Candlestick : SeriesBase
     {
         public Candlestick() : base("candlestick") { }
 
@@ -20,7 +20,5 @@ namespace Blazor.ECharts.Options.Series.Candlestick
         public MarkLine MarkLine { set; get; }
 
         public MarkPoint MarkPoint { set; get; }
-
-        public object Data { set; get; }
     }
 }
