@@ -1,0 +1,66 @@
+﻿@page "/radar/radar1"
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Series
+@using R = Blazor.ECharts.Options.Series.Radar
+
+<div class="chart-container">
+    <ERadar Option="@Option1" Class="chart-fill"></ERadar>
+</div>
+
+@code{
+    private EChartsOption<R.Radar> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new()
+        {
+            Title = new() { Text = "基础雷达图" },
+            Tooltip = new(),
+            Legend = new() { Data = new[] { "预算分配（Allocated Budget）", "实际开销（Actual Spending）" } },
+            Radar = new()
+            {
+                Name = new()
+                {
+                    TextStyle = new()
+                    {
+                        Color = "#fff",
+                        BackgroundColor = "#999",
+                        BorderRadius = 3,
+                        Padding = new[] { 3, 5 }
+                    }
+                },
+                Indicator = new()
+                {
+                    new() { Name = "销售（sales）", Max = 6500 },
+                    new() { Name = "管理（Administration）", Max = 16000 },
+                    new() { Name = "信息技术（Information Techology）", Max = 30000 },
+                    new() { Name = "客服（Customer Support）", Max = 38000 },
+                    new() { Name = "研发（Development）", Max = 52000 },
+                    new() { Name = "市场（Marketing）", Max = 25000 },
+                }
+            },
+            Series = new()
+            {
+                new R.Radar()
+                {
+                    Name = "预算 vs 开销（Budget vs spending）",
+                    Data = new()
+                    {
+                        new SeriesData()
+                        {
+                            Name = "预算分配（Allocated Budget）",
+                            Value = new[] { 4300, 10000, 28000, 35000, 50000, 19000 }
+                        },
+                        new SeriesData()
+                        {
+                            Name = "实际开销（Actual Spending）",
+                            Value = new[] { 5000, 14000, 28000, 31000, 42000, 21000 }
+                        }
+                    }
+                }
+            }
+        };
+    }
+}
