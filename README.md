@@ -8,9 +8,9 @@
 
 **本项目源自[https://github.com/caopengfei/BlazorECharts](https://github.com/caopengfei/BlazorECharts)，由于原作者有好长一段时间没有更新和处理PR，故在此基础上，重新做了这个**
 
-[![GitHub license](https://img.shields.io/github/license/caopengfei/BlazorECharts.svg)](https://github.com/caopengfei/BlazorECharts/blob/master/LICENSE)
+[![GitHub license](https://img.shields.io/github/license/lishewen/Blazor.ECharts.svg)](https://github.com/lishewen/Blazor.ECharts/blob/master/LICENSE)
 
-开源地址：[https://github.com/caopengfei/BlazorECharts](https://github.com/caopengfei/BlazorECharts)
+开源地址：[https://github.com/lishewen/Blazor.ECharts](https://github.com/lishewen/Blazor.ECharts)
 
 ECharts配置请参考：
 
@@ -18,7 +18,7 @@ ECharts配置请参考：
 
 ## 使用方式
 1. 创建Blazor项目。
-2. 在NuGet中安装包`Blazor.ECharts` [![NuGet](https://img.shields.io/nuget/v/Rakor.Blazor.ECharts.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Rakor.Blazor.ECharts/) ![downloads](https://img.shields.io/nuget/dt/Rakor.Blazor.ECharts.svg)。
+2. 在NuGet中安装包`Blazor.ECharts` [![NuGet](https://img.shields.io/nuget/v/Blazor.ECharts.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Blazor.ECharts/) ![downloads](https://img.shields.io/nuget/dt/Blazor.ECharts.svg)。
 3. 在`_Imports.razor`中添加`@using Blazor.ECharts.Component`。
 4. 在`wwwroot/index.html`文件的`Head`中引入：
 ```html
@@ -36,7 +36,7 @@ builder.Services.AddECharts();
 
 **注意：因为没有设置默认的样式，所以需要在组件上设置`Class`或者`Style`来控制宽度和高度**
 
-Demo中也提供示范样式
+**Demo中也提供示范样式**
 ```css
 .chart-container {
     display: flex;
@@ -87,7 +87,7 @@ Demo中也提供示范样式
   - [ ] parallel
   - [ ] parallelAxis
   - [ ] singleAxis
-  - [ ] timeline
+  - [x] timeline
   - [ ] graphic
   - [ ] calendar
   - [ ] dataset
