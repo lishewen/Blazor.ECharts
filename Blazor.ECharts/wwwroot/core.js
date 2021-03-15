@@ -18,10 +18,10 @@ export class echartsFunctions {
     static addChart(id, chart) {
         this.liChart.push({ Id: id, Chart: chart });
     }
-    static initChart(id) {
+    static initChart(id, theme = 'light') {
         let chart = this.getChart(id);
         if (chart === null) {
-            chart = echarts.init(document.getElementById(id));
+            chart = echarts.init(document.getElementById(id), theme);
             chart.showLoading();
             this.addChart(id, chart);
         }

@@ -42,14 +42,14 @@ namespace Blazor.ECharts
         /// <summary>
         /// 初始化Echarts
         /// </summary>
-        /// <param name="jsRuntime"></param>
         /// <param name="id">ECharts容器ID</param>
+        /// <param name="theme">主题</param>
         /// <returns></returns>
-        public async ValueTask<IJSObjectReference> InitChart(string id)
+        public async ValueTask<IJSObjectReference> InitChart(string id, string theme = "light")
         {
             if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
             var module = await moduleTask.Value;
-            return await module.InvokeAsync<IJSObjectReference>("echartsFunctions.initChart", id);
+            return await module.InvokeAsync<IJSObjectReference>("echartsFunctions.initChart", id, theme);
         }
 
         /// <summary>
