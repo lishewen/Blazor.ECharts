@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options.Series.Candlestick
 {
+    /// <summary>
+    /// K线图
+    /// </summary>
     public class Candlestick : SeriesBase
     {
         public Candlestick() : base("candlestick") { }
