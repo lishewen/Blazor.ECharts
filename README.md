@@ -12,8 +12,6 @@
 
 开源地址：[https://github.com/caopengfei/BlazorECharts](https://github.com/caopengfei/BlazorECharts)
 
-示例地址：[http://101.132.107.140:8123/line/line1](http://101.132.107.140:8123/line/line1)
-
 ECharts配置请参考：
 
 [https://echarts.apache.org/examples/zh/index.html](https://echarts.apache.org/examples/zh/index.html)
