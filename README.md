@@ -4,6 +4,10 @@
 
 **Blazor版本的ECharts图表组件**
 
+### 重新出发
+
+**本项目源自[https://github.com/caopengfei/BlazorECharts](https://github.com/caopengfei/BlazorECharts)，由于原作者有好长一段时间没有更新和处理PR，故在此基础上，重新做了这个**
+
 [![GitHub license](https://img.shields.io/github/license/caopengfei/BlazorECharts.svg)](https://github.com/caopengfei/BlazorECharts/blob/master/LICENSE)
 
 开源地址：[https://github.com/caopengfei/BlazorECharts](https://github.com/caopengfei/BlazorECharts)
