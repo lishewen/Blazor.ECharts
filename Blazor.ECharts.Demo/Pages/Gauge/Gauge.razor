@@ -1,0 +1,45 @@
+﻿@page "/gauge/gauge"
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using G = Blazor.ECharts.Options.Series.Gauge
+
+<div class="chart-container">
+    <EGauge Option="@Option1" Class="chart-fill"></EGauge>
+</div>
+
+@code{
+    private EChartsOption<G.Gauge> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new()
+        {
+            Tooltip = new()
+            {
+                Formatter = "{a} <br/>{b} : {c}%"
+            },
+            Toolbox = new()
+            {
+                Feature = new()
+                {
+                    Restore = new(),
+                    SaveAsImage = new()
+                }
+            },
+            Series = new()
+            {
+                new G.Gauge()
+                {
+                    Name = "",
+                    Detail = new()
+                    {
+                        Formatter = "{value}%"
+                    },
+                    Data = new[] { new { Value = 75, Name = "完成率" } }
+                }
+            }
+        };
+    }
+}
