@@ -1,0 +1,118 @@
+﻿@page "/sunburst/sunburst"
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using S = Blazor.ECharts.Options.Series.Sunburst
+
+<div class="chart-container">
+    <ESunburst Option="@Option1" Class="chart-fill"></ESunburst>
+</div>
+
+@code{
+    private EChartsOption<S.Sunburst> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        List<S.SunburstData> data = new()
+        {
+            new()
+            {
+                Name = "A",
+                Children = new()
+                {
+                    new()
+                    {
+                        Name = "A1",
+                        Value = 15,
+                        Children = new()
+                        {
+                            new()
+                            {
+                                Name = "A11",
+                                Value = 2
+                            },
+                            new()
+                            {
+                                Name = "A13",
+                                Value = 5,
+                                Children = new()
+                                {
+                                    new()
+                                    {
+                                        Name = "A131",
+                                        Value = 2
+                                    }
+                                }
+                            },
+                            new()
+                            {
+                                Name = "A12",
+                                Value = 4
+                            }
+                        }
+
+                    },
+                    new()
+                    {
+                        Name = "A2",
+                        Value = 10,
+                        Children = new()
+                        {
+                            new()
+                            {
+                                Name = "A21",
+                                Value = 5
+                            },
+                            new()
+                            {
+                                Name = "A22",
+                                Value = 1
+                            }
+                        }
+                    }
+                }
+            },
+            new()
+            {
+                Name = "B",
+                Children = new()
+                {
+                    new()
+                    {
+                        Name = "B1",
+                        Children = new()
+                        {
+                            new()
+                            {
+                                Name = "B11",
+                                Value = 1
+                            },
+                            new()
+                            {
+                                Name = "B12",
+                                Value = 2
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        Option1 = new()
+        {
+            Series = new()
+            {
+                new S.Sunburst()
+                {
+                    Data = data,
+                    Radius = new[] { "0", "90%" },
+                    Label = new()
+                    {
+                        Rotate = "radial"
+                    }
+                }
+            }
+        };
+    }
+}
