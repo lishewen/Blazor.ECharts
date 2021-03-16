@@ -1,0 +1,87 @@
+﻿@page "/funnel/funnel"
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using F = Blazor.ECharts.Options.Series.Funnel
+
+<div class="chart-container">
+    <EFunnel Option="@Option1" Class="chart-fill"></EFunnel>
+</div>
+
+@code{
+    private EChartsOption<F.Funnel> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new()
+        {
+            Title = new()
+            {
+                Text = "漏斗图"
+            },
+            Tooltip = new()
+            {
+                Trigger = TooltipTrigger.Item,
+                Formatter = "{a} <br/>{b} : {c}%"
+            },
+            Toolbox = new()
+            {
+                Feature = new()
+                {
+                    DataView = new()
+                    {
+                        ReadOnly = false
+                    },
+                    Restore = new(),
+                    SaveAsImage = new()
+                }
+            },
+            Legend = new()
+            {
+                Data = new[] { "注册", "登录", "加购", "下单", "付款" }
+            },
+            Series = new()
+            {
+                new F.Funnel()
+                {
+                    Name = "漏斗图",
+                    Left = "10%",
+                    Top = 60,
+                    Bottom = 60,
+                    Width = "80%",
+                    Min = 0,
+                    Max = 100,
+                    MinSize = "0%",
+                    MaxSize = "100%",
+                    Sort = SortType.Descending,
+                    Gap = 2,
+                    Label = new()
+                    {
+                        Show = true,
+                        Position = LabelPosition.Inside
+                    },
+                    ItemStyle = new()
+                    {
+                        BorderColor = "#fff",
+                        BorderWidth = 10
+                    },
+                    Emphasis = new()
+                    {
+                        Label = new()
+                        {
+                            FontSize = 25
+                        }
+                    },
+                    Data = new[] {
+                        new{Value = 100, Name = "注册" },
+                        new{Value = 86, Name = "登录" },
+                        new{Value = 70, Name = "加购" },
+                        new{Value = 35, Name = "下单" },
+                        new{Value = 25, Name = "付款" }
+                    }
+                }
+            }
+        };
+    }
+}

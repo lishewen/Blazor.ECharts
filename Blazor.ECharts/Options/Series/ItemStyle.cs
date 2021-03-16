@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options.Series
 {
-    public class ItemStyle
+    public record ItemStyle
     {
         /// <summary>
         /// 图形的颜色。 默认从全局调色盘 option.color 获取颜色。
@@ -21,6 +21,8 @@ namespace Blazor.ECharts.Options.Series
         /// 图形的描边颜色。支持的颜色格式同 color，不支持回调函数。
         /// </summary>
         public object BorderColor { set; get; }
+
+        public int? BorderWidth { set; get; }
 
         /// <summary>
         /// 图形的描边颜色。支持的颜色格式同 color，不支持回调函数。

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options.Series
 {
-    public class Label
+    public record Label
     {
         /// <summary>
         /// 
@@ -17,7 +17,7 @@ namespace Blazor.ECharts.Options.Series
         /// <summary>
         /// 标签的位置。
         /// </summary>
-        public PieLabelPosition? Position { set; get; }
+        public LabelPosition? Position { set; get; }
 
         /// <summary>
         /// 高亮的扇区和标签样式。
@@ -84,5 +84,6 @@ namespace Blazor.ECharts.Options.Series
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-pie.data.label.padding">此处</see>查看详细设置</para>
         /// </summary>
         public object Padding { set; get; }
+        public int? FontSize { set; get; }
     }
 }

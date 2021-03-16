@@ -374,7 +374,7 @@ namespace Blazor.ECharts.Options.Enum
     /// 标签的位置。
     /// </summary>
 
-    public enum PieLabelPosition
+    public enum LabelPosition
     {
         /// <summary>
         /// 饼图扇区外侧，通过视觉引导线连到相应的扇区。
@@ -423,7 +423,6 @@ namespace Blazor.ECharts.Options.Enum
     /// <summary>
     /// 使用的按钮
     /// </summary>
-
     public enum BrushType
     {
         /// <summary>
@@ -450,5 +449,17 @@ namespace Blazor.ECharts.Options.Enum
         /// 清空所有选框。
         /// </summary>
         Clear
+    }
+    /// <summary>
+    /// 数据排序
+    /// </summary>
+    public enum SortType
+    {
+        Ascending,
+        Descending,
+        /// <summary>
+        /// 表示按 data 顺序
+        /// </summary>
+        None
     }
 }

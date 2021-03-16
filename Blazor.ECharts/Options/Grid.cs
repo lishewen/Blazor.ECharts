@@ -9,7 +9,7 @@ namespace Blazor.ECharts.Options
     /// <summary>
     /// 直角坐标系内绘图网格，单个 grid 内最多可以放置上下两个 X 轴，左右两个 Y 轴。可以在网格上绘制折线图，柱状图，散点图（气泡图）。
     /// </summary>
-    public class Grid
+    public record Grid : IPosition
     {
         /// <summary>
         /// 组件 ID。默认不指定。指定则可用于在 option 或者 API 中引用组件。
