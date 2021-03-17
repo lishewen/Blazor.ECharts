@@ -1,0 +1,102 @@
+﻿@page "/treemap/treemap"
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Series
+@using T = Blazor.ECharts.Options.Series.Treemap
+
+<div class="chart-container">
+    <ETreemap Option="@Option1" Class="chart-fill"></ETreemap>
+</div>
+
+@code{
+    private EChartsOption<T.Treemap> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        List<NoteDataItem> data = new()
+        {
+            new()
+            {
+                Name = "A",
+                Value = 10,
+                Children = new()
+                {
+                    new()
+                    {
+                        Name = "A1",
+                        Value = 4,
+                    },
+                    new()
+                    {
+                        Name = "A2",
+                        Value = 6,
+                        Children = new()
+                        {
+                            new()
+                            {
+                                Name = "A21",
+                                Value = 2
+                            },
+                            new()
+                            {
+                                Name = "A22",
+                                Value = 4,
+                                Children = new()
+                                {
+                                    new()
+                                    {
+                                        Name = "A221",
+                                        Value = 3
+                                    },
+                                    new()
+                                    {
+                                        Name = "A222",
+                                        Value = 1
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            new()
+            {
+                Name = "B",
+                Value = 20,
+                Children = new()
+                {
+                    new()
+                    {
+                        Name = "B1",
+                        Value = 20,
+                        Children = new()
+                        {
+                            new()
+                            {
+                                Name = "B11",
+                                Value = 12
+                            },
+                            new()
+                            {
+                                Name = "B12",
+                                Value = 8
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        Option1 = new()
+        {
+            Series = new()
+            {
+                new T.Treemap
+                {
+                    Data = data
+                }
+            }
+        };
+    }
+}
