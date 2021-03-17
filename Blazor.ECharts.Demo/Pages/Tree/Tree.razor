@@ -1,14 +1,15 @@
-﻿@page "/sunburst/sunburst"
+﻿@page "/tree/tree"
 @using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
 @using Blazor.ECharts.Options.Series
-@using S = Blazor.ECharts.Options.Series.Sunburst
+@using T = Blazor.ECharts.Options.Series.Tree
 
 <div class="chart-container">
-    <ESunburst Option="@Option1" Class="chart-fill"></ESunburst>
+    <ETree Option="@Option1" Class="chart-fill"></ETree>
 </div>
 
 @code{
-    private EChartsOption<S.Sunburst> Option1;
+    private EChartsOption<T.Tree> Option1;
 
     protected override void OnInitialized()
     {
@@ -24,31 +25,16 @@
                     new()
                     {
                         Name = "A1",
-                        Value = 15,
                         Children = new()
                         {
                             new()
                             {
-                                Name = "A11",
-                                Value = 2
-                            },
-                            new()
-                            {
-                                Name = "A13",
-                                Value = 5,
-                                Children = new()
-                                {
-                                    new()
-                                    {
-                                        Name = "A131",
-                                        Value = 2
-                                    }
-                                }
+                                Name = "A11"
                             },
                             new()
                             {
                                 Name = "A12",
-                                Value = 4
+                                Value = 3322
                             }
                         }
 
@@ -56,43 +42,31 @@
                     new()
                     {
                         Name = "A2",
-                        Value = 10,
                         Children = new()
                         {
                             new()
                             {
                                 Name = "A21",
-                                Value = 5
+                                Value = 8833
                             },
                             new()
                             {
                                 Name = "A22",
-                                Value = 1
-                            }
-                        }
-                    }
-                }
-            },
-            new()
-            {
-                Name = "B",
-                Children = new()
-                {
-                    new()
-                    {
-                        Name = "B1",
-                        Children = new()
-                        {
-                            new()
-                            {
-                                Name = "B11",
-                                Value = 1
+                                Value = 1732
                             },
                             new()
                             {
-                                Name = "B12",
-                                Value = 2
+                                Name = "A23",
+                                Value = 3623
                             }
+                        }
+                    },
+                    new()
+                    {
+                        Name = "A3",
+                        Children = new()
+                        {
+                            new() { Name = "A31", Value = 4116 }
                         }
                     }
                 }
@@ -101,15 +75,39 @@
 
         Option1 = new()
         {
+            Tooltip = new()
+            {
+                Trigger = TooltipTrigger.Item
+            },
+            Legend = new()
+            {
+                Top = "2%",
+                Left = "3%",
+                Data = new[] { new { Name = "tree1", Icon = "rectangle" } }
+            },
             Series = new()
             {
-                new S.Sunburst()
+                new T.Tree()
                 {
+                    Name = "tree1",
                     Data = data,
-                    Radius = new[] { "0", "90%" },
+                    Top = "5%",
+                    Left = "7%",
+                    Bottom = "2%",
+                    Right = "20%",
+                    SymbolSize = 20,
                     Label = new()
                     {
-                        Rotate = "radial"
+                        Position = LabelPosition.Top,
+                        Align = Align2.Left
+                    },
+                    Leaves = new()
+                    {
+                        Label = new()
+                        {
+                            Position = LabelPosition.Right,
+                            Align = Align2.Left
+                        }
                     }
                 }
             }

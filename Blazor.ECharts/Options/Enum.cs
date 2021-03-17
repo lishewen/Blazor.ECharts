@@ -391,7 +391,15 @@ namespace Blazor.ECharts.Options.Enum
         /// <summary>
         /// 在饼图中心位置。见圆环图示例
         /// </summary>
-        Center
+        Center,
+        /// <summary>
+        /// 非叶子节点的标签在上部
+        /// </summary>
+        Top,
+        /// <summary>
+        /// 叶子节点的标签在节点右边
+        /// </summary>
+        Right
     }
 
     /// <summary>
