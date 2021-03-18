@@ -10,7 +10,7 @@ namespace Blazor.ECharts.Options.Series
     /// <summary>
     /// 图表标线。
     /// </summary>
-    public class MarkLine
+    public record MarkLine
     {
         /// <summary>
         /// 图形是否不响应和触发鼠标事件，默认为 false，即响应和触发鼠标事件。
@@ -27,7 +27,7 @@ namespace Blazor.ECharts.Options.Series
         /// </summary>
         public List<object> Data { set; get; }
     }
-    public class MarkLineData
+    public record MarkLineData
     {
         public string Name { set; get; }
 
@@ -54,7 +54,7 @@ namespace Blazor.ECharts.Options.Series
         public Emphasis Emphasis { set; get; }
     }
 
-    public class MarkLineDataLabel
+    public record MarkLineDataLabel
     {
         public bool? Show { set; get; }
 

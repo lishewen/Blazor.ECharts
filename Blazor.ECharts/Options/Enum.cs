@@ -470,4 +470,22 @@ namespace Blazor.ECharts.Options.Enum
         /// </summary>
         None
     }
+    /// <summary>
+    /// 图的布局。
+    /// </summary>
+    public enum Layout
+    {
+        /// <summary>
+        /// 不采用任何布局，使用节点中提供的 x， y 作为节点的位置。
+        /// </summary>
+        None,
+        /// <summary>
+        /// 采用环形布局，见示例 Les Miserables，布局相关的配置项见 graph.circular
+        /// </summary>
+        Circular,
+        /// <summary>
+        /// 采用力引导布局，见示例 Force，布局相关的配置项见 graph.force
+        /// </summary>
+        Force
+    }
 }

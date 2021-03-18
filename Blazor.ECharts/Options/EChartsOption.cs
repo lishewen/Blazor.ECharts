@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blazor.ECharts.Options.Series;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace Blazor.ECharts.Options
         /// 标题组件，可以存在任意多个标题组件，这在需要标题进行排版，或者单个实例中的多个图表都需要标题时会比较有用。
         /// </summary>
         public Title Title { set; get; }
-
+        public Label Label { get; set; }
         /// <summary>
         /// 提示框组件。
         /// </summary>

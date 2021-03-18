@@ -1,0 +1,114 @@
+﻿@page "/graph/graph"
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using G = Blazor.ECharts.Options.Series.Graph
+
+<div class="chart-container">
+    <EGraph Option="@Option1" Class="chart-fill"></EGraph>
+</div>
+
+@code{
+    private EChartsOption<G.Graph> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new()
+        {
+            Title = new()
+            {
+                Text = "关系图",
+                Top = "12%",
+                Left = "center"
+            },
+            Label = new()
+            {
+                Show = true
+            },
+            Legend = new()
+            {
+                X = Align.Center,
+                Show = true,
+                Top = "20%",
+                Data = new[] { "男性", "女性" }
+            },
+            Series = new()
+            {
+                new G.Graph()
+                {
+                    Layout = Layout.Force,
+                    SymbolSize = 50,
+                    FocusNodeAdjacency = true,
+                    Categories = new()
+                    {
+                        new()
+                        {
+                            Name = "男性",
+                            ItemStyle = new()
+                            {
+                                Color = "#009800"
+                            }
+                        },
+                        new()
+                        {
+                            Name = "女性",
+                            ItemStyle = new()
+                            {
+                                Color = "#4592FF"
+                            }
+                        }
+                    },
+                    Label = new()
+                    {
+                        Show = true,
+                        TextStyle = new()
+                        {
+                            FontSize = 20
+                        }
+                    },
+                    Force = new()
+                    {
+                        Repulsion = 1000
+                    },
+                    EdgeLabel = new()
+                    {
+                        Show = true,
+                        TextStyle = new()
+                        {
+                            FontSize = 10
+                        },
+                        Formatter = "{c}"
+                    },
+                    Data = new[] {
+                        new{ Name="A",Category=0,Draggable=true},
+                        new{ Name="B",Category=1,Draggable=true},
+                        new{ Name="C",Category=0,Draggable=true},
+                        new{ Name="D",Category=1,Draggable=true},
+                        new{ Name="E",Category=0,Draggable=true},
+                        new{ Name="F",Category=1,Draggable=true},
+                        new{ Name="G",Category=1,Draggable=true},
+                        new{ Name="H",Category=1,Draggable=true}
+                    },
+                    Links = new()
+                    {
+                        new() { Source = 0, Target = 1, Value = "夫妻" },
+                        new() { Source = 0, Target = 3, Value = "父子" },
+                        new() { Source = 0, Target = 5, Value = "朋友" },
+                        new() { Source = 4, Target = 5, Value = "同事" },
+                        new() { Source = 2, Target = 7, Value = "夫妻" },
+                        new() { Source = 1, Target = 7, Value = "朋友" },
+                        new() { Source = 1, Target = 4, Value = "朋友" },
+                        new() { Source = 1, Target = 6, Value = "朋友" }
+                    },
+                    LineStyle = new()
+                    {
+                        Opacity = 0.9,
+                        Width = 3,
+                        Curveness = 0
+                    }
+                }
+            }
+        };
+    }
+}

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options
 {
-    public class AreaStyle
+    public record AreaStyle
     {
         /// <summary>
         /// 线的颜色

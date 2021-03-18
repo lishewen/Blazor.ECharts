@@ -91,5 +91,6 @@ namespace Blazor.ECharts.Options.Series
         /// 默认径向旋转，如果不需要文字旋转，可以将其设为 0。
         /// </summary>
         public object Rotate { get; set; }
+        public TextStyle TextStyle { get; set; }
     }
 }
