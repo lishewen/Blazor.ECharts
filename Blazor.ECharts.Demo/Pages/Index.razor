@@ -2,7 +2,7 @@
 @inject HttpClient Http
 
 <div class="chart-container">
-    <EChart OptionRaw="@Option1" Class="chart-fill"></EChart>
+    <EChart OptionRaw="@Option1" Class="chart-fill" Theme="dark"></EChart>
 </div>
 
 @code{
@@ -11,6 +11,5 @@
     protected override async Task OnInitializedAsync()
     {
         Option1 = await Http.GetStringAsync("sample-data/dashboard.json");
-
     }
 }

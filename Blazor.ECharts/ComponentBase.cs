@@ -11,11 +11,36 @@ namespace Blazor.ECharts
     public class ComponentBase<T> : ComponentBase
     {
         protected string Id = "echerts_" + Guid.NewGuid().ToString("N");
-
+        private EChartsOption<T> option;
         [Parameter]
-        public EChartsOption<T> Option { get; set; }
+        public EChartsOption<T> Option
+        {
+            get
+            {
+                return option;
+            }
+            set
+            {
+                option = value;
+                if (option != null)
+                    _ = JsInterop.SetupChart(Id, Theme, option);
+            }
+        }
+        private string optionRaw;
         [Parameter]
-        public string OptionRaw { get; set; }
+        public string OptionRaw
+        {
+            get
+            {
+                return optionRaw;
+            }
+            set
+            {
+                optionRaw = value;
+                if (!string.IsNullOrWhiteSpace(optionRaw))
+                    _ = JsInterop.SetupChart(Id, Theme, optionRaw);
+            }
+        }
         /// <summary>
         /// 默认是否呈现组件
         /// </summary>
@@ -64,12 +89,12 @@ namespace Blazor.ECharts
             if (AutoRender == false) return;
             if (firstRender)
             {
-                if (Option == null && string.IsNullOrWhiteSpace(OptionRaw)) return;
+                if (option == null && string.IsNullOrWhiteSpace(optionRaw)) return;
 
-                if (!string.IsNullOrWhiteSpace(OptionRaw))
-                    await JsInterop.SetupChart(Id, Theme, OptionRaw);
+                if (!string.IsNullOrWhiteSpace(optionRaw))
+                    await JsInterop.SetupChart(Id, Theme, optionRaw);
                 else
-                    await JsInterop.SetupChart(Id, Theme, Option);
+                    await JsInterop.SetupChart(Id, Theme, option);
 
                 if (OnRenderCompleted != null)
                 {
