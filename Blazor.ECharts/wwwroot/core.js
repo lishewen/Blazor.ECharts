@@ -27,7 +27,7 @@ export class echartsFunctions {
         }
         return chart;
     }
-    static setupChart(id, theme, option) {
+    static setupChart(id, theme, option, notMerge) {
         console.log('参数：');
         console.log(option);
         let opt = eval('(' + option + ')');
@@ -37,6 +37,6 @@ export class echartsFunctions {
             chart = this.initChart(id, theme);
         }
         chart.hideLoading();
-        chart.setOption(opt);
+        chart.setOption(opt, notMerge);
     }
 }

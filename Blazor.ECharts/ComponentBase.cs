@@ -14,6 +14,8 @@ namespace Blazor.ECharts
 
         [Parameter]
         public EChartsOption<T> Option { get; set; }
+        [Parameter]
+        public string OptionRaw { get; set; }
         /// <summary>
         /// 默认是否呈现组件
         /// </summary>
@@ -62,14 +64,27 @@ namespace Blazor.ECharts
             if (AutoRender == false) return;
             if (firstRender)
             {
-                if (Option == null) return;
-                await JsInterop.SetupChart(Id, Theme, Option);
+                if (Option == null && string.IsNullOrWhiteSpace(OptionRaw)) return;
+
+                if (!string.IsNullOrWhiteSpace(OptionRaw))
+                    await JsInterop.SetupChart(Id, Theme, OptionRaw);
+                else
+                    await JsInterop.SetupChart(Id, Theme, Option);
+
                 if (OnRenderCompleted != null)
                 {
                     await OnRenderCompleted(this);
                 }
             }
             RequireRender = false;
+        }
+        public async Task SetupOptionAsync(string opt, bool notMerge = false)
+        {
+            await JsInterop.SetupChart(Id, Theme, opt, notMerge);
+        }
+        public async Task SetupOptionAsync(EChartsOption<T> opt, bool notMerge = false)
+        {
+            await JsInterop.SetupChart(Id, Theme, opt, notMerge);
         }
         public void Refresh()
         {

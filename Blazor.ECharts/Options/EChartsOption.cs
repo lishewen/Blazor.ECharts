@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options
@@ -173,5 +175,18 @@ namespace Blazor.ECharts.Options
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#brush">此处</see>查看详细设置</para>
         /// </summary>
         public Brush Brush { set; get; }
+        public override string ToString()
+        {
+            JsonSerializerOptions jsonSerializerOptions = new()
+            {
+                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
+                Converters =
+            {
+                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+            }
+            };
+            return JsonSerializer.Serialize(this, jsonSerializerOptions);
+        }
     }
 }

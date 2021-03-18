@@ -1,7 +1,16 @@
 ﻿@page "/"
+@inject HttpClient Http
 
-<h1>Hello, world!</h1>
+<div class="chart-container">
+    <EChart OptionRaw="@Option1" Class="chart-fill"></EChart>
+</div>
 
-Welcome to your new app.
+@code{
+    private string Option1;
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+    protected override async Task OnInitializedAsync()
+    {
+        Option1 = await Http.GetStringAsync("sample-data/dashboard.json");
+
+    }
+}

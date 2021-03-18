@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Blazor.ECharts.Options;
 
 namespace Blazor.ECharts
 {
@@ -17,15 +18,6 @@ namespace Blazor.ECharts
     public class JsInterop : IAsyncDisposable
     {
         private readonly Lazy<Task<IJSObjectReference>> moduleTask;
-        private readonly JsonSerializerOptions jsonSerializerOptions = new()
-        {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-            Converters =
-            {
-                new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
-            }
-        };
 
         public JsInterop(IJSRuntime jsRuntime)
         {
@@ -55,18 +47,29 @@ namespace Blazor.ECharts
         /// <summary>
         /// 配置Echarts参数
         /// </summary>
-        /// <param name="jsRuntime"></param>
         /// <param name="id">ECharts容器ID</param>
+        /// <param name="theme">主题</param>
         /// <param name="option">参数</param>
-        /// <param name="notMerge">可选，是否不跟之前设置的 option 进行合并，默认为 false，即合并。</param>
         /// <returns></returns>
-        public async Task SetupChart(string id, string theme, object option)
+        public async Task SetupChart<T>(string id, string theme, EChartsOption<T> option, bool notMerge = false)
+        {
+            await SetupChart(id, theme, option.ToString(), notMerge);
+        }
+
+        /// <summary>
+        /// 配置Echarts参数
+        /// </summary>
+        /// <param name="id">ECharts容器ID</param>
+        /// <param name="theme">主题</param>
+        /// <param name="option">参数</param>
+        /// <returns></returns>
+        public async Task SetupChart(string id, string theme, string option, bool notMerge = false)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
             if (option == null) throw new ArgumentNullException(nameof(option), "echarts参数不能为空");
             if (string.IsNullOrWhiteSpace(theme)) theme = "light";
             var module = await moduleTask.Value;
-            await module.InvokeVoidAsync("echartsFunctions.setupChart", id, theme, JsonSerializer.Serialize(option, jsonSerializerOptions));
+            await module.InvokeVoidAsync("echartsFunctions.setupChart", id, theme, option.ToString(), notMerge);
         }
 
         public async ValueTask DisposeAsync()
