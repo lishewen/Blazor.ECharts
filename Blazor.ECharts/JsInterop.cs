@@ -60,12 +60,13 @@ namespace Blazor.ECharts
         /// <param name="option">参数</param>
         /// <param name="notMerge">可选，是否不跟之前设置的 option 进行合并，默认为 false，即合并。</param>
         /// <returns></returns>
-        public async Task SetupChart(string id, object option)
+        public async Task SetupChart(string id, string theme, object option)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
             if (option == null) throw new ArgumentNullException(nameof(option), "echarts参数不能为空");
+            if (string.IsNullOrWhiteSpace(theme)) theme = "light";
             var module = await moduleTask.Value;
-            await module.InvokeVoidAsync("echartsFunctions.setupChart", id, JsonSerializer.Serialize(option, jsonSerializerOptions));
+            await module.InvokeVoidAsync("echartsFunctions.setupChart", id, theme, JsonSerializer.Serialize(option, jsonSerializerOptions));
         }
 
         public async ValueTask DisposeAsync()

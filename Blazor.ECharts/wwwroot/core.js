@@ -27,14 +27,14 @@ export class echartsFunctions {
         }
         return chart;
     }
-    static setupChart(id, option) {
+    static setupChart(id, theme, option) {
         console.log('参数：');
         console.log(option);
         let opt = eval('(' + option + ')');
         console.log(opt);
         let chart = this.getChart(id);
         if (chart === null) {
-            chart = this.initChart(id);
+            chart = this.initChart(id, theme);
         }
         chart.hideLoading();
         chart.setOption(opt);

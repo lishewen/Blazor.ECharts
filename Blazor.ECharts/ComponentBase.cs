@@ -19,6 +19,11 @@ namespace Blazor.ECharts
         /// </summary>
         [Parameter]
         public bool AutoRender { get; set; } = true;
+        /// <summary>
+        /// 主题
+        /// </summary>
+        [Parameter]
+        public string Theme { get; set; } = "light";
         protected bool RequireRender { get; set; }
         [Inject]
         public JsInterop JsInterop { get; set; }
@@ -58,7 +63,7 @@ namespace Blazor.ECharts
             if (firstRender)
             {
                 if (Option == null) return;
-                await JsInterop.SetupChart(Id, Option);
+                await JsInterop.SetupChart(Id, Theme, Option);
                 if (OnRenderCompleted != null)
                 {
                     await OnRenderCompleted(this);
