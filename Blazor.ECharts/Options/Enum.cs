@@ -145,7 +145,15 @@ namespace Blazor.ECharts.Options.Enum
         /// <summary>
         /// 使用极坐标系，通过 polarIndex 指定相应的极坐标组件
         /// </summary>
-        Polar
+        Polar,
+        /// <summary>
+        /// 百度地图
+        /// </summary>
+        Bmap,
+        /// <summary>
+        /// 使用地理坐标系，通过 geoIndex 指定相应的地理坐标系组件。
+        /// </summary>
+        Geo
     }
 
     /// <summary>

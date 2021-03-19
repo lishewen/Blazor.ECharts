@@ -175,6 +175,7 @@ namespace Blazor.ECharts.Options
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#brush">此处</see>查看详细设置</para>
         /// </summary>
         public Brush Brush { set; get; }
+        public BMap Bmap { get; set; }
         public override string ToString()
         {
             JsonSerializerOptions jsonSerializerOptions = new()
