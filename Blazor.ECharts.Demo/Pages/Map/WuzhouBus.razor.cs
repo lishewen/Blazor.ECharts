@@ -12,7 +12,7 @@ namespace Blazor.ECharts.Demo.Pages.Map
 {
     public partial class WuzhouBus
     {
-        private string Option1;
+        private EChartsOption<L.Lines> Option1;
         [Inject]
         public HttpClient Http { get; set; }
         public record BusLinesData
@@ -56,7 +56,7 @@ namespace Blazor.ECharts.Demo.Pages.Map
                 });
             }
 
-            EChartsOption<L.Lines> Option = new()
+            Option1 = new()
             {
                 Bmap = new()
                 {
@@ -259,8 +259,6 @@ namespace Blazor.ECharts.Demo.Pages.Map
                     }
                 }
             };
-
-            Option1 = Option.ToString();
 
             await base.OnInitializedAsync();
         }
