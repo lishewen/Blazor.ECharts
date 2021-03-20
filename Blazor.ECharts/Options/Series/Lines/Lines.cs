@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options.Series.Lines
 {
+    /// <summary>
+    /// 路径图
+    /// </summary>
     public record Lines : SeriesBase
     {
         public Lines() : base("lines") { }

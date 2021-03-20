@@ -22,7 +22,12 @@ ECharts配置请参考：
 3. 在`_Imports.razor`中添加`@using Blazor.ECharts.Component`。
 4. 在`wwwroot/index.html`文件的`Head`中引入：
 ```html
-<script crossorigin="anonymous" integrity="sha512-t9GZbGKCH5MuYUFsq5AdrhllT0kdnc2fNMizKDgLXBBXgHP2dXxjRPOzYJauAXW9OXLlSYELUqWD30k7cb0Mkg==" src="https://lib.baomitu.com/echarts/5.0.2/echarts.min.js"></script>
+<script src="https://lib.baomitu.com/echarts/5.0.2/echarts.min.js"></script>
+```
+**需要使用地图相关功能的则需要额外添加地图js的引用**
+```html
+<script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=[Your Key Here]"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
 ```
 5. 在`wwwroot/index.html`文件的`Body`中引入：
 ```html
@@ -118,7 +123,7 @@ builder.Services.AddECharts();
   - [ ] 盒须图
   - [ ] 热力图
   - [x] 关系图（部分）
-  - [ ] 路径图
+  - [x] 路径图（部分）
   - [x] 树图（部分）
   - [x] 矩形树图（部分）
   - [x] 旭日图（部分）
@@ -129,3 +134,8 @@ builder.Services.AddECharts();
   - [ ] 象形柱图
   - [ ] 主题河流图
   - [ ] 日历坐标系
+
+### Nuget Package中没有打包echarts.js的原因
+1. 减少包的体积
+2. 方便自由更换cdn
+3. 方便echarts小版本更新时，作者没有来得及更新Package内的js时，可自行在页面上更换
