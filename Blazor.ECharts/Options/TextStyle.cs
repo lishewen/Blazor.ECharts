@@ -1,4 +1,5 @@
 ﻿using Blazor.ECharts.Options.Enum;
+using Blazor.ECharts.Options.Series;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -104,5 +105,9 @@ namespace Blazor.ECharts.Options
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#title.textStyle.rich ">此处</see>查看详细设置</para>
         /// </summary>
         public object Rich { set; get; }
+        /// <summary>
+        /// 文字阴影
+        /// </summary>
+        public Emphasis Emphasis { set; get; }
     }
 }

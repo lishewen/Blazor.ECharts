@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Blazor.ECharts.WordCloud\Blazor.ECharts.WordCloud.csproj" />
     <ProjectReference Include="..\Blazor.ECharts\Blazor.ECharts.csproj" />
   </ItemGroup>
 

@@ -7,26 +7,30 @@
     <Authors>lishewen</Authors>
     <IsPackable>true</IsPackable>
     <Description>
-      Blazor版本的ECharts图表组件
+      Blazor版本的ECharts词云组件
       开源地址：https://github.com/lishewen/Blazor.ECharts
       使用方式见Demo项目
     </Description>
-    <AssemblyName>Blazor.ECharts</AssemblyName>
-    <RootNamespace>Blazor.ECharts</RootNamespace>
+    <AssemblyName>Blazor.ECharts.WordCloud</AssemblyName>
+    <RootNamespace>Blazor.ECharts.WordCloud</RootNamespace>
     <PackageProjectUrl>https://github.com/lishewen/Blazor.ECharts</PackageProjectUrl>
     <RepositoryUrl>https://github.com/lishewen/Blazor.ECharts</RepositoryUrl>
     <RepositoryType>github</RepositoryType>
     <projectUrl>https://github.com/lishewen/Blazor.ECharts</projectUrl>
-    <PackageTags>Blazor,.net core,ECharts</PackageTags>
+    <PackageTags>Blazor,.net core,ECharts,WordCloud</PackageTags>
   </PropertyGroup>
 
-
+  
   <ItemGroup>
     <SupportedPlatform Include="browser" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Blazor.ECharts\Blazor.ECharts.csproj" />
   </ItemGroup>
 
   <ItemGroup>
