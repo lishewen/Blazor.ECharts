@@ -134,7 +134,7 @@ builder.Services.AddECharts();
   - [ ] 象形柱图
   - [ ] 主题河流图
   - [ ] 日历坐标系
-  - [x] 词云图(使用方法Blazor.ECharts.WordCloud/README.md)
+  - [x] 词云图(使用方法：[Blazor.ECharts.WordCloud/README.md](Blazor.ECharts.WordCloud/README.md))
 
 ### Nuget Package中没有打包echarts.js的原因
 1. 减少包的体积
