@@ -12,6 +12,8 @@
 
 开源地址：[https://github.com/lishewen/Blazor.ECharts](https://github.com/lishewen/Blazor.ECharts)
 
+国内镜像：[https://gitee.com/lishewen/Blazor.ECharts](https://gitee.com/lishewen/Blazor.ECharts)
+
 ECharts配置请参考：
 
 [https://echarts.apache.org/examples/zh/index.html](https://echarts.apache.org/examples/zh/index.html)
