@@ -95,7 +95,7 @@ builder.Services.AddECharts();
   - [ ] parallelAxis
   - [ ] singleAxis
   - [x] timeline
-  - [ ] graphic
+  - [x] graphic
   - [ ] calendar
   - [ ] dataset
   - [ ] aria
