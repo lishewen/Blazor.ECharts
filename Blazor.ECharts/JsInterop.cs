@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Blazor.ECharts.Options;
+using Blazor.ECharts.Options.Enum;
 
 namespace Blazor.ECharts
 {
@@ -70,6 +71,12 @@ namespace Blazor.ECharts
             if (string.IsNullOrWhiteSpace(theme)) theme = "light";
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("echartsFunctions.setupChart", id, theme, option.ToString(), notMerge);
+        }
+
+        public async Task ChartOn(string id, EventType eventType, DotNetObjectReference<EventInvokeHelper> objectReference)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("echartsFunctions.on", id, eventType.ToString(), objectReference);
         }
 
         public async ValueTask DisposeAsync()

@@ -1,5 +1,7 @@
 ﻿using Blazor.ECharts.Options;
+using Blazor.ECharts.Options.Enum;
 using Microsoft.AspNetCore.Components;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +60,20 @@ namespace Blazor.ECharts
         public Func<object, Task> OnRenderCompleted { get; set; }
 
         /// <summary>
+        /// 事件类型.
+        /// </summary>
+        [Parameter]
+        public List<EventType> EventTypes { get; set; } = new List<EventType>();
+
+        /// <summary>
+        /// 事件回调函数
+        /// </summary>
+        [Parameter]
+        public EventCallback<EchartsEventArgs> OnEventCallback { get; set; }
+
+        private EventInvokeHelper _eventInvokeHelper;
+
+        /// <summary>
         /// 设置自定义样式
         /// </summary>
         [Parameter]
@@ -68,7 +84,14 @@ namespace Blazor.ECharts
         /// </summary>
         [Parameter]
         public string Class { get; set; }
-
+        protected override void OnInitialized()
+        {
+            _eventInvokeHelper = new EventInvokeHelper(async echartsParams =>
+            {
+                if (EventTypes.Count > 0 && OnEventCallback.HasDelegate)
+                    await OnEventCallback.InvokeAsync(echartsParams);
+            });
+        }
         /// <summary>
         /// 默认情况下所有复杂组件都只进行一次渲染，该方法将组件置为需要再次渲染
         /// </summary>
@@ -95,6 +118,15 @@ namespace Blazor.ECharts
                     await JsInterop.SetupChart(Id, Theme, optionRaw);
                 else
                     await JsInterop.SetupChart(Id, Theme, option);
+
+                // 事件
+                if (EventTypes.Count > 0 && OnEventCallback.HasDelegate)
+                {
+                    foreach (var eventType in EventTypes)
+                    {
+                        await JsInterop.ChartOn(Id, eventType, DotNetObjectReference.Create(_eventInvokeHelper));
+                    }
+                }
 
                 if (OnRenderCompleted != null)
                 {

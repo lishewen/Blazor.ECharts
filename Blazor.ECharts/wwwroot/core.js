@@ -39,4 +39,27 @@ export class echartsFunctions {
         chart.hideLoading();
         chart.setOption(opt, notMerge);
     }
+    static on(id, eventType, dotnetHelper) {
+        let chart = this.getChart(id);
+        chart.on(eventType, params => {
+            let echartsEventArgs = {};
+            echartsEventArgs.eventType = eventType;
+
+            if (params) {
+                echartsEventArgs.componentType = params.componentType;
+                echartsEventArgs.seriesType = params.seriesType;
+                echartsEventArgs.seriesIndex = params.seriesIndex;
+                echartsEventArgs.seriesName = params.seriesName;
+                echartsEventArgs.name = params.name;
+                echartsEventArgs.dataIndex = params.dataIndex;
+                echartsEventArgs.data = params.data;
+                echartsEventArgs.dataType = params.dataType;
+                echartsEventArgs.value = params.value;
+                echartsEventArgs.color = params.color;
+                echartsEventArgs.info = params.info;
+            }
+
+            dotnetHelper.invokeMethodAsync('EventCaller', JSON.stringify(echartsEventArgs));
+        });
+    }
 }
