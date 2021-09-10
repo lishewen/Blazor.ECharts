@@ -70,7 +70,17 @@ namespace Blazor.ECharts
             if (option == null) throw new ArgumentNullException(nameof(option), "echarts参数不能为空");
             if (string.IsNullOrWhiteSpace(theme)) theme = "light";
             var module = await moduleTask.Value;
-            await module.InvokeVoidAsync("echartsFunctions.setupChart", id, theme, option.ToString(), notMerge);
+            try
+            {
+                await module.InvokeVoidAsync("echartsFunctions.setupChart", id, theme, option, notMerge);
+            }
+            catch
+            {
+                Console.WriteLine("id:" + id);
+                Console.WriteLine("theme:" + theme);
+                Console.WriteLine("option:" + option);
+                Console.WriteLine("notMerge:" + notMerge);
+            }
         }
 
         public async Task ChartOn(string id, EventType eventType, DotNetObjectReference<EventInvokeHelper> objectReference)

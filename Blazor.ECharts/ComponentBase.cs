@@ -13,46 +13,20 @@ namespace Blazor.ECharts
     public class ComponentBase<T> : ComponentBase
     {
         protected string Id = "echerts_" + Guid.NewGuid().ToString("N");
-        private EChartsOption<T> option;
+        /// <summary>
+        /// 主题
+        /// </summary>
         [Parameter]
-        public EChartsOption<T> Option
-        {
-            get
-            {
-                return option;
-            }
-            set
-            {
-                option = value;
-                if (option != null)
-                    _ = JsInterop.SetupChart(Id, Theme, option);
-            }
-        }
-        private string optionRaw;
+        public string Theme { get; set; }
         [Parameter]
-        public string OptionRaw
-        {
-            get
-            {
-                return optionRaw;
-            }
-            set
-            {
-                optionRaw = value;
-                if (!string.IsNullOrWhiteSpace(optionRaw))
-                    _ = JsInterop.SetupChart(Id, Theme, optionRaw);
-            }
-        }
+        public EChartsOption<T> Option { get; set; }
+        [Parameter]
+        public string OptionRaw { get; set; }
         /// <summary>
         /// 默认是否呈现组件
         /// </summary>
         [Parameter]
         public bool AutoRender { get; set; } = true;
-        /// <summary>
-        /// 主题
-        /// </summary>
-        [Parameter]
-        public string Theme { get; set; } = "light";
         protected bool RequireRender { get; set; }
         [Inject]
         public JsInterop JsInterop { get; set; }
@@ -107,18 +81,21 @@ namespace Blazor.ECharts
         {
             return RequireRender;
         }
+        protected override async Task OnParametersSetAsync()
+        {
+            if (Option == null && string.IsNullOrWhiteSpace(OptionRaw)) return;
+
+            if (!string.IsNullOrWhiteSpace(OptionRaw))
+                await JsInterop.SetupChart(Id, Theme, OptionRaw);
+            else
+                await JsInterop.SetupChart(Id, Theme, Option);
+        }
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (AutoRender == false) return;
             if (firstRender)
             {
-                if (option == null && string.IsNullOrWhiteSpace(optionRaw)) return;
-
-                if (!string.IsNullOrWhiteSpace(optionRaw))
-                    await JsInterop.SetupChart(Id, Theme, optionRaw);
-                else
-                    await JsInterop.SetupChart(Id, Theme, option);
-
+                await OnParametersSetAsync();
                 // 事件
                 if (EventTypes.Count > 0 && OnEventCallback.HasDelegate)
                 {
