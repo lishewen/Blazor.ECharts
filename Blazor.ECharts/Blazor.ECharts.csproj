@@ -1,36 +1,38 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Version>0.6.2-rc.1</Version>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>lishewen</Authors>
-    <IsPackable>true</IsPackable>
-    <Description>
-      Blazor版本的ECharts图表组件
-      开源地址：https://github.com/lishewen/Blazor.ECharts
-      使用方式见Demo项目
-    </Description>
-    <AssemblyName>Blazor.ECharts</AssemblyName>
-    <RootNamespace>Blazor.ECharts</RootNamespace>
-    <PackageProjectUrl>https://github.com/lishewen/Blazor.ECharts</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/lishewen/Blazor.ECharts</RepositoryUrl>
-    <RepositoryType>github</RepositoryType>
-    <projectUrl>https://github.com/lishewen/Blazor.ECharts</projectUrl>
-    <PackageTags>Blazor,.net core,ECharts</PackageTags>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Version>0.6.3-rc.2</Version>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<Authors>lishewen</Authors>
+		<IsPackable>true</IsPackable>
+		<Description>
+			Blazor版本的ECharts图表组件
+			开源地址：https://github.com/lishewen/Blazor.ECharts
+			使用方式见Demo项目
+		</Description>
+		<AssemblyName>Blazor.ECharts</AssemblyName>
+		<RootNamespace>Blazor.ECharts</RootNamespace>
+		<PackageProjectUrl>https://github.com/lishewen/Blazor.ECharts</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/lishewen/Blazor.ECharts</RepositoryUrl>
+		<RepositoryType>github</RepositoryType>
+		<projectUrl>https://github.com/lishewen/Blazor.ECharts</projectUrl>
+		<PackageTags>Blazor,.net core,ECharts</PackageTags>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+	</PropertyGroup>
 
 
-  <ItemGroup>
-    <SupportedPlatform Include="browser" />
-  </ItemGroup>
+	<ItemGroup>
+		<SupportedPlatform Include="browser" />
+		<None Include="..\readme.md" Pack="true" PackagePath="\"/>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0-rc.1.21452.15" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0-rc.2.21480.10" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Components\" />
-  </ItemGroup>
+	<ItemGroup>
+		<Folder Include="Components\" />
+	</ItemGroup>
 
 </Project>
