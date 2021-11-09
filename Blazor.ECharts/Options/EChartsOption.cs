@@ -184,7 +184,8 @@ namespace Blazor.ECharts.Options
                 DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
                 Converters =
                 {
-                    new JsonStringEnumConverter(JsonNamingPolicy.CamelCase)
+                    new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
+                    new JFuncConverter()
                 }
             };
             return JsonSerializer.Serialize(this, jsonSerializerOptions);

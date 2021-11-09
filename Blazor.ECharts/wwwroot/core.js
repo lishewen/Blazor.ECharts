@@ -28,10 +28,7 @@ export class echartsFunctions {
         return chart;
     }
     static setupChart(id, theme, option, notMerge) {
-        console.log('参数：');
-        console.log(option);
         let opt = eval('(' + option + ')');
-        console.log(opt);
         let chart = this.getChart(id);
         if (chart === null) {
             chart = this.initChart(id, theme);

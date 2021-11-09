@@ -7,14 +7,14 @@
     <EBar Option="@Option1" Class="chart-fill" Theme="dark"></EBar>
 </div>
 
-@code{
+@code {
     private EChartsOption<B.Bar> Option1;
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
 
-        Option1 = new EChartsOption<B.Bar>()
+        Option1 = new()
         {
             Title = new()
             {

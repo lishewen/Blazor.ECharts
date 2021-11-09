@@ -42,7 +42,24 @@
             {
                 new XAxis(){Data=xAxisData,Silent=false,SplitLine=new SplitLine(){Show=false } }
             },
-            YAxis = new List<YAxis>() { new YAxis() }
+            YAxis = new List<YAxis>() { new YAxis() },
+            Series = new List<object>()
+            {
+                new B.Bar()
+                {
+                    Name="bar",
+                    Data=data1,
+                    AnimationDelay=new JFunc(){RAW="function (idx) {return idx * 10;}"}
+                },
+                new B.Bar()
+                {
+                    Name="bar2",
+                    Data=data2,
+                    AnimationDelay=new JFunc(){RAW="function (idx) {return idx * 10 + 100;}"}
+                }
+            },
+            AnimationEasing = "elasticOut",
+            AnimationDelayUpdate = new JFunc(){RAW="function (idx) {return idx * 5;}"}
         };
     }
 }

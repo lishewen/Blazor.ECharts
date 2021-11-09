@@ -1,18 +1,18 @@
-# Blazor.ECharts.WordCloud
+ï»¿# Blazor.ECharts.WordCloud
 
-## ½éÉÜ
+## ä»‹ç»
 
-**Blazor°æ±¾µÄECharts´ÊÔÆ×é¼ş**
+**Blazorç‰ˆæœ¬çš„EChartsè¯äº‘ç»„ä»¶**
 
-´ÊÔÆ×é¼ş»ùÓÚÏîÄ¿
+è¯äº‘ç»„ä»¶åŸºäºé¡¹ç›®
 https://github.com/ecomfe/echarts-wordcloud
 
-## Ê¹ÓÃ·½Ê½
+## ä½¿ç”¨æ–¹å¼
 
-ÔÚBlazor.EChartsÒÑÊ¹ÓÃµÄ»ù´¡ÉÏÔö¼Ó
+åœ¨Blazor.EChartså·²ä½¿ç”¨çš„åŸºç¡€ä¸Šå¢åŠ 
 
-ÔÚ`wwwroot/index.html`ÎÄ¼şµÄ`Head`ÖĞÒıÈë£º
+åœ¨`wwwroot/index.html`æ–‡ä»¶çš„`Head`ä¸­å¼•å…¥ï¼š
 ```html
 <script src="_content/Blazor.ECharts.WordCloud/echarts-wordcloud.min.js"></script>
 ```
-**ÓÉÓÚÃ»ÕÒµ½ºÏÊÊµÄecharts-wordcloud.min.jsµÄCDN£¬¹Ê´ò°üÁË`echarts-wordcloud.min.js`**
+**ç”±äºæ²¡æ‰¾åˆ°åˆé€‚çš„echarts-wordcloud.min.jsçš„CDNï¼Œæ•…æ‰“åŒ…äº†`echarts-wordcloud.min.js`**
