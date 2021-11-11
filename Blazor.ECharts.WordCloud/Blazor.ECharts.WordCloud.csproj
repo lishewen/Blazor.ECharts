@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
-		<Version>0.6.5</Version>
+		<TargetFrameworks>net6.0;net5.0</TargetFrameworks>
+		<Version>0.6.6</Version>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Authors>lishewen</Authors>
 		<IsPackable>true</IsPackable>
@@ -27,8 +27,12 @@
 		<None Include=".\readme.md" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net5.0' ">
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.12" />
 	</ItemGroup>
 
 	<ItemGroup>

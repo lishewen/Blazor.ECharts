@@ -193,7 +193,9 @@ namespace Blazor.ECharts.Options
                 Converters =
                 {
                     new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
+#if !NET5_0
                     new JFuncConverter()
+#endif
                 }
             };
             return JsonSerializer.Serialize(this, jsonSerializerOptions);

@@ -7,6 +7,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
+#if !NET5_0
 namespace Blazor.ECharts
 {
     public class JFuncConverter : JsonConverter<JFunc>
@@ -22,3 +23,4 @@ namespace Blazor.ECharts
         }
     }
 }
+#endif
