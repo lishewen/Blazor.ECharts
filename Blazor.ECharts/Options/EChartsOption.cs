@@ -19,6 +19,14 @@ namespace Blazor.ECharts.Options
         public Title Title { set; get; }
         public Label Label { get; set; }
         /// <summary>
+        /// 标签的统一布局配置。
+        /// </summary>
+        public LabelLayout LabelLayout { set; get; }
+        /// <summary>
+        /// 滚轮缩放的极限控制，通过min, max最小和最大的缩放值，默认的缩放为1。
+        /// </summary>
+        public ScaleLimit ScaleLimit { get; set; }
+        /// <summary>
         /// 提示框组件。
         /// </summary>
         public Tooltip Tooltip { set; get; }

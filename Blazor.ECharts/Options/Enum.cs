@@ -702,4 +702,19 @@ namespace Blazor.ECharts.Options.Enum
         /// </summary>
         finished
     }
+
+    /// <summary>
+    /// 在标签重叠的时候是否挪动标签位置以防止重叠。
+    /// </summary>
+    public enum MoveOverlap
+    {
+        /// <summary>
+        /// 水平方向依次位移，在水平方向对齐时使用
+        /// </summary>
+        ShiftX,
+        /// <summary>
+        /// 垂直方向依次位移，在垂直方向对齐时使用
+        /// </summary>
+        ShiftY
+    }
 }
