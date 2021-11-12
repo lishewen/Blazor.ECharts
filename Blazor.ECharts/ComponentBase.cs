@@ -1,6 +1,8 @@
 ﻿using Blazor.ECharts.Options;
 using Blazor.ECharts.Options.Enum;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.Rendering;
+using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
@@ -22,6 +24,8 @@ namespace Blazor.ECharts
         public EChartsOption<T> Option { get; set; }
         [Parameter]
         public string OptionRaw { get; set; }
+        [Parameter]
+        public RenderFragment ChildContent { get; set; }
         /// <summary>
         /// 默认是否呈现组件
         /// </summary>
@@ -83,9 +87,28 @@ namespace Blazor.ECharts
         }
         protected override async Task OnParametersSetAsync()
         {
-            if (Option == null && string.IsNullOrWhiteSpace(OptionRaw)) return;
+            if (Option == null && string.IsNullOrWhiteSpace(OptionRaw) && ChildContent == null) return;
 
-            if (!string.IsNullOrWhiteSpace(OptionRaw))
+            if (ChildContent != null)
+            {
+                var sb = new StringBuilder();
+                var rtb = new RenderTreeBuilder();
+                ChildContent.Invoke(rtb);
+#pragma warning disable BL0006 // Do not use RenderTree types
+                foreach (var frame in rtb.GetFrames().Array)
+                {
+                    if (frame.FrameType == RenderTreeFrameType.Markup)
+                    {
+                        sb.AppendLine(frame.MarkupContent);
+                    }
+                }
+#pragma warning restore BL0006 // Do not use RenderTree types
+                var output = sb.ToString().Trim();
+
+                if (!string.IsNullOrWhiteSpace(output))
+                    await JsInterop.SetupChart(Id, Theme, output);
+            }
+            else if (!string.IsNullOrWhiteSpace(OptionRaw))
                 await JsInterop.SetupChart(Id, Theme, OptionRaw);
             else
                 await JsInterop.SetupChart(Id, Theme, Option);
