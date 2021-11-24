@@ -16,7 +16,7 @@
     }
 </div>
 
-@code{
+@code {
     private EChartsOption<B.Bar> Option1;
 
     private EchartsEventArgs callbackArgs;
@@ -24,33 +24,32 @@
     // 添加一个点击事件
     private List<EventType> EventTypes = new List<EventType> { EventType.click };
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
-        base.OnInitialized();
-
+        await Task.Delay(200);
         Option1 = new()
-        {
-            Color = new[] { "#8EC9EB" },
-            Legend = new() { Data = "高度(km)与气温(°C)变化关系" },
-            Tooltip = new()
             {
-                Trigger = TooltipTrigger.Axis,
-                Formatter = "Temperature : <br/>{b}km : {c}°C"
-            },
-            Grid = new()
-            {
+                Color = new[] { "#8EC9EB" },
+                Legend = new() { Data = "高度(km)与气温(°C)变化关系" },
+                Tooltip = new()
+                {
+                    Trigger = TooltipTrigger.Axis,
+                    Formatter = "Temperature : <br/>{b}km : {c}°C"
+                },
+                Grid = new()
+                {
                     new() { Left = "3%", Right = "4%", Bottom = "3%", ContainLabel = true }
                 },
-            XAxis = new()
-            {
+                XAxis = new()
+                {
                     new() { Type = AxisType.Value, SplitLine = new SplitLine() { Show = false }, AxisLabel = new AxisLabel() { Formatter = "{value} °C" } }
                 },
-            YAxis = new()
-            {
+                YAxis = new()
+                {
                     new() { Type = AxisType.Category, AxisLine = new AxisLine() { OnZero = false }, AxisLabel = new AxisLabel() { Formatter = "{value} km" }, BoundaryGap = true, Data = new[] { "0", "10", "20", "30", "40", "50", "60", "70", "80" } }
                 },
-            Series = new()
-            {
+                Series = new()
+                {
                     new B.Bar()
                     {
                         Name = "高度(km)与气温(°C)变化关系",
@@ -60,8 +59,8 @@
                         Data = new[] { 15, -50, -56.5, -46.5, -22.1, -2.5, -27.7, -55.7, -76.5 }
                     }
                 },
-            Graphic = new()
-            {
+                Graphic = new()
+                {
                     new GraphicImage()
                     {
                         Id = "logo",
@@ -85,7 +84,7 @@
                         Bottom = 110,
                         Z = 100,
                         Children = new()
-                    {
+                        {
                             new
                             {
                                 type = "rect",
@@ -122,7 +121,7 @@
                         Left = "10%",
                         Top = "center",
                         Children = new()
-                    {
+                        {
                             new
                             {
                                 type = "rect",
@@ -167,7 +166,9 @@
                         }
                     }
                 }
-        };
+            };
+
+        await base.OnInitializedAsync();
     }
 
     private void OnEchartsEvent(EchartsEventArgs args)

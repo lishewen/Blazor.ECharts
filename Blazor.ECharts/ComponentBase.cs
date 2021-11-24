@@ -50,6 +50,10 @@ namespace Blazor.ECharts
         public EventCallback<EchartsEventArgs> OnEventCallback { get; set; }
 
         private EventInvokeHelper _eventInvokeHelper;
+        /// <summary>
+        /// 有否绑定事件
+        /// </summary>
+        private bool hasBindEvent;
 
         /// <summary>
         /// 设置自定义样式
@@ -112,6 +116,16 @@ namespace Blazor.ECharts
                 await JsInterop.SetupChart(Id, Theme, OptionRaw);
             else
                 await JsInterop.SetupChart(Id, Theme, Option);
+
+            // 事件
+            if (EventTypes.Count > 0 && OnEventCallback.HasDelegate && !hasBindEvent)
+            {
+                foreach (var eventType in EventTypes)
+                {
+                    await JsInterop.ChartOn(Id, eventType, DotNetObjectReference.Create(_eventInvokeHelper));
+                }
+                hasBindEvent = true;
+            }
         }
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
@@ -119,14 +133,6 @@ namespace Blazor.ECharts
             if (firstRender)
             {
                 await OnParametersSetAsync();
-                // 事件
-                if (EventTypes.Count > 0 && OnEventCallback.HasDelegate)
-                {
-                    foreach (var eventType in EventTypes)
-                    {
-                        await JsInterop.ChartOn(Id, eventType, DotNetObjectReference.Create(_eventInvokeHelper));
-                    }
-                }
 
                 if (OnRenderCompleted != null)
                 {
