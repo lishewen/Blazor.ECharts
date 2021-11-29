@@ -7,6 +7,7 @@ using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -91,6 +92,13 @@ namespace Blazor.ECharts
         }
         protected override async Task OnParametersSetAsync()
         {
+            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER"))) return;
+
+            await SetupChartAsync();
+        }
+
+        private async Task SetupChartAsync()
+        {
             if (Option == null && string.IsNullOrWhiteSpace(OptionRaw) && ChildContent == null) return;
 
             if (ChildContent != null)
@@ -127,12 +135,13 @@ namespace Blazor.ECharts
                 hasBindEvent = true;
             }
         }
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (AutoRender == false) return;
             if (firstRender)
             {
-                await OnParametersSetAsync();
+                await SetupChartAsync();
 
                 if (OnRenderCompleted != null)
                 {
