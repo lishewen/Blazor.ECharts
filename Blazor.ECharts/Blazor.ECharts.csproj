@@ -19,11 +19,13 @@
 		<projectUrl>https://github.com/lishewen/Blazor.ECharts</projectUrl>
 		<PackageTags>Blazor,.net core,ECharts</PackageTags>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
 		<None Include="..\readme.md" Pack="true" PackagePath="\" />
+		<None Include="..\LICENSE" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
