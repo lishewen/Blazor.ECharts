@@ -34,6 +34,7 @@
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net5.0' ">
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.14" />
+		<PackageReference Include="System.Text.Json" Version="6.0.2" />
 	</ItemGroup>
 
 	<ItemGroup>

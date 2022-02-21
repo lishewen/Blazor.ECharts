@@ -108,7 +108,7 @@ namespace Blazor.ECharts
         /// <param name="identifier"></param>
         /// <param name="args"></param>
         /// <returns></returns>
-        public async ValueTask InvokeVoidAsync(string identifier, params object?[]? args)
+        public async ValueTask InvokeVoidAsync(string identifier, params object?[] args)
         {
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync(identifier, args);
