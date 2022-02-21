@@ -83,11 +83,37 @@ namespace Blazor.ECharts
             }
         }
 
+        /// <summary>
+        /// 自适应
+        /// </summary>
+        /// <param name="id">ECharts容器ID</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async Task Resize(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("echartsFunctions.resize", id);
+        }
+
         public async Task ChartOn(string id, EventType eventType, DotNetObjectReference<EventInvokeHelper> objectReference)
         {
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("echartsFunctions.on", id, eventType.ToString(), objectReference);
         }
+#nullable enable
+        /// <summary>
+        /// 透明传递
+        /// </summary>
+        /// <param name="identifier"></param>
+        /// <param name="args"></param>
+        /// <returns></returns>
+        public async ValueTask InvokeVoidAsync(string identifier, params object?[]? args)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync(identifier, args);
+        }
+#nullable disable
 
         public async ValueTask DisposeAsync()
         {

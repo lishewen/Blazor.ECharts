@@ -13,9 +13,10 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts
 {
-    public class ComponentBase<T> : ComponentBase
+    public class ComponentBase<T> : ComponentBase, IAsyncDisposable where T : class
     {
         protected string Id = "echerts_" + Guid.NewGuid().ToString("N");
+        private DotNetObjectReference<ComponentBase<T>> _objectReference;
         /// <summary>
         /// 主题
         /// </summary>
@@ -32,6 +33,11 @@ namespace Blazor.ECharts
         /// </summary>
         [Parameter]
         public bool AutoRender { get; set; } = true;
+        /// <summary>
+        /// 是否响应Resize
+        /// </summary>
+        [Parameter]
+        public bool ISResize { get; set; } = true;
         protected bool RequireRender { get; set; }
         [Inject]
         public JsInterop JsInterop { get; set; }
@@ -74,6 +80,7 @@ namespace Blazor.ECharts
                 if (EventTypes.Count > 0 && OnEventCallback.HasDelegate)
                     await OnEventCallback.InvokeAsync(echartsParams);
             });
+            _objectReference = DotNetObjectReference.Create(this);
         }
         /// <summary>
         /// 默认情况下所有复杂组件都只进行一次渲染，该方法将组件置为需要再次渲染
@@ -134,6 +141,10 @@ namespace Blazor.ECharts
                 }
                 hasBindEvent = true;
             }
+            if (ISResize)
+            {
+                await AddResizeListener();
+            }
         }
 
         protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -158,9 +169,36 @@ namespace Blazor.ECharts
         {
             await JsInterop.SetupChart(Id, Theme, opt, notMerge);
         }
+        public async Task ResizeAsync()
+        {
+            await JsInterop.Resize(Id);
+        }
+        [JSInvokable("OnResize")]
+        public void OnResize()
+        {
+            Console.WriteLine("窗口触发ReSize事件");
+            if (ISResize)
+            {
+                _ = ResizeAsync();
+            }
+        }
+        private async Task AddResizeListener()
+        {
+            await JsInterop.InvokeVoidAsync("echartsFunctions.addResizeListener", _objectReference);
+        }
+        private async Task RemoveResizeListener()
+        {
+            await JsInterop.InvokeVoidAsync("echartsFunctions.RemoveResizeListener", _objectReference);
+        }
         public void Refresh()
         {
             StateHasChanged();
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            await RemoveResizeListener();
+            _objectReference?.Dispose();
         }
     }
 }

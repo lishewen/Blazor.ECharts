@@ -59,4 +59,21 @@ export class echartsFunctions {
             dotnetHelper.invokeMethodAsync('EventCaller', JSON.stringify(echartsEventArgs));
         });
     }
+
+    static resize(id) {
+        let chart = this.getChart(id);
+        chart.resize();
+    }
+
+    static addResizeListener(objReference) {
+        window.addEventListener("resize", () => {
+            objReference.invokeMethodAsync("OnResize");
+        });
+    }
+
+    static removeResizeListener(objReference) {
+        window.removeEventListener("resize", () => {
+            objReference.invokeMethodAsync("OnResize");
+        });
+    }
 }
