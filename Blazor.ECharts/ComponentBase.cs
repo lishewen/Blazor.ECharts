@@ -176,7 +176,6 @@ namespace Blazor.ECharts
         [JSInvokable("OnResize")]
         public void OnResize()
         {
-            Console.WriteLine("窗口触发ReSize事件");
             if (ISResize)
             {
                 _ = ResizeAsync();
