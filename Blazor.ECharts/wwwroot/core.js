@@ -65,15 +65,49 @@ export class echartsFunctions {
         chart.resize();
     }
 
-    static addResizeListener(objReference) {
-        window.addEventListener("resize", () => {
+    static invokeOnResize(objReference) {
+        if (this.debounceResize[objReference._id])
             objReference.invokeMethodAsync("OnResize");
-        });
+    }
+    static debounceResize = new Array();
+
+    static addResizeListener(objReference) {
+        this.debounceResize[objReference._id] = () => {
+            this.debounce(this.invokeOnResize(objReference), 1000, true);
+        }
+        window.addEventListener("resize", this.debounceResize[objReference._id]);
     }
 
     static removeResizeListener(objReference) {
-        window.removeEventListener("resize", () => {
-            objReference.invokeMethodAsync("OnResize");
-        });
+        window.removeEventListener("resize", this.debounceResize[objReference._id]);
+        this.debounceResize.splice(objReference._id, 1);
+    }
+
+    /**
+     * @desc  函数防抖---“立即执行版本” 和 “非立即执行版本” 的组合版本
+     * @param  func 需要执行的函数
+     * @param  wait 延迟执行时间（毫秒）
+     * @param  immediate---true 表立即执行，false 表非立即执行
+     **/
+    static debounce(func, wait, immediate) {
+        let timer;
+
+        return () => {
+            let context = this;
+            let args = arguments;
+
+            if (timer) clearTimeout(timer);
+            if (immediate) {
+                var callNow = !timer;
+                timer = setTimeout(() => {
+                    timer = null;
+                }, wait)
+                if (callNow) func.apply(context, args)
+            } else {
+                timer = setTimeout(() => {
+                    func.apply(context, args)
+                }, wait);
+            }
+        }
     }
 }
