@@ -187,7 +187,7 @@ namespace Blazor.ECharts
         }
         private async Task RemoveResizeListener()
         {
-            await JsInterop.InvokeVoidAsync("echartsFunctions.RemoveResizeListener", _objectReference);
+            await JsInterop.InvokeVoidAsync("echartsFunctions.removeResizeListener", _objectReference);
         }
         public void Refresh()
         {
