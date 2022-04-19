@@ -29,12 +29,12 @@
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="6.0.4" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net5.0' ">
-		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.14" />
-		<PackageReference Include="System.Text.Json" Version="6.0.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="5.0.16" />
+		<PackageReference Include="System.Text.Json" Version="6.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
