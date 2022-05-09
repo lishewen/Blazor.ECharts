@@ -21,7 +21,7 @@ ECharts配置请参考：
 ## 使用方式
 1. 创建Blazor项目。
 2. 在NuGet中安装包`Blazor.ECharts` [![NuGet](https://img.shields.io/nuget/v/Blazor.ECharts.svg?style=flat-square&label=nuget)](https://www.nuget.org/packages/Blazor.ECharts/) ![downloads](https://img.shields.io/nuget/dt/Blazor.ECharts.svg)。
-3. 在`_Imports.razor`中添加`@using Blazor.ECharts.Component`。
+3. 在`_Imports.razor`中添加`@using Blazor.ECharts.Components`。
 4. 在`wwwroot/index.html`文件的`Head`中引入：
 ```html
 <script src="https://lib.baomitu.com/echarts/5.0.2/echarts.min.js"></script>
