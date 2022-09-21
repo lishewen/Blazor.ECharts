@@ -3,8 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options
@@ -184,19 +182,10 @@ namespace Blazor.ECharts.Options
         /// </summary>
         public Brush Brush { set; get; }
         public BMap Bmap { get; set; }
+
         public override string ToString()
         {
-            JsonSerializerOptions jsonSerializerOptions = new()
-            {
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull,
-                Converters =
-                {
-                    new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
-                    new JFuncConverter()
-                }
-            };
-            return JsonSerializer.Serialize(this, jsonSerializerOptions);
+            return EChartsOptionSerializer.Default.Serialize(this);
         }
     }
 }
