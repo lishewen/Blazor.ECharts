@@ -122,7 +122,7 @@ namespace Blazor.ECharts.Options
         public bool? AlignWithLabel { set; get; }
         public bool? Show { set; get; }
     }
-    public class AxisLabel
+    public record AxisLabel
     {
         /// <summary>
         /// 刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
@@ -131,6 +131,20 @@ namespace Blazor.ECharts.Options
         public object Formatter { set; get; }
 
         public bool? Show { set; get; }
+
+        /// <summary>
+        /// 刻度标签旋转的角度，在类目轴的类目标签显示不下的时候可以通过旋转防止标签之间重叠。
+        /// 旋转的角度从 -90 度到 90 度。
+        /// </summary>
+        public int? Rotate { get; set; }
+
+        /// <summary>
+        /// 坐标轴刻度标签的显示间隔，在类目轴中有效。
+        /// 默认会采用标签不重叠的策略间隔显示标签。
+        /// 可以设置成 0 强制显示所有标签。
+        /// 如果设置为 1，表示『隔一个标签显示一个标签』，如果值为 2，表示隔两个标签显示一个标签，以此类推。
+        /// </summary>
+        public object Interval { get; set; }
     }
 
     /// <summary>
