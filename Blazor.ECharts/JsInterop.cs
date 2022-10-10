@@ -44,7 +44,11 @@ namespace Blazor.ECharts
             var module = await moduleTask.Value;
             return await module.InvokeAsync<IJSObjectReference>("echartsFunctions.initChart", id, theme);
         }
-
+        public async Task RegisterMap(string name, string svg)
+        {
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("echartsFunctions.registerMap", name, svg);
+        }
         /// <summary>
         /// ≈‰÷√Echarts≤Œ ˝
         /// </summary>

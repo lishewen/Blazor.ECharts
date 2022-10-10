@@ -27,6 +27,9 @@ export class echartsFunctions {
         }
         return chart;
     }
+    static registerMap(name, svg) {
+        echarts.registerMap(name, { svg: svg });
+    }
     static setupChart(id, theme, option, notMerge) {
         let opt = eval('(' + option + ')');
         let chart = this.getChart(id);

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options.Series.Map
@@ -18,11 +19,20 @@ namespace Blazor.ECharts.Options.Series.Map
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-map.nameMap">此处</see>查看详细设置</para>
         /// </summary>
         public object NameMap { set; get; }
+        [JsonPropertyName("map")]
+        public string MapName { get; set; }
 
         /// <summary>
         /// 是否开启鼠标缩放和平移漫游。默认不开启。如果只想要开启缩放或者平移，可以设置成 'scale' 或者 'move'。设置成 true 为都开启
         /// </summary>
         public object Roam { set; get; }
+
+        /// <summary>
+        /// 高亮的标签和图形样式。
+        /// </summary>
+        public Emphasis Emphasis { set; get; }
+
+        public object SelectedMode { set; get; }
 
         /// <summary>
         /// 当前视角的缩放比例。
