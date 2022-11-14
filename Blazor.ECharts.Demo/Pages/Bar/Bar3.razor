@@ -3,12 +3,21 @@
 @using Blazor.ECharts.Options.Enum
 @using B = Blazor.ECharts.Options.Series.Bar
 
+<div>
+    <InputSelect ValueExpression="@(() => Year)" ValueChanged="@((int year) => OnValueChanged(year))">
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+    </InputSelect>
+</div>
+
 <div class="chart-container">
     <EBar Option="@Option1" Class="chart-fill" Theme="dark"></EBar>
 </div>
 
 @code {
     private EChartsOption<B.Bar> Option1;
+    private int Year;
 
     protected override void OnInitialized()
     {
@@ -42,5 +51,26 @@
                 }
             }
         };
+    }
+
+    private Task OnValueChanged(int year)
+    {
+        Year = year;
+        Option1.Title.Text = $"{year} 年 ECharts 入门示例";
+        switch (year)
+        {
+            case 2020:
+                (Option1.Series[0] as B.Bar).Data = new[] { 6, 21, 37, 11, 11, 21 };
+                break;
+            case 2021:
+                (Option1.Series[0] as B.Bar).Data = new[] { 7, 21, 37, 11, 11, 21 };
+                break;
+            case 2022:
+                (Option1.Series[0] as B.Bar).Data = new[] { 6, 22, 37, 11, 11, 21 };
+                break;
+        }
+        //通知组件其状态已更改。 如果适用，这将导致重新呈现组件
+        StateHasChanged();
+        return Task.CompletedTask;
     }
 }
