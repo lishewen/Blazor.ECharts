@@ -1,15 +1,31 @@
 ﻿@page "/"
-@inject HttpClient Http
+@using System.Reflection;
 
-<div class="chart-container">
-    <EChart OptionRaw="@Option1" Class="chart-fill" Theme="dark"></EChart>
-</div>
+<h1>目录</h1>
+<hr />
+<ul>
+    @foreach (string route in routes)
+    {
+        <li>
+            <a class="nav-link" href="@route">
+                <span class="oi oi-file" aria-hidden="true"></span> @route
+            </a>
+        </li>
+    }
+</ul>
 
 @code {
-    private string Option1;
+    private List<string> routes;
 
-    protected override async Task OnInitializedAsync()
+    protected override void OnInitialized()
     {
-        Option1 = await Http.GetStringAsync("sample-data/dashboard.json");
+        routes = new();
+        Assembly info = typeof(Program).Assembly;
+        foreach (var type in info.GetTypes())
+        {
+            routes.AddRange(type.GetCustomAttributes<RouteAttribute>().Select(r => r.Template));
+        }
+
+        base.OnInitialized();
     }
 }

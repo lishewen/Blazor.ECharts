@@ -1,0 +1,15 @@
+﻿@page "/dashboard"
+@inject HttpClient Http
+
+<div class="chart-container">
+    <EChart OptionRaw="@Option1" Class="chart-fill" Theme="dark"></EChart>
+</div>
+
+@code {
+    private string Option1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Option1 = await Http.GetStringAsync("sample-data/dashboard.json");
+    }
+}
