@@ -24,7 +24,7 @@ ECharts配置请参考：
 3. 在`_Imports.razor`中添加`@using Blazor.ECharts.Components`。
 4. 在`wwwroot/index.html`文件的`Head`中引入：
 ```html
-<script src="https://lib.baomitu.com/echarts/5.0.2/echarts.min.js"></script>
+<script src="https://lib.baomitu.com/echarts/5.3.3/echarts.min.js"></script>
 ```
 **需要使用地图相关功能的则需要额外添加地图js的引用**
 ```html
