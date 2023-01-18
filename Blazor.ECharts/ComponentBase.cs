@@ -1,4 +1,4 @@
-﻿using Blazor.ECharts.Options;
+using Blazor.ECharts.Options;
 using Blazor.ECharts.Options.Enum;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
@@ -73,6 +73,14 @@ namespace Blazor.ECharts
         /// </summary>
         [Parameter]
         public string Class { get; set; }
+
+        /// <summary>
+        /// Whether or not in the prerender phase.
+        /// The flag helps ensure that the JS interop is not carried out during the
+        /// prerender phase when the hosting model is Blazor server.
+        /// </summary>
+        private bool IsPrerenderPhase { get; set; } = true;
+
         protected override void OnInitialized()
         {
             _eventInvokeHelper = new EventInvokeHelper(async echartsParams =>
@@ -99,7 +107,7 @@ namespace Blazor.ECharts
         }
         protected override async Task OnParametersSetAsync()
         {
-            if (!RuntimeInformation.IsOSPlatform(OSPlatform.Create("BROWSER"))) return;
+            if (IsPrerenderPhase) return;
 
             await SetupChartAsync();
         }
@@ -152,6 +160,8 @@ namespace Blazor.ECharts
             if (AutoRender == false) return;
             if (firstRender)
             {
+                IsPrerenderPhase = false;
+
                 await SetupChartAsync();
 
                 if (OnRenderCompleted != null)
@@ -196,6 +206,7 @@ namespace Blazor.ECharts
 
         public async ValueTask DisposeAsync()
         {
+            if (IsPrerenderPhase) return;
             await RemoveResizeListener();
             _objectReference?.Dispose();
         }
