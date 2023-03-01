@@ -21,8 +21,8 @@
 
     private EchartsEventArgs callbackArgs;
 
-    // 添加一个点击事件
-    private List<EventType> EventTypes = new List<EventType> { EventType.click };
+    // 添加事件
+    private List<EventType> EventTypes = new List<EventType> { EventType.click, EventType.brush, EventType.brushselected };
 
     protected override async Task OnInitializedAsync()
     {
@@ -165,6 +165,12 @@
                             }
                         }
                     }
+                },
+                Brush = new()
+                {
+                    XAxisIndex = "all",
+                    ThrottleType = "debounce",
+                    ThrottleDelay = 600
                 }
             };
 

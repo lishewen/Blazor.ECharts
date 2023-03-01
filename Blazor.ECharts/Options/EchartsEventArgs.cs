@@ -81,6 +81,11 @@ namespace Blazor.ECharts.Options
         /// </summary>
         public string DataUrl { get; set; }
 
+        /// <summary>
+        /// batch
+        /// </summary>
+        public IEnumerable<EchartsEventBatch> Batch { get; set; }
+
         public override string ToString()
         {
             StringBuilder sb = new();

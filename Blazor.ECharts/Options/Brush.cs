@@ -25,5 +25,26 @@ namespace Blazor.ECharts.Options
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#brush.outOfBrush">此处</see>查看详细设置</para>
         /// </summary>
         public object OutOfBrush { set; get; }
+
+        /// <summary>
+        /// 默认情况，刷选或者移动选区的时候，会不断得发 brushSelected 事件，从而告诉外界选中的内容。
+        /// 但是频繁的事件可能导致性能问题，或者动画效果很差。所以 brush 组件提供了 brush.throttleType，brush.throttleDelay 来解决这个问题。
+        /// throttleType 取值可以是：
+        /// 'debounce'：表示只有停止动作了（即一段时间没有操作了），才会触发事件。时间阈值由 brush.throttleDelay 指定。
+        /// 'fixRate'：表示按照一定的频率触发事件，时间间隔由 brush.throttleDelay 指定。
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#brush.throttleType">此处</see>查看详细设置</para>
+        /// </summary>
+        public string ThrottleType { get; set; }
+
+        /// <summary>
+        /// 默认为 0 表示不开启 throttle。
+        /// 默认情况，刷选或者移动选区的时候，会不断得发 brushSelected 事件，从而告诉外界选中的内容。
+        /// 但是频繁的事件可能导致性能问题，或者动画效果很差。所以 brush 组件提供了 brush.throttleType，brush.throttleDelay 来解决这个问题。
+        /// throttleType 取值可以是：
+        /// 'debounce'：表示只有停止动作了（即一段时间没有操作了），才会触发事件。时间阈值由 brush.throttleDelay 指定。
+        /// 'fixRate'：表示按照一定的频率触发事件，时间间隔由 brush.throttleDelay 指定。
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#brush.throttleDelay">此处</see>查看详细设置</para>
+        /// </summary>
+        public int ThrottleDelay { get;set; }
     }
 }
