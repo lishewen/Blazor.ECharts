@@ -22,6 +22,7 @@ export class echartsFunctions {
         let chart = this.getChart(id);
         if (chart === null) {
             chart = echarts.init(document.getElementById(id), theme);
+            //chart.showLoading();
             this.addChart(id, chart);
         }
         return chart;
