@@ -22,7 +22,7 @@ export class echartsFunctions {
         let chart = this.getChart(id);
         if (chart === null) {
             chart = echarts.init(document.getElementById(id), theme);
-            chart.showLoading();
+            //chart.showLoading();
             this.addChart(id, chart);
         }
         return chart;
@@ -36,7 +36,7 @@ export class echartsFunctions {
         if (chart === null) {
             chart = this.initChart(id, theme);
         }
-        chart.hideLoading();
+        //chart.hideLoading();
         chart.setOption(opt, notMerge);
     }
     static on(id, eventType, dotnetHelper) {
@@ -113,5 +113,17 @@ export class echartsFunctions {
                 }, wait);
             }
         }
+    }
+
+    // 显示加载UI
+    static showLoading(id, option) {
+        let chart = this.getChart(id);
+        chart.showLoading(option);
+    }
+
+    // 隐藏加载UI
+    static hideLoading(id) {
+        let chart = this.getChart(id);
+        chart.hideLoading();
     }
 }

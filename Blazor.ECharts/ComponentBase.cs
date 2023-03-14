@@ -210,5 +210,22 @@ namespace Blazor.ECharts
             await RemoveResizeListener();
             _objectReference?.Dispose();
         }
+
+        /// <summary>
+        /// 显示加载UI
+        /// </summary>
+        /// <param name="option">加载UI选项，null则使用默认选项</param>
+        public void ShowLoading(LoadingOption option = null)
+        {
+            _ = JsInterop.ChartShowLoading(Id, option?.ToString());
+		}
+
+        /// <summary>
+        /// 隐藏加载选项
+        /// </summary>
+        public void HideLoading()
+        {
+            _ = JsInterop.ChartHideLoading(Id);
+        }
     }
 }
