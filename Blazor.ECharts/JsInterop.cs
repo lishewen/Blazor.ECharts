@@ -105,6 +105,35 @@ namespace Blazor.ECharts
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("echartsFunctions.on", id, eventType.ToString(), objectReference);
         }
+
+        /// <summary>
+        /// 显示加载动画效果。可以在加载数据前手动调用该接口显示加载动画，在数据加载完成后调用 hideLoading 隐藏加载动画。
+        /// </summary>
+        /// <param name="id">ECharts容器ID</param>
+        /// <param name="type">加载动画类型，目前只有一种'default'</param>
+        /// <param name="opts">加载动画配置项，跟type有关，下面是默认配置项</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async Task ShowLoading(string id, string type = "default", LoadingOption opts = null)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
+            if (opts == null) opts = new LoadingOption();
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("echartsFunctions.showLoading", id, type, opts.ToString());
+        }
+
+        /// <summary>
+        /// 隐藏动画加载效果。
+        /// </summary>
+        /// <param name="id">ECharts容器ID</param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async Task HideLoading(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("echartsFunctions.hideLoading", id);
+        }
 #nullable enable
         /// <summary>
         /// 透明传递

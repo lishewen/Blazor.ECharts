@@ -22,10 +22,14 @@ export class echartsFunctions {
         let chart = this.getChart(id);
         if (chart === null) {
             chart = echarts.init(document.getElementById(id), theme);
-            chart.showLoading();
             this.addChart(id, chart);
         }
         return chart;
+    }
+    static showLoading(id, type = 'default', opts = {}) {
+        let chart = this.getChart(id);
+        if (chart)
+            chart.showLoading(type, opts);
     }
     static registerMap(name, svg) {
         echarts.registerMap(name, { svg: svg });
@@ -36,8 +40,12 @@ export class echartsFunctions {
         if (chart === null) {
             chart = this.initChart(id, theme);
         }
-        chart.hideLoading();
         chart.setOption(opt, notMerge);
+    }
+    static hideLoading(id) {
+        let chart = this.getChart(id);
+        if (chart)
+            chart.hideLoading();
     }
     static on(id, eventType, dotnetHelper) {
         let chart = this.getChart(id);

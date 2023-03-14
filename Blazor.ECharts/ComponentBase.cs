@@ -204,6 +204,16 @@ namespace Blazor.ECharts
             StateHasChanged();
         }
 
+        public void ShowLoading(LoadingOption option)
+        {
+            _ = JsInterop.ShowLoading(Id, opts: option);
+        }
+
+        public void HideLoading()
+        {
+            _ = JsInterop.HideLoading(Id);
+        }
+
         public async ValueTask DisposeAsync()
         {
             if (IsPrerenderPhase) return;
