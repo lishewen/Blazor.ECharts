@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 namespace Blazor.ECharts.Options
 {
 	/// <summary>
-    /// 加载动画配置项
-    /// https://echarts.apache.org/zh/api.html#echartsInstance.showLoading
+	/// 加载动画配置项
+	/// https://echarts.apache.org/zh/api.html#echartsInstance.showLoading
 	/// </summary>
-    public record LoadingOption
+	public record LoadingOption
 	{
 		/// <summary>
 		/// 显示文字
@@ -31,38 +31,38 @@ namespace Blazor.ECharts.Options
 		/// 遮罩层颜色
 		/// </summary>
 		public string MaskColor { get; set; } = "rgba(255, 255, 255, 0.8)";
-        public int Zlevel { get; set; } = 0;
+		public int Zlevel { get; set; } = 0;
 		/// <summary>
-        /// 字体大小。从 `v4.8.0` 开始支持。
+		/// 字体大小。从 `v4.8.0` 开始支持。
 		/// </summary>
 		public int FontSize { get; set; } = 12;
 
 		/// <summary>
-        /// 是否显示旋转动画（spinner）。从 `v4.8.0` 开始支持。
+		/// 是否显示旋转动画（spinner）。从 `v4.8.0` 开始支持。
 		/// </summary>
 		public bool ShowSpinner { get; set; } = true;
 
 		/// <summary>
-        /// 旋转动画（spinner）的半径。从 `v4.8.0` 开始支持。
+		/// 旋转动画（spinner）的半径。从 `v4.8.0` 开始支持。
 		/// </summary>
 		public int SpinnerRadius { get; set; } = 10;
 
 		/// <summary>
-        /// 旋转动画（spinner）的线宽。从 `v4.8.0` 开始支持。
+		/// 旋转动画（spinner）的线宽。从 `v4.8.0` 开始支持。
 		/// </summary>
-        public int LineWidth { get; set; } = 5;
+		public int LineWidth { get; set; } = 5;
 		/// <summary>
-        /// 字体粗细。从 `v5.0.1` 开始支持。
+		/// 字体粗细。从 `v5.0.1` 开始支持。
 		/// </summary>
 		public string FontWeight { get; set; } = "normal";
 
 		/// <summary>
-        /// 字体风格。从 `v5.0.1` 开始支持。
+		/// 字体风格。从 `v5.0.1` 开始支持。
 		/// </summary>
 		public string FontStyle { get; set; } = "normal";
 
 		/// <summary>
-        /// 字体系列。从 `v5.0.1` 开始支持。
+		/// 字体系列。从 `v5.0.1` 开始支持。
 		/// </summary>
 		public string FontFamily { get; set; } = "sans-serif";
 

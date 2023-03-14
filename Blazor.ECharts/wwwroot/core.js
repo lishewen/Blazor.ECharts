@@ -27,7 +27,7 @@ export class echartsFunctions {
         }
         return chart;
     }
-    static showLoading(id, type = 'default', opts = {}) {
+    static showLoading(id, type = 'default', opts) {
         let chart = this.getChart(id);
         if (chart)
             chart.showLoading(type, opts);
