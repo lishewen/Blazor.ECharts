@@ -6,6 +6,7 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using Blazor.ECharts.Options;
 using Blazor.ECharts.Options.Enum;
+using System.Xml.Linq;
 
 namespace Blazor.ECharts
 {
@@ -127,5 +128,17 @@ namespace Blazor.ECharts
                 await module.DisposeAsync();
             }
         }
-    }
+
+        public async Task ChartShowLoading(string id, string option)
+        {
+			var module = await moduleTask.Value;
+			await module.InvokeVoidAsync("echartsFunctions.showLoading", id, option);
+		}
+
+		public async Task ChartHideLoading(string id)
+		{
+			var module = await moduleTask.Value;
+			await module.InvokeVoidAsync("echartsFunctions.hideLoading", id);
+		}
+	}
 }
