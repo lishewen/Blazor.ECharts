@@ -106,6 +106,16 @@ namespace Blazor.ECharts.Options
         public string Name { set; get; }
 
         /// <summary>
+        /// 是否显示该工具。
+        /// </summary>
+        public bool Show { set; get; }
+
+        /// <summary>
+        /// 保存为图片时忽略的组件列表，默认忽略工具栏。
+        /// </summary>
+        public string ExcludeComponents { set; get; }
+
+        /// <summary>
         /// 保存图片的分辨率比例，默认跟容器相同大小，如果需要保存更高分辨率的，可以设置为大于 1 的值，例如 2。
         /// </summary>
         public int? PixelRatio { set; get; }

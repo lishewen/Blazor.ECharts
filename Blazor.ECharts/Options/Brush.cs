@@ -15,6 +15,30 @@ namespace Blazor.ECharts.Options
         public object XAxisIndex { set; get; }
 
         /// <summary>
+        /// 指定哪些 series 可以被刷选，可取值为：
+        //'all': 所有 series
+        //'Array': series index 列表
+        //'number': 某个 series index
+        /// </summary>
+        public object SeriesIndex { set; get; }
+
+        /// <summary>
+        /// 默认的刷子类型。
+        //'rect'：矩形选框。
+        //'polygon'：任意形状选框。
+        //'lineX'：横向选择。
+        //'lineY'：纵向选择。
+        /// </summary>
+        public string BrushType { set; get; }
+
+        /// <summary>
+        // 默认的刷子的模式。可取值为：
+        // 'single'：单选。
+        // 'multiple'：多选。
+        /// </summary>
+        public string BrushMode { set; get; }
+
+        /// <summary>
         /// 不同系列间，选中的项可以联动。
         /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#brush.brushLink">此处</see>查看详细设置</para>
         /// </summary>
