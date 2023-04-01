@@ -67,6 +67,7 @@ export class echartsFunctions {
                 echartsEventArgs.color = params.color;
                 echartsEventArgs.info = params.info;
                 echartsEventArgs.batch = params.batch;
+                echartsEventArgs.areas = params.areas;
             }
 
             dotnetHelper.invokeMethodAsync('EventCaller', JSON.stringify(echartsEventArgs));

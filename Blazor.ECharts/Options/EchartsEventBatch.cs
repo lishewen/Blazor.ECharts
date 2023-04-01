@@ -28,9 +28,9 @@ namespace Blazor.ECharts.Options
         public bool RemoveOnClick { get; set; }
         public int Z { get; set; }
         public string PanelId { get; set; }
-        public double[][] Range { get; set; }
-        public double[][][] CoordRanges { get; set; }
-        public double[][] CoordRange { get; set; }
+        public double[] Range { get; set; }
+        public double[][] CoordRanges { get; set; }
+        public double[] CoordRange { get; set; }
     }
 
     public record Brushstyle
