@@ -86,6 +86,11 @@ namespace Blazor.ECharts.Options
         /// </summary>
         public IEnumerable<EchartsEventBatch> Batch { get; set; }
 
+        /// <summary>
+        /// BrushEnd 事件的返回参数
+        /// </summary>
+        public Area[] Areas { get; set; }
+
         public override string ToString()
         {
             StringBuilder sb = new();

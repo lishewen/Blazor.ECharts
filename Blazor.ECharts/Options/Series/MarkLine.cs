@@ -12,6 +12,8 @@ namespace Blazor.ECharts.Options.Series
     /// </summary>
     public record MarkLine
     {
+        public bool Animation { set; get; }
+        
         /// <summary>
         /// 图形是否不响应和触发鼠标事件，默认为 false，即响应和触发鼠标事件。
         /// </summary>
@@ -31,9 +33,13 @@ namespace Blazor.ECharts.Options.Series
     {
         public string Name { set; get; }
 
+        public object XAxis { set; get; }
+
         public object YAxis { set; get; }
 
         public object X { set; get; }
+
+        public object Y { set; get; }
 
         public string Symbol { set; get; }
 
