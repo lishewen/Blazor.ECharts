@@ -27,10 +27,11 @@ export class echartsFunctions {
         }
         return chart;
     }
-    static showLoading(id, type = 'default', opts) {
+    static showLoading(id, type = 'default', option) {
+        let opt = eval('(' + option + ')');
         let chart = this.getChart(id);
         if (chart)
-            chart.showLoading(type, opts);
+            chart.showLoading(type, opt);
     }
     static registerMap(name, svg) {
         echarts.registerMap(name, { svg: svg });
@@ -73,7 +74,11 @@ export class echartsFunctions {
             dotnetHelper.invokeMethodAsync('EventCaller', JSON.stringify(echartsEventArgs));
         });
     }
-
+    static dispatchAction(id, option) {
+        let opt = eval('(' + option + ')');
+        let chart = this.getChart(id);
+        chart.dispatchAction(opt);
+    }
     static resize(id) {
         let chart = this.getChart(id);
         chart.resize();
