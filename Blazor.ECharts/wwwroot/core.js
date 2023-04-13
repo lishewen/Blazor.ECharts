@@ -10,12 +10,18 @@ export class echartsFunctions {
     static getChart(id) {
         for (let i = 0; i < this.liChart.length; i++) {
             if (this.liChart[i].Id === id) {
-                return this.liChart[i].Chart;
+                return !this.liChart[i].Chart.isDisposed() ? this.liChart[i].Chart : null;
             }
         }
         return null;
     }
     static addChart(id, chart) {
+        for (let i = 0; i < this.liChart.length; i++) {
+            if (this.liChart[i].Id === id) {
+                this.liChart[i].Chart = chart;
+                return;
+            }
+        }
         this.liChart.push({ Id: id, Chart: chart });
     }
     static initChart(id, theme = 'light') {
@@ -85,8 +91,6 @@ export class echartsFunctions {
     static dispose(id) {
         let chart = this.getChart(id);
         if (chart) {
-            let index = this.liChart.indexOf({ Id: id, Chart: chart });
-            this.liChart.splice(index, 1);
             chart.dispose();
         }
     }

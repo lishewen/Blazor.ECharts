@@ -3,16 +3,21 @@
 @using Blazor.ECharts.Options.Enum
 @using L = Blazor.ECharts.Options.Series.Line
 
+<div>
+    <button @onclick="ChangeTheme">切换主题 @theme</button>
+</div>
+
 <div class="chart-container">
-    <ELine Option="@Option1" Class="chart-normal"></ELine>
-    <ELine Option="@Option2" Class="chart-normal"></ELine>
-    <ELine Option="@Option3" Class="chart-normal"></ELine>
+    <ELine Option="@Option1" Class="chart-normal" Theme="@theme"></ELine>
+    <ELine Option="@Option2" Class="chart-normal" Theme="@theme"></ELine>
+    <ELine Option="@Option3" Class="chart-normal" Theme="@theme"></ELine>
 </div>
 
 @code{
     private EChartsOption<L.Line> Option1;
     private EChartsOption<L.Line> Option2;
     private EChartsOption<L.Line> Option3;
+    private string theme = "light";
 
     protected override void OnInitialized()
     {
@@ -109,5 +114,13 @@
                 }
             }
         };
+    }
+
+    private Task ChangeTheme()
+    {
+        theme = theme == "light" ? "dark" : "light";
+        //通知组件其状态已更改。 如果适用，这将导致重新呈现组件
+        StateHasChanged();
+        return Task.CompletedTask;
     }
 }
