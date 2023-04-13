@@ -22,7 +22,6 @@ export class echartsFunctions {
         let chart = this.getChart(id);
         if (chart === null) {
             chart = echarts.init(document.getElementById(id), theme);
-            //chart.showLoading();
             this.addChart(id, chart);
         }
         return chart;
@@ -83,7 +82,14 @@ export class echartsFunctions {
         let chart = this.getChart(id);
         chart.resize();
     }
-
+    static dispose(id) {
+        let chart = this.getChart(id);
+        if (chart) {
+            let index = this.liChart.indexOf({ Id: id, Chart: chart });
+            this.liChart.splice(index, 1);
+            chart.dispose();
+        }
+    }
     static invokeOnResize(objReference) {
         if (this.debounceResize[objReference._id])
             objReference.invokeMethodAsync("OnResize");

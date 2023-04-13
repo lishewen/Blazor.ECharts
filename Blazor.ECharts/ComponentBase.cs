@@ -17,11 +17,24 @@ namespace Blazor.ECharts
     {
         protected string Id = "echerts_" + Guid.NewGuid().ToString("N");
         private DotNetObjectReference<ComponentBase<T>> _objectReference;
+        private string _theme;
         /// <summary>
         /// 主题
         /// </summary>
         [Parameter]
-        public string Theme { get; set; }
+        public string Theme
+        {
+            get
+            {
+                return _theme;
+            }
+            set
+            {
+                _theme = value;
+                // 当主题值有改变时，销毁原Chart实例，让其重新加载，以达到切换主题的目的
+                _ = JsInterop.DisposeChart(Id);
+            }
+        }
         [Parameter]
         public EChartsOption<T> Option { get; set; }
         [Parameter]

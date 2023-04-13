@@ -122,7 +122,6 @@ namespace Blazor.ECharts
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("echartsFunctions.showLoading", id, type, opts.ToString());
         }
-
         /// <summary>
         /// 隐藏动画加载效果。
         /// </summary>
@@ -147,6 +146,18 @@ namespace Blazor.ECharts
             if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("echartsFunctions.dispatchAction", id, option.ToString());
+        }
+        /// <summary>
+        /// 销毁chart对象
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async Task DisposeChart(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("echartsFunctions.dispose", id);
         }
 #nullable enable
         /// <summary>

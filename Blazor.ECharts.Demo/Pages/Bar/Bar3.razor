@@ -9,15 +9,17 @@
         <option value="2021">2021</option>
         <option value="2022">2022</option>
     </InputSelect>
+    <button @onclick="ChangeTheme">切换主题 @theme</button>
 </div>
 
 <div class="chart-container">
-    <EBar Option="@Option1" Class="chart-fill" Theme="dark"></EBar>
+    <EBar Option="@Option1" Class="chart-fill" Theme="@theme"></EBar>
 </div>
 
 @code {
     private EChartsOption<B.Bar> Option1;
     private int Year;
+    private string theme = "light";
 
     protected override void OnInitialized()
     {
@@ -69,6 +71,14 @@
                 (Option1.Series[0] as B.Bar).Data = new[] { 6, 22, 37, 11, 11, 21 };
                 break;
         }
+        //通知组件其状态已更改。 如果适用，这将导致重新呈现组件
+        StateHasChanged();
+        return Task.CompletedTask;
+    }
+
+    private Task ChangeTheme()
+    {
+        theme = theme == "light" ? "dark" : "light";
         //通知组件其状态已更改。 如果适用，这将导致重新呈现组件
         StateHasChanged();
         return Task.CompletedTask;
