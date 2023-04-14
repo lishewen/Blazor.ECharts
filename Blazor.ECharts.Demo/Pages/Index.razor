@@ -25,7 +25,7 @@
         {
             routes.AddRange(type.GetCustomAttributes<RouteAttribute>().Select(r => r.Template));
         }
-
+        routes.Sort();
         base.OnInitialized();
     }
 }
