@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts
 {
+    /// <summary>
+    /// 用于JS函数转译输出
+    /// </summary>
     public class JFuncConverter : JsonConverter<JFunc>
     {
         public override JFunc Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)

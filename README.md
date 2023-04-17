@@ -73,6 +73,19 @@ builder.Services.AddECharts();
 }
 ```
 
+## JS function的输出问题
+由于function不是json的标准数据类型，所以json数据中若含function，则转换后，function会丢失。此库为解决这个问题通过`JFuncConverter`来实现转译输出。使用时传入一个`JFunc`对象即可。例如：
+```csharp
+Position = new JFunc()
+{
+    RAW = """
+    function (pt) {
+        return [pt[0], '10%'];
+    }
+    """
+}
+```
+
 ## 功能实现进度
 - [ ] **公共配置**
   - [x] title
