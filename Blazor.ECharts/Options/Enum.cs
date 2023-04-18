@@ -70,8 +70,8 @@ namespace Blazor.ECharts.Options.Enum
 
     public enum PositionY
     {
-        Start,
-        End
+        Left,
+        Right
     }
 
 
