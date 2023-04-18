@@ -31,7 +31,12 @@
             {
                 Text = "ECharts 入门示例"
             },
-            Tooltip = new(),
+            Tooltip = new()
+            {
+                Trigger = TooltipTrigger.Axis,
+                TriggerOn = "mousemove|click",
+                ValueFormatter = new("(value) => value.toFixed(2) + '元'")
+            },
             Legend = new()
             {
                 Data = new[] { "销量" }

@@ -23,6 +23,11 @@ namespace Blazor.ECharts.Options
         public TooltipTrigger? Trigger { set; get; }
 
         /// <summary>
+        /// 提示框触发的条件
+        /// </summary>
+        public string TriggerOn { get; set; }
+
+        /// <summary>
         /// 坐标轴指示器配置项。
         /// </summary>
         public TooltipAxisPointer AxisPointer { set; get; }
@@ -60,5 +65,10 @@ namespace Blazor.ECharts.Options
         public object Padding { set; get; }
 
         public TextStyle TextStyle { set; get; }
+
+        /// <summary>
+        /// tooltip 中数值显示部分的格式化回调函数。
+        /// </summary>
+        public JFunc ValueFormatter { get; set; }
     }
 }
