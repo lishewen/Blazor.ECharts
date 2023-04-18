@@ -106,6 +106,11 @@ namespace Blazor.ECharts.Options
         public AxisTick AxisTick { set; get; }
 
         public SplitArea SplitArea { set; get; }
+
+        /// <summary>
+        //在多个 y 轴为数值轴的时候，可以开启该配置项自动对齐刻度。只对'value'和'log'类型的轴有效。
+        /// </summary>
+        public bool? AlignTicks { set; get; }
     }
     public record XAxis : Axis
     {
