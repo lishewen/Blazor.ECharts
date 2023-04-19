@@ -1,4 +1,5 @@
-﻿using Blazor.ECharts.Options;
+﻿using Blazor.ECharts.Demo.Utils;
+using Blazor.ECharts.Options;
 using Blazor.ECharts.Options.Enum;
 using Microsoft.AspNetCore.Components;
 using System;
@@ -10,6 +11,7 @@ using L = Blazor.ECharts.Options.Series.Lines;
 
 namespace Blazor.ECharts.Demo.Pages.Map
 {
+    [RouteName("梧州公交线路图")]
     public partial class WuzhouBus
     {
         private EChartsOption<L.Lines> Option1;

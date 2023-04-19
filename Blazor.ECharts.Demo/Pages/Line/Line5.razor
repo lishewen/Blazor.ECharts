@@ -1,0 +1,119 @@
+﻿@page "/line/line5"
+@attribute [RouteName("大数据量面积图")]
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using Blazor.ECharts.Options.Series;
+@using L = Blazor.ECharts.Options.Series.Line
+
+<div class="container">
+    <ELine Option="@Option1" Class="chart-fill"></ELine>
+</div>
+
+@code{
+    private EChartsOption<L.Line> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        DateTime b = new DateTime(1978, 9, 3);
+        var oneDay = 24 * 3600 * 1000;
+        List<string> date = new List<string>();
+        Random random = new Random((int)DateTime.Now.Ticks);
+        List<double> data = new List<double>() { };
+        data.Add(Math.Round(random.NextDouble() * 300, 2));
+        for (int i = 1; i < 20000; i++)
+        {
+            b = b.AddMilliseconds(oneDay);
+            date.Add(b.ToString("yyyy/MM/dd"));
+            data.Add(Math.Round(Math.Round(random.NextDouble() - 0.5, 2) * 20 + data[i - 1], 2));
+        }
+
+        Option1 = new()
+        {
+            Tooltip = new Tooltip()
+            {
+                Trigger = TooltipTrigger.Axis,
+                Position = new JFunc("function (pt) {return [pt[0], '10%'];}")
+            },
+            Title = new Title()
+            {
+                Text = "大数据量面积图",
+                Left = "center"
+            },
+            Toolbox = new Toolbox()
+            {
+                Feature = new Feature()
+                {
+                    DataZoom = new FeatureDataZoom() { YAxisIndex = "none" },
+                    Restore = new Restore(),
+                    SaveAsImage = new SaveAsImage()
+                }
+            },
+            XAxis = new List<XAxis>()
+{
+                new XAxis()
+                {
+                    Type = AxisType.Category,
+                    BoundaryGap = false,
+                    Data = date
+                }
+            },
+            YAxis = new List<YAxis>()
+{
+                new YAxis(){Type=AxisType.Value,BoundaryGap=new object[]{0,"100%" } }
+            },
+            DataZoom = new List<object>()
+{
+                new DataZoomInside()
+                {
+                    Start=0,
+                    End=10
+                },
+                new DataZoomSlider()
+                {
+                    Start=0,
+                    End=10,
+                    HandleIcon="M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z",
+                    HandleSize="80%",
+                    HandleStyle=new HandleStyle()
+                    {
+                        Color="#fff",
+                        ShadowBlur=3,
+                        ShadowColor="rgba(0, 0, 0, 0.6)",
+                        ShadowOffsetX=2,
+                        ShadowOffsetY=2
+                    }
+                }
+            },
+            Series = new List<object>()
+{
+                new L.Line()
+                {
+                    Name="模拟数据",
+                    Smooth=true,
+                    Symbol="none",
+                    Sampling=Sampling.Average,
+                    ItemStyle=new ItemStyle(){ Color="rgb(255, 70, 131)"},
+                    AreaStyle=new AreaStyle()
+                    {
+                        Color=new GradationColor()
+                        {
+                            Type=ColorType.Linear,
+                            X=0,
+                            Y=0,
+                            X2=0,
+                            Y2=1,
+                            ColorStops=new List<ColorStops>()
+            {
+                                new ColorStops(){ Offset=0,Color="rgb(255, 158, 68)"},
+                                new ColorStops(){Offset=1,Color="rgb(255, 70, 131)"}
+                            }
+                        }
+                    },
+                    Data=data
+                }
+            }
+        };
+    }
+}

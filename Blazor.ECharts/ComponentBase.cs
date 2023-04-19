@@ -21,6 +21,7 @@ namespace Blazor.ECharts
         /// <summary>
         /// 主题
         /// </summary>
+#pragma warning disable BL0007
         [Parameter]
         public string Theme
         {
@@ -35,6 +36,7 @@ namespace Blazor.ECharts
                 _ = JsInterop.DisposeChart(Id);
             }
         }
+#pragma warning restore BL0007
         [Parameter]
         public EChartsOption<T> Option { get; set; }
         [Parameter]

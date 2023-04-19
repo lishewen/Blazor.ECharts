@@ -1,4 +1,5 @@
 ﻿using Blazor.ECharts.Components;
+using Blazor.ECharts.Demo.Utils;
 using Blazor.ECharts.Options;
 using Blazor.ECharts.Options.Enum;
 using System;
@@ -7,6 +8,7 @@ using P = Blazor.ECharts.Options.Series.Pie;
 
 namespace Blazor.ECharts.Demo.Pages.Pie
 {
+    [RouteName("饼图程序调用高亮示例|DispatchAction示例")]
     public partial class Pie2
     {
         // 计时器
