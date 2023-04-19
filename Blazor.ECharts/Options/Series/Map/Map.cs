@@ -16,7 +16,7 @@ namespace Blazor.ECharts.Options.Series.Map
 
         /// <summary>
         /// 自定义地区的名称映射
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-map.nameMap">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-map.nameMap">此处</see>查看详细设置</para>
         /// </summary>
         public object NameMap { set; get; }
         [JsonPropertyName("map")]
@@ -41,7 +41,7 @@ namespace Blazor.ECharts.Options.Series.Map
 
         /// <summary>
         /// layoutCenter 和 layoutSize 提供了除了 left/right/top/bottom/width/height 之外的布局手段。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-map.layoutCenter">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-map.layoutCenter">此处</see>查看详细设置</para>
         /// </summary>
         public object[] LayoutCenter { set; get; }
 

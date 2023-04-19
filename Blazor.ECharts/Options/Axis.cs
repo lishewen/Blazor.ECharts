@@ -35,13 +35,13 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 坐标轴刻度最大值。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#yAxis.max ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#yAxis.max ">此处</see>查看详细设置</para>
         /// </summary>
         public object Max { set; get; }
 
         /// <summary>
         /// 坐标轴刻度最小值。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#yAxis.min ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#yAxis.min ">此处</see>查看详细设置</para>
         /// </summary>
         public object Min { set; get; }
 
@@ -137,7 +137,7 @@ namespace Blazor.ECharts.Options
     {
         /// <summary>
         /// 刻度标签的内容格式器，支持字符串模板和回调函数两种形式。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#xAxis.axisLabel.formatter">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#xAxis.axisLabel.formatter">此处</see>查看详细设置</para>
         /// </summary>
         public object Formatter { set; get; }
 

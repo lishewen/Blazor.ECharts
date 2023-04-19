@@ -23,7 +23,7 @@ namespace Blazor.ECharts.Options.Series.Pie
 
         /// <summary>
         /// 是否启用防止标签重叠策略，默认开启，在标签拥挤重叠的情况下会挪动各个标签的位置，防止标签间的重叠。
-        /// <para>如果不需要开启该策略，例如<see href="https://www.echartsjs.com/examples/en/editor.html?c=pie-doughnut">圆环图</see>这个例子中需要强制所有标签放在中心位置，可以将该值设为 false。</para>
+        /// <para>如果不需要开启该策略，例如<see href="https://echarts.apache.org/examples/en/editor.html?c=pie-doughnut">圆环图</see>这个例子中需要强制所有标签放在中心位置，可以将该值设为 false。</para>
         /// </summary>
         public bool? AvoidLabelOverlap { set; get; }
 

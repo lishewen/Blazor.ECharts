@@ -71,7 +71,7 @@ namespace Blazor.ECharts.Options.Series
 
         /// <summary>
         /// 标签内容格式器，支持字符串模板和回调函数两种形式，字符串模板与回调函数返回的字符串均支持用 \n 换行。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.markLine.data.1.label.formatter">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-line.markLine.data.1.label.formatter">此处</see>查看详细设置</para>
         /// </summary>
         public object Formatter { set; get; }
     }

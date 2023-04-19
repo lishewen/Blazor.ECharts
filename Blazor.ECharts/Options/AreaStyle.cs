@@ -12,7 +12,7 @@ namespace Blazor.ECharts.Options
         /// <summary>
         /// 线的颜色
         /// </summary>
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-slider.dataBackground.areaStyle.color ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-slider.dataBackground.areaStyle.color ">此处</see>查看详细设置</para>
         public object Color { set; get; }
 
         /// <summary>

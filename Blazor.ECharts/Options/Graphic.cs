@@ -22,25 +22,25 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 描述怎么根据父元素进行定位。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#graphic.elements-image.left">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#graphic.elements-image.left">此处</see>查看详细设置</para>
         /// </summary>
         public object Left { set; get; }
 
         /// <summary>
         /// 描述怎么根据父元素进行定位。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#graphic.elements-image.right">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#graphic.elements-image.right">此处</see>查看详细设置</para>
         /// </summary>
         public object Right { set; get; }
 
         /// <summary>
         /// 描述怎么根据父元素进行定位。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#graphic.elements-image.top">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#graphic.elements-image.top">此处</see>查看详细设置</para>
         /// </summary>
         public object Top { set; get; }
 
         /// <summary>
         /// 描述怎么根据父元素进行定位。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#graphic.elements-image.bottom">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#graphic.elements-image.bottom">此处</see>查看详细设置</para>
         /// </summary>
         public object Bottom { set; get; }
 
@@ -56,7 +56,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 图形元素可以进行标准的 2D transform
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#graphic.elements-image.origin">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#graphic.elements-image.origin">此处</see>查看详细设置</para>
         /// </summary>
         public int[] Origin { set; get; }
 
@@ -64,7 +64,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 图形元素可以进行标准的 2D transform
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#graphic.elements-group.rotation">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#graphic.elements-group.rotation">此处</see>查看详细设置</para>
         /// </summary>
         public object Rotation { set; get; }
     }

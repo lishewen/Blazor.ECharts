@@ -15,7 +15,7 @@ namespace Blazor.ECharts.Options.Series
 
         /// <summary>
         /// 标注的数据数组。每个数组项是一个对象，有下面几种方式指定标注的位置。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.markPoint.data">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-line.markPoint.data">此处</see>查看详细设置</para>
         /// </summary>
         public List<MarkPointData> Data { set; get; }
 
@@ -25,7 +25,7 @@ namespace Blazor.ECharts.Options.Series
     }
     /// <summary>
     /// 标注的数据数组。每个数组项是一个对象，有下面几种方式指定标注的位置。
-    /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.markPoint.data">此处</see>查看详细设置</para>
+    /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-line.markPoint.data">此处</see>查看详细设置</para>
     /// </summary>
     public class MarkPointData
     {

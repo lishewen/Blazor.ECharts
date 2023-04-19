@@ -19,7 +19,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 图例的类型
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.type ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.type ">此处</see>查看详细设置</para>
         /// </summary>
         public LegendType? Type { set; get; }
 
@@ -117,14 +117,14 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 用来格式化图例文本，支持字符串模板和回调函数两种形式。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.formatter ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.formatter ">此处</see>查看详细设置</para>
         /// </summary>
         public object Formatter { set; get; }
 
         /// <summary>
         /// 图例选择的模式，控制是否可以通过点击图例改变系列的显示状态。默认开启图例选择，可以设成 false 关闭。
         /// <para>除此之外也可以设成 'single' 或者 'multiple' 使用单选或者多选模式。</para>
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.selectedMode ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.selectedMode ">此处</see>查看详细设置</para>
         /// </summary>
         public object SelectedMode { set; get; }
 
@@ -135,7 +135,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 图例选中状态表。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.selected ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.selected ">此处</see>查看详细设置</para>
         /// </summary>
         public object Selected { set; get; }
 
@@ -146,13 +146,13 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 图例的 tooltip 配置，配置项同 tooltip。默认不显示，可以在 legend 文字很多的时候对文字做裁剪并且开启 tooltip。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.tooltip ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.tooltip ">此处</see>查看详细设置</para>
         /// </summary>
         public Tooltip Tooltip { set; get; }
 
         /// <summary>
         /// 图例项的 icon。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.icon ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.icon ">此处</see>查看详细设置</para>
         /// </summary>
         public string Icon { set; get; }
 
@@ -163,7 +163,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 图例的数据数组
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.data ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.data ">此处</see>查看详细设置</para>
         /// </summary>
         public object Data { set; get; }
 
@@ -216,37 +216,37 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// legend.type 为 'scroll' 时有效。图例当前最左上显示项的 dataIndex。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.scrollDataIndex ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.scrollDataIndex ">此处</see>查看详细设置</para>
         /// </summary>
         public int? ScrollDataIndex { set; get; }
 
         /// <summary>
         /// legend.type 为 'scroll' 时有效。图例控制块中，按钮和页信息之间的间隔。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.pageButtonItemGap ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.pageButtonItemGap ">此处</see>查看详细设置</para>
         /// </summary>
         public int? PageButtonItemGap { set; get; }
 
         /// <summary>
         /// legend.type 为 'scroll' 时有效。图例控制块和图例项之间的间隔。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.pageButtonGap ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.pageButtonGap ">此处</see>查看详细设置</para>
         /// </summary>
         public int? PageButtonGap { set; get; }
 
         /// <summary>
         /// legend.type 为 'scroll' 时有效。图例控制块的位置。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.pageButtonPosition ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.pageButtonPosition ">此处</see>查看详细设置</para>
         /// </summary>
         public PositionY? PageButtonPosition { set; get; }
 
         /// <summary>
         /// legend.type 为 'scroll' 时有效。图例控制块中，页信息的显示格式。默认为 '{current}/{total}'，其中 {current} 是当前页号（从 1 开始计数），{total} 是总页数。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.pageFormatter ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.pageFormatter ">此处</see>查看详细设置</para>
         /// </summary>
         public object PageFormatter { set; get; }
 
         /// <summary>
         /// 图例控制块的图标。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.pageIcons ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.pageIcons ">此处</see>查看详细设置</para>
         /// </summary>
         public PageIcons PageIcons { set; get; }
 
@@ -267,7 +267,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// legend.type 为 'scroll' 时有效。图例页信息的文字样式。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.pageTextStyle">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.pageTextStyle">此处</see>查看详细设置</para>
         /// </summary>
         public TextStyle PageTextStyle { set; get; }
 
@@ -283,7 +283,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 图例组件中的选择器按钮，目前包括全选和反选两种功能。默认不显示，用户可手动开启，也可以手动配置每个按钮的标题。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.selector ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.selector ">此处</see>查看详细设置</para>
         /// </summary>
         public object Selector { set; get; }
 
@@ -373,7 +373,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 文字块背景色。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.selectorLabel.backgroundColor ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.selectorLabel.backgroundColor ">此处</see>查看详细设置</para>
         /// </summary>
         public object BackgroundColor { set; get; }
 
@@ -428,13 +428,13 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 文字块的宽度。一般不用指定，不指定则自动是文字的宽度。在想做表格项或者使用图片（参见 backgroundColor）时，可能会使用它。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.selectorLabel.width ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.selectorLabel.width ">此处</see>查看详细设置</para>
         /// </summary>
         public object Width { set; get; }
 
         /// <summary>
         /// 文字块的高度。一般不用指定，不指定则自动是文字的宽度。在想做表格项或者使用图片（参见 backgroundColor）时，可能会使用它。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.selectorLabel.height ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.selectorLabel.height ">此处</see>查看详细设置</para>
         /// </summary>
         public object Height { set; get; }
 
@@ -470,7 +470,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 在 rich 里面，可以自定义富文本样式。利用富文本样式，可以在标签中做出非常丰富的效果。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.selectorLabel.rich ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.selectorLabel.rich ">此处</see>查看详细设置</para>
         /// </summary>
         public object Rich { set; get; }
     }
@@ -479,13 +479,13 @@ namespace Blazor.ECharts.Options
     {
         /// <summary>
         /// legend.orient 为 'horizontal' 时的翻页按钮图标。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.pageIcons.horizontal ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.pageIcons.horizontal ">此处</see>查看详细设置</para>
         /// </summary>
         public List<string> Horizontal { set; get; }
 
         /// <summary>
         /// legend.orient 为 'vertical' 时的翻页按钮图标。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.pageIcons.vertical ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.pageIcons.vertical ">此处</see>查看详细设置</para>
         /// </summary>
         public List<string> Vertical { set; get; }
     }
@@ -502,7 +502,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 图例项的 icon。可以通过 'image://url' 设置为图片，其中 URL 为图片的链接，或者 dataURI。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#legend.data.icon ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#legend.data.icon ">此处</see>查看详细设置</para>
         /// </summary>
         public string Icon { set; get; }
 

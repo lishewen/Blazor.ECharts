@@ -44,7 +44,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 不同轴的 axisPointer 可以进行联动，在这里设置。联动表示轴能同步一起活动。轴依据他们的 axisPointer 当前对应的值来联动。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#axisPointer.link">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#axisPointer.link">此处</see>查看详细设置</para>
         /// </summary>
         public AxisPointerLink Link { set; get; }
     }

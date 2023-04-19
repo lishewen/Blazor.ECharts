@@ -77,7 +77,7 @@ namespace Blazor.ECharts.Options
         /// <summary>
         /// 标题内边距，单位px，默认各方向内边距为5，接受数组分别设定上右下左边距。
         /// <para>如：5、[5,10]、[5,10,5,10]</para>
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#title.padding ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#title.padding ">此处</see>查看详细设置</para>
         /// </summary>
         public object Padding { set; get; }
 

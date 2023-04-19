@@ -25,31 +25,31 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 设置 dataZoom-inside 组件控制的 x轴（即xAxis，是直角坐标系中的概念，参见 grid）。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.xAxisIndex ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-inside.xAxisIndex ">此处</see>查看详细设置</para>
         /// </summary>
         public object XAxisIndex { set; get; }
 
         /// <summary>
         /// 设置 dataZoom-inside 组件控制的 y轴（即yAxis，是直角坐标系中的概念，参见 grid）。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.yAxisIndex ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-inside.yAxisIndex ">此处</see>查看详细设置</para>
         /// </summary>
         public object YAxisIndex { set; get; }
 
         /// <summary>
         /// 设置 dataZoom-inside 组件控制的 radius 轴（即radiusAxis，是直角坐标系中的概念，参见 polar）。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.radiusAxisIndex ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-inside.radiusAxisIndex ">此处</see>查看详细设置</para>
         /// </summary>
         public object RadiusAxisIndex { set; get; }
 
         /// <summary>
         /// 设置 dataZoom-inside 组件控制的 angle 轴（即angleAxis，是直角坐标系中的概念，参见 polar）。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.angleAxisIndex ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-inside.angleAxisIndex ">此处</see>查看详细设置</para>
         /// </summary>
         public object AngleAxisIndex { set; get; }
 
         /// <summary>
         /// dataZoom 的运行原理是通过 数据过滤 来达到 数据窗口缩放 的效果。数据过滤模式的设置不同，效果也不同。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.filterMode ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-inside.filterMode ">此处</see>查看详细设置</para>
         /// </summary>
         public FilterMode? FilterMode { set; get; }
 
@@ -65,13 +65,13 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 数据窗口范围的起始数值
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.startValue ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-inside.startValue ">此处</see>查看详细设置</para>
         /// </summary>
         public object StartValue { set; get; }
 
         /// <summary>
         /// 数据窗口范围的结束数值
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.endValue ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-inside.endValue ">此处</see>查看详细设置</para>
         /// </summary>
         public object EndValue { set; get; }
 
@@ -116,7 +116,7 @@ namespace Blazor.ECharts.Options
         public int? Throttle { set; get; }
 
         /// <summary>
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-inside.rangeMode ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-inside.rangeMode ">此处</see>查看详细设置</para>
         /// </summary>
         public List<RangeMode> RangeMode { set; get; }
 
@@ -190,25 +190,25 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 选中范围的填充颜色。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-slider.fillerColor ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-slider.fillerColor ">此处</see>查看详细设置</para>
         /// </summary>
         public object FillerColor { set; get; }
 
         /// <summary>
         /// 边框颜色。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-slider.borderColor ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-slider.borderColor ">此处</see>查看详细设置</para>
         /// </summary>
         public object BorderColor { set; get; }
 
         /// <summary>
         /// 手柄的 icon 形状，支持路径字符串。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-slider.handleIcon ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-slider.handleIcon ">此处</see>查看详细设置</para>
         /// </summary>
         public string HandleIcon { set; get; }
 
         /// <summary>
         /// 控制手柄的尺寸，可以是像素大小，也可以是相对于 dataZoom 组件宽度的百分比，默认跟 dataZoom 宽度相同。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-slider.handleSize ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-slider.handleSize ">此处</see>查看详细设置</para>
         /// </summary>
         public object HandleSize { set; get; }
 
@@ -224,7 +224,7 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 显示的label的格式化器。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#dataZoom-slider.labelFormatter ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#dataZoom-slider.labelFormatter ">此处</see>查看详细设置</para>
         /// </summary>
         public object LabelFormatter { set; get; }
 

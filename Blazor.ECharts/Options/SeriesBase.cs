@@ -32,13 +32,13 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 初始动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-bar.markPoint.animationDelay">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-bar.markPoint.animationDelay">此处</see>查看详细设置</para>
         /// </summary>
         public object AnimationDelay { set; get; }
 
         /// <summary>
         /// 系列中的数据内容数组。数组项通常为具体的数据项。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.data ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-line.data ">此处</see>查看详细设置</para>
         /// </summary>
         public object Data { set; get; }
 

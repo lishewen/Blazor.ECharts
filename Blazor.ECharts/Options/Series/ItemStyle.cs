@@ -11,7 +11,7 @@ namespace Blazor.ECharts.Options.Series
     {
         /// <summary>
         /// 图形的颜色。 默认从全局调色盘 option.color 获取颜色。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.itemStyle.color">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-line.itemStyle.color">此处</see>查看详细设置</para>
         /// </summary>
         public object Color { set; get; }
 

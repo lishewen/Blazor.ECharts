@@ -36,13 +36,13 @@ namespace Blazor.ECharts.Options.Series.Line
 
         /// <summary>
         /// 标记的图形
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.symbol ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-line.symbol ">此处</see>查看详细设置</para>
         /// </summary>
         public string Symbol { set; get; }
 
         /// <summary>
         /// 标记的大小
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.symbolSize ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-line.symbolSize ">此处</see>查看详细设置</para>
         /// </summary>
         public object SymbolSize { set; get; }
 
@@ -87,7 +87,7 @@ namespace Blazor.ECharts.Options.Series.Line
 
         /// <summary>
         /// 数据堆叠，同个类目轴上系列配置相同的stack值后，后一个系列的值会在前一个系列的值上相加。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.stack ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-line.stack ">此处</see>查看详细设置</para>
         /// </summary>
         public string Stack { set; get; }
 
@@ -114,7 +114,7 @@ namespace Blazor.ECharts.Options.Series.Line
 
         /// <summary>
         /// 是否是阶梯线图。可以设置为 true 显示成阶梯线图，也支持设置成 'start', 'middle', 'end' 分别配置在当前点，当前点与下个点的中间点，下个点拐弯。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.step ">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-line.step ">此处</see>查看详细设置</para>
         /// </summary>
         public bool? Step { set; get; }
 
@@ -157,7 +157,7 @@ namespace Blazor.ECharts.Options.Series.Line
 
         /// <summary>
         /// 折线拐点标志的样式。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#series-line.itemStyle">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#series-line.itemStyle">此处</see>查看详细设置</para>
         /// </summary>
         public ItemStyle ItemStyle { set; get; }
 

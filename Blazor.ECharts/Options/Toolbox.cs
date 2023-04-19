@@ -21,13 +21,13 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 工具栏组件离容器左侧的距离。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#toolbox.left">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#toolbox.left">此处</see>查看详细设置</para>
         /// </summary>
         public object Left { set; get; }
 
         /// <summary>
         /// 工具栏组件离容器顶部的距离。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#toolbox.top">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#toolbox.top">此处</see>查看详细设置</para>
         /// </summary>
         public object Top { set; get; }
 

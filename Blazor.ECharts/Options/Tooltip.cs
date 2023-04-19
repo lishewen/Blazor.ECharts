@@ -34,13 +34,13 @@ namespace Blazor.ECharts.Options
 
         /// <summary>
         /// 提示框浮层的位置，默认不设置时位置会跟随鼠标的位置。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#tooltip.position">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#tooltip.position">此处</see>查看详细设置</para>
         /// </summary>
         public object Position { set; get; }
 
         /// <summary>
         /// 提示框浮层内容格式器，支持字符串模板和回调函数两种形式。
-        /// <para>点击<see href="https://www.echartsjs.com/zh/option.html#tooltip.formatter">此处</see>查看详细设置</para>
+        /// <para>点击<see href="https://echarts.apache.org/zh/option.html#tooltip.formatter">此处</see>查看详细设置</para>
         /// </summary>
         public object Formatter { set; get; }
 
