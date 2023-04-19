@@ -1,0 +1,104 @@
+﻿@page "/line/line3"
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using L = Blazor.ECharts.Options.Series.Line
+
+<div class="chart-container">
+    <ELine Option="@Option1" Class="chart-fill"></ELine>
+</div>
+
+@code{
+    private EChartsOption<L.Line> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Option1 = new()
+        {
+            Title = new Title()
+            {
+                Text = "堆叠折线图"
+            },
+            YAxis = new List<YAxis>()
+{
+                new YAxis()
+                {
+                    Type = AxisType.Value
+                }
+            },
+            XAxis = new List<XAxis>()
+            {
+                new XAxis()
+                {
+                    Type = AxisType.Category,
+                    Data = new[] { "周一", "周二", "周三", "周四", "周五", "周六", "周日" },
+                    BoundaryGap = false
+                }
+            },
+            Series = new List<object>() {
+                new L.Line()
+                {
+                    Type = "line",
+                    Name="邮件营销",
+                    Stack="总量",
+                    Data = new[] { 120, 132, 101, 134, 90, 230, 210 },
+                },
+                new L.Line()
+                {
+                    Type = "line",
+                    Name="联盟广告",
+                    Stack="总量",
+                    Data = new[] { 220, 182, 191, 234, 290, 330, 310 },
+                },
+                new L.Line()
+                {
+                    Type = "line",
+                    Name="视频广告",
+                    Stack="总量",
+                    Data = new[] { 150, 232, 201, 154, 190, 330, 410 },
+                },
+                new L.Line()
+                {
+                    Type = "line",
+                    Name="直接访问",
+                    Stack="总量",
+                    Data = new[] { 320, 332, 301, 334, 390, 330, 320 },
+                },
+                new L.Line()
+                {
+                    Type = "line",
+                    Name="搜索引擎",
+                    Stack="总量",
+                    Data = new[] {820, 932, 901, 934, 1290, 1330, 1320 },
+                }
+            },
+            Tooltip = new Tooltip()
+            {
+                Trigger = TooltipTrigger.Axis,
+                AxisPointer = new TooltipAxisPointer()
+                {
+                    Type = AxisPointerType.Cross,
+                    Label = new AxisPointerLabel()
+                    {
+                        BackgroundColor = "#6a7985"
+                    }
+                }
+            },
+            Legend = new Legend()
+            {
+                Data = new[] { "邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎" }
+            },
+            Toolbox = new Toolbox() { Feature = new Feature() { SaveAsImage = new SaveAsImage() } },
+            Grid = new List<Grid>() 
+            {
+                new Grid()
+                {
+                    Left = "3%",
+                    Right = "4%",
+                    Bottom = "3%",
+                    ContainLabel = true
+                }
+            }
+        };
+    }
+}
