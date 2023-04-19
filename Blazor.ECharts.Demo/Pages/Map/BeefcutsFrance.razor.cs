@@ -1,4 +1,5 @@
-﻿using Blazor.ECharts.Options;
+﻿using Blazor.ECharts.Demo.Utils;
+using Blazor.ECharts.Options;
 using Microsoft.AspNetCore.Components;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -6,6 +7,7 @@ using M = Blazor.ECharts.Options.Series.Map;
 
 namespace Blazor.ECharts.Demo.Pages.Map
 {
+    [RouteName("庖丁解牛")]
     public partial class BeefcutsFrance
     {
         private EChartsOption<M.Map> Option1;

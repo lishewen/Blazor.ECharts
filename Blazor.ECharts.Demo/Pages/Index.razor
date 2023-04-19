@@ -1,31 +1,40 @@
 ﻿@page "/"
+@attribute [RouteName("目录")]
 @using System.Reflection;
 
 <h1>目录</h1>
 <hr />
 <ul>
-    @foreach (string route in routes)
+    @foreach (var item in dict.OrderBy(d => d.Key))
     {
         <li>
-            <a class="nav-link" href="@route">
-                <span class="oi oi-file" aria-hidden="true"></span> @route
+            <a class="nav-link" href="@item.Value">
+                <span class="oi oi-file" aria-hidden="true"></span> @item.Key
             </a>
         </li>
     }
 </ul>
 
 @code {
-    private List<string> routes;
+    private Dictionary<string, string> dict;
 
     protected override void OnInitialized()
     {
-        routes = new();
+        dict = new();
         Assembly info = typeof(Program).Assembly;
         foreach (var type in info.GetTypes())
         {
-            routes.AddRange(type.GetCustomAttributes<RouteAttribute>().Select(r => r.Template));
+            var routename = type.GetCustomAttribute<RouteNameAttribute>()?.Name;
+            var route = type.GetCustomAttributes<RouteAttribute>().Select(r => r.Template).FirstOrDefault();
+            if (!string.IsNullOrWhiteSpace(routename))
+            {
+                dict.Add(routename, route);
+            }
+            else if (!string.IsNullOrWhiteSpace(route))
+            {
+                dict.Add(route, route);
+            }
         }
-        routes.Sort();
         base.OnInitialized();
     }
 }
