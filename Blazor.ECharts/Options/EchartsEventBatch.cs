@@ -23,14 +23,15 @@ namespace Blazor.ECharts.Options
     {
         public string BrushType { get; set; }
         public string BrushMode { get; set; }
-        public bool Transformable { get; set; }
+        public bool? Transformable { get; set; }
         public Brushstyle BrushStyle { get; set; }
-        public bool RemoveOnClick { get; set; }
-        public int Z { get; set; }
+        public bool? RemoveOnClick { get; set; }
+        public int? Z { get; set; }
         public string PanelId { get; set; }
         public double[] Range { get; set; }
         public double[][] CoordRanges { get; set; }
-        public double[] CoordRange { get; set; }
+        public object[] CoordRange { get; set; }
+        public int? XAxisIndex { get; set; }
     }
 
     public record Brushstyle

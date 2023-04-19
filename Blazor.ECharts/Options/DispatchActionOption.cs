@@ -9,8 +9,9 @@ namespace Blazor.ECharts.Options
     public record DispatchActionOption
     {
         public string Type { get; set; }
-        public int SeriesIndex { get; set; }
-        public int DataIndex { get; set; }
+        public int? SeriesIndex { get; set; }
+        public int? DataIndex { get; set; }
+        public List<Area> Areas { get; set; }
 
         /// <summary>
         /// 转化为JSON字符串

@@ -221,7 +221,7 @@ namespace Blazor.ECharts
         /// 显示加载UI
         /// </summary>
         /// <param name="option">加载UI选项，null则使用默认选项</param>
-        public void ShowLoading(LoadingOption option)
+        public void ShowLoading(LoadingOption option = null)
         {
             _ = JsInterop.ChartShowLoading(Id, opts: option);
         }
