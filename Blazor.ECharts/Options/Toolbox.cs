@@ -10,7 +10,7 @@ namespace Blazor.ECharts.Options
     /// <summary>
     /// 工具栏。内置有导出图片，数据视图，动态类型切换，数据区域缩放，重置五个工具。
     /// </summary>
-    public class Toolbox
+    public record Toolbox
     {
         public bool? Show { set; get; }
 
@@ -40,7 +40,7 @@ namespace Blazor.ECharts.Options
     /// <summary>
     /// 各工具配置项。
     /// </summary>
-    public class Feature
+    public record Feature
     {
         /// <summary>
         /// 保存为图片。
@@ -74,12 +74,12 @@ namespace Blazor.ECharts.Options
         public FeatureBrush Brush { set; get; }
     }
 
-    public class FeatureBrush
+    public record FeatureBrush
     {
         public List<BrushType> Type { set; get; }
     }
 
-    public class MagicType
+    public record MagicType
     {
         public List<MagicTypeType> Type { set; get; }
     }
@@ -87,7 +87,7 @@ namespace Blazor.ECharts.Options
     /// <summary>
     /// 数据视图工具，可以展现当前图表所用的数据，编辑后可以动态更新。
     /// </summary>
-    public class DataView
+    public record DataView
     {
         /// <summary>
         /// 是否不可编辑（只读）。
@@ -98,7 +98,7 @@ namespace Blazor.ECharts.Options
     /// <summary>
     /// 保存为图片
     /// </summary>
-    public class SaveAsImage
+    public record SaveAsImage
     {
         /// <summary>
         /// 保存的文件名称，默认使用 title.text 作为名称。
@@ -108,7 +108,7 @@ namespace Blazor.ECharts.Options
         /// <summary>
         /// 是否显示该工具。
         /// </summary>
-        public bool Show { set; get; }
+        public bool? Show { set; get; }
 
         /// <summary>
         /// 保存为图片时忽略的组件列表，默认忽略工具栏。
@@ -124,7 +124,7 @@ namespace Blazor.ECharts.Options
     /// <summary>
     /// 配置项还原。
     /// </summary>
-    public class Restore
+    public record Restore
     {
 
     }
@@ -132,7 +132,7 @@ namespace Blazor.ECharts.Options
     /// <summary>
     /// 数据区域缩放。目前只支持直角坐标系的缩放。
     /// </summary>
-    public class FeatureDataZoom
+    public record FeatureDataZoom
     {
         /// <summary>
         /// 指定哪些 yAxis 被控制。如果缺省则控制所有的y轴。如果设置为 false 则不控制任何y轴。如果设置成 3 则控制 axisIndex 为 3 的y轴。如果设置为 [0, 3] 则控制 axisIndex 为 0 和 3 的y轴。

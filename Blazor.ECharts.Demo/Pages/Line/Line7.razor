@@ -1,0 +1,80 @@
+﻿@page "/line/line7"
+@attribute [RouteName("北京 AQI")]
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using Blazor.ECharts.Options.Series
+@using L = Blazor.ECharts.Options.Series.Line
+@using System.Text.Json
+
+@inject HttpClient HttpClient
+
+<div class="chart-container">
+    <ELine Option="@Option1" Class="chart-fill"></ELine>
+</div>
+
+@code{
+    private EChartsOption<L.Line> Option1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        var result = await HttpClient.GetStringAsync("sample-data/aqi-beijing.json");
+        var tmp = JsonSerializer.Deserialize<List<List<object>>>(result);
+        var time = tmp.Select(q => q[0]);
+        var data = tmp.Select(q => q[1]);
+
+        Option1 = new()
+            {
+                Title = new Title() { Text = "北京 AQI" },
+                Tooltip = new Tooltip() { Trigger = TooltipTrigger.Axis },
+                XAxis = new List<XAxis>() { new XAxis() { Data = time } },
+                YAxis = new List<YAxis>() { new YAxis() { SplitLine = new SplitLine() { Show = false } } },
+                Toolbox = new Toolbox()
+                {
+                    Left = Align2.Center,
+                    Feature = new Feature() { DataZoom = new FeatureDataZoom() { YAxisIndex = "none" }, SaveAsImage = new SaveAsImage(), Restore = new Restore() }
+                },
+                DataZoom = new List<object>()
+                {
+                    new DataZoomSlider(){StartValue="2014-06-01" },
+                    new DataZoomInside()
+                },
+                Series = new List<object>()
+                {
+                    new L.Line()
+                    {
+                        Name="北京 AQI",
+                        Data=data,
+                        MarkLine=new()
+                        {
+                            Silent=true,
+                            Data=new List<object>()
+                        {
+                                new MarkLineData (){ YAxis=50},
+                                new MarkLineData (){ YAxis=100},
+                                new MarkLineData (){ YAxis=150},
+                                new MarkLineData (){ YAxis=200},
+                                new MarkLineData (){ YAxis=300}
+                            }
+                        }
+                    }
+                },
+                VisualMap = new VisualMapPiecewise()
+                {
+                    Top = 10,
+                    Right = 10,
+                    Pieces = new List<object>()
+                    {
+                            new { gt=0,lte=50,color="#096"},
+                            new { gt=50,lte=100,color="#ffde33"},
+                            new { gt=100,lte=150,color="#ff9933"},
+                            new { gt=150,lte=200,color="#cc0033"},
+                            new { gt=200,lte=300,color="#660099"},
+                            new { gt=300,color="#7e0023"}
+                        },
+                    OutOfRange = new OutOfRange() { Color = "#999" }
+                }
+            };
+    }
+}

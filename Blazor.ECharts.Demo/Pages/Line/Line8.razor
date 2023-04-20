@@ -1,0 +1,91 @@
+﻿@page "/line/line8"
+@attribute [RouteName("未来一周气温变化")]
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using Blazor.ECharts.Options.Series
+@using L = Blazor.ECharts.Options.Series.Line
+
+<div class="chart-container">
+    <ELine Option="@Option1" Class="chart-fill"></ELine>
+</div>
+
+@code{
+    private EChartsOption<L.Line> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new()
+        {
+            Title = new Title() { Text = "未来一周气温变化", Subtext = "纯属虚构" },
+            Tooltip = new Tooltip() { Trigger = TooltipTrigger.Axis },
+            Legend = new Legend() { Data = new[] { "最高气温", "最低气温" } },
+            Toolbox = new Toolbox()
+            {
+                Show = true,
+                Feature = new Feature()
+                {
+                    DataZoom = new FeatureDataZoom() { YAxisIndex = "none" },
+                    Restore = new Restore(),
+                    SaveAsImage = new SaveAsImage(),
+                    DataView = new DataView() { ReadOnly = false },
+                    MagicType = new MagicType() { Type = new List<MagicTypeType>() { MagicTypeType.Line, MagicTypeType.Bar } }
+                }
+            },
+            XAxis = new List<XAxis>()
+            {
+                new XAxis(){Type=AxisType.Category,BoundaryGap=false,Data=new []{"周一","周二","周三","周四","周五","周六","周日" } }
+            },
+            YAxis = new List<YAxis>()
+            {
+                new YAxis(){Type=AxisType.Value,AxisLabel=new AxisLabel(){Formatter="{value} °C" } }
+            },
+            Series = new List<object>()
+            {
+                new L.Line()
+                {
+                    Name="最高气温",
+                    Data=new []{ 11, 11, 15, 13, 12, 13, 10},
+                    MarkLine=new MarkLine(){Data=new List<object> (){ new MarkLineData() {Name="平均值",Type=Sampling.Average } } },
+                    MarkPoint=new MarkPoint()
+                    {
+                        Data=new List<MarkPointData>()
+                        {
+                            new MarkPointData(){Name="最大值",Type=MarkPointDataType.Max },
+                            new MarkPointData(){Name="最小值",Type=MarkPointDataType.Min }
+                        }
+                    }
+                },
+                new L.Line()
+                {
+                    Name="最低气温",
+                    Data=new []{ 1, -2, 2, 5, 3, 2, 0},
+                    MarkPoint=new MarkPoint()
+                    {
+                        Data=new List<MarkPointData>()
+                        {
+                            new MarkPointData(){Name="周最低",Value=-2,XAxis=1,YAxis=-2 }
+                        }
+                    },
+                    MarkLine=new MarkLine()
+                    {
+                        Data=new List<object>()
+                        {
+                            new MarkLineData()
+                            {
+                                Type=Sampling.Average,
+                                Name="平均值"
+                            },
+                            new List<MarkLineData>()
+                            {
+                                new MarkLineData(){Symbol="none",X="90%",YAxis="max" },
+                                new MarkLineData(){Symbol="circle",Type=Sampling.Max,Name="最高点",Label=new MarkLineDataLabel(){Position=Location.Start,Formatter="最大值" } }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+    }
+}
