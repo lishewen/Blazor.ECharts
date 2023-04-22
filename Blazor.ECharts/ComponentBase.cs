@@ -90,6 +90,12 @@ namespace Blazor.ECharts
         public string Class { get; set; }
 
         /// <summary>
+        /// 是否不跟之前设置的 option 进行合并。默认为 false。即表示合并。合并的规则，详见 组件合并模式。如果为 true，表示所有组件都会被删除，然后根据新 option 创建所有新组件。
+        /// </summary>
+        [Parameter]
+        public bool NotMerge { get; set; } = false;
+
+        /// <summary>
         /// Whether or not in the prerender phase.
         /// The flag helps ensure that the JS interop is not carried out during the
         /// prerender phase when the hosting model is Blazor server.
@@ -148,12 +154,12 @@ namespace Blazor.ECharts
                 var output = sb.ToString().Trim();
 
                 if (!string.IsNullOrWhiteSpace(output))
-                    await JsInterop.SetupChart(Id, Theme, output);
+                    await JsInterop.SetupChart(Id, Theme, output, NotMerge);
             }
             else if (!string.IsNullOrWhiteSpace(OptionRaw))
-                await JsInterop.SetupChart(Id, Theme, OptionRaw);
+                await JsInterop.SetupChart(Id, Theme, OptionRaw, NotMerge);
             else
-                await JsInterop.SetupChart(Id, Theme, Option);
+                await JsInterop.SetupChart(Id, Theme, Option, NotMerge);
 
             // 事件
             if (EventTypes.Count > 0 && OnEventCallback.HasDelegate && !hasBindEvent)
@@ -186,13 +192,13 @@ namespace Blazor.ECharts
             }
             RequireRender = false;
         }
-        public async Task SetupOptionAsync(string opt, bool notMerge = false)
+        public async Task SetupOptionAsync(string opt)
         {
-            await JsInterop.SetupChart(Id, Theme, opt, notMerge);
+            await JsInterop.SetupChart(Id, Theme, opt, NotMerge);
         }
-        public async Task SetupOptionAsync(EChartsOption<T> opt, bool notMerge = false)
+        public async Task SetupOptionAsync(EChartsOption<T> opt)
         {
-            await JsInterop.SetupChart(Id, Theme, opt, notMerge);
+            await JsInterop.SetupChart(Id, Theme, opt, NotMerge);
         }
         public async Task ResizeAsync()
         {
@@ -235,7 +241,13 @@ namespace Blazor.ECharts
         {
             _ = JsInterop.ChartHideLoading(Id);
         }
-
+        /// <summary>
+        /// 清空当前实例，会移除实例中所有的组件和图表。
+        /// </summary>
+        public void Clear()
+        {
+            _ = JsInterop.ClearChart(Id);
+        }
         /// <summary>
         /// 触发图表行为
         /// </summary>

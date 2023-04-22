@@ -1,4 +1,4 @@
-using Microsoft.JSInterop;
+ï»¿using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -34,14 +34,14 @@ namespace Blazor.ECharts
         }
 
         /// <summary>
-        /// ³õÊ¼»¯Echarts
+        /// åˆå§‹åŒ–Echarts
         /// </summary>
-        /// <param name="id">EChartsÈİÆ÷ID</param>
-        /// <param name="theme">Ö÷Ìâ</param>
+        /// <param name="id">EChartså®¹å™¨ID</param>
+        /// <param name="theme">ä¸»é¢˜</param>
         /// <returns></returns>
         public async ValueTask<IJSObjectReference> InitChart(string id, string theme = "light")
         {
-            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts¿Ø¼şid²»ÄÜÎª¿Õ");
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echartsæ§ä»¶idä¸èƒ½ä¸ºç©º");
             var module = await moduleTask.Value;
             return await module.InvokeAsync<IJSObjectReference>("echartsFunctions.initChart", id, theme);
         }
@@ -51,11 +51,11 @@ namespace Blazor.ECharts
             await module.InvokeVoidAsync("echartsFunctions.registerMap", name, svg);
         }
         /// <summary>
-        /// ÅäÖÃEcharts²ÎÊı
+        /// é…ç½®Echartså‚æ•°
         /// </summary>
-        /// <param name="id">EChartsÈİÆ÷ID</param>
-        /// <param name="theme">Ö÷Ìâ</param>
-        /// <param name="option">²ÎÊı</param>
+        /// <param name="id">EChartså®¹å™¨ID</param>
+        /// <param name="theme">ä¸»é¢˜</param>
+        /// <param name="option">å‚æ•°</param>
         /// <returns></returns>
         public async Task SetupChart<T>(string id, string theme, EChartsOption<T> option, bool notMerge = false)
         {
@@ -63,16 +63,16 @@ namespace Blazor.ECharts
         }
 
         /// <summary>
-        /// ÅäÖÃEcharts²ÎÊı
+        /// é…ç½®Echartså‚æ•°
         /// </summary>
-        /// <param name="id">EChartsÈİÆ÷ID</param>
-        /// <param name="theme">Ö÷Ìâ</param>
-        /// <param name="option">²ÎÊı</param>
+        /// <param name="id">EChartså®¹å™¨ID</param>
+        /// <param name="theme">ä¸»é¢˜</param>
+        /// <param name="option">å‚æ•°</param>
         /// <returns></returns>
         public async Task SetupChart(string id, string theme, string option, bool notMerge = false)
         {
-            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts¿Ø¼şid²»ÄÜÎª¿Õ");
-            if (option == null) throw new ArgumentNullException(nameof(option), "echarts²ÎÊı²»ÄÜÎª¿Õ");
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echartsæ§ä»¶idä¸èƒ½ä¸ºç©º");
+            if (option == null) throw new ArgumentNullException(nameof(option), "echartså‚æ•°ä¸èƒ½ä¸ºç©º");
             if (string.IsNullOrWhiteSpace(theme)) theme = "light";
             var module = await moduleTask.Value;
             try
@@ -89,14 +89,14 @@ namespace Blazor.ECharts
         }
 
         /// <summary>
-        /// ×ÔÊÊÓ¦
+        /// è‡ªé€‚åº”
         /// </summary>
-        /// <param name="id">EChartsÈİÆ÷ID</param>
+        /// <param name="id">EChartså®¹å™¨ID</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         public async Task Resize(string id)
         {
-            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts¿Ø¼şid²»ÄÜÎª¿Õ");
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echartsæ§ä»¶idä¸èƒ½ä¸ºç©º");
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("echartsFunctions.resize", id);
         }
@@ -108,34 +108,34 @@ namespace Blazor.ECharts
         }
 
         /// <summary>
-        /// ÏÔÊ¾¼ÓÔØ¶¯»­Ğ§¹û¡£¿ÉÒÔÔÚ¼ÓÔØÊı¾İÇ°ÊÖ¶¯µ÷ÓÃ¸Ã½Ó¿ÚÏÔÊ¾¼ÓÔØ¶¯»­£¬ÔÚÊı¾İ¼ÓÔØÍê³Éºóµ÷ÓÃ hideLoading Òş²Ø¼ÓÔØ¶¯»­¡£
+        /// æ˜¾ç¤ºåŠ è½½åŠ¨ç”»æ•ˆæœã€‚å¯ä»¥åœ¨åŠ è½½æ•°æ®å‰æ‰‹åŠ¨è°ƒç”¨è¯¥æ¥å£æ˜¾ç¤ºåŠ è½½åŠ¨ç”»ï¼Œåœ¨æ•°æ®åŠ è½½å®Œæˆåè°ƒç”¨ hideLoading éšè—åŠ è½½åŠ¨ç”»ã€‚
         /// </summary>
-        /// <param name="id">EChartsÈİÆ÷ID</param>
-        /// <param name="type">¼ÓÔØ¶¯»­ÀàĞÍ£¬Ä¿Ç°Ö»ÓĞÒ»ÖÖ'default'</param>
-        /// <param name="opts">¼ÓÔØ¶¯»­ÅäÖÃÏî£¬¸útypeÓĞ¹Ø£¬ÏÂÃæÊÇÄ¬ÈÏÅäÖÃÏî</param>
+        /// <param name="id">EChartså®¹å™¨ID</param>
+        /// <param name="type">åŠ è½½åŠ¨ç”»ç±»å‹ï¼Œç›®å‰åªæœ‰ä¸€ç§'default'</param>
+        /// <param name="opts">åŠ è½½åŠ¨ç”»é…ç½®é¡¹ï¼Œè·Ÿtypeæœ‰å…³ï¼Œä¸‹é¢æ˜¯é»˜è®¤é…ç½®é¡¹</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         public async Task ChartShowLoading(string id, string type = "default", LoadingOption opts = null)
         {
-            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts¿Ø¼şid²»ÄÜÎª¿Õ");
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echartsæ§ä»¶idä¸èƒ½ä¸ºç©º");
             if (opts == null) opts = new LoadingOption();
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("echartsFunctions.showLoading", id, type, opts.ToString());
         }
         /// <summary>
-        /// Òş²Ø¶¯»­¼ÓÔØĞ§¹û¡£
+        /// éšè—åŠ¨ç”»åŠ è½½æ•ˆæœã€‚
         /// </summary>
-        /// <param name="id">EChartsÈİÆ÷ID</param>
+        /// <param name="id">EChartså®¹å™¨ID</param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         public async Task ChartHideLoading(string id)
         {
-            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts¿Ø¼şid²»ÄÜÎª¿Õ");
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echartsæ§ä»¶idä¸èƒ½ä¸ºç©º");
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("echartsFunctions.hideLoading", id);
         }
         /// <summary>
-        /// ´¥·¢Í¼±íĞĞÎª
+        /// è§¦å‘å›¾è¡¨è¡Œä¸º
         /// </summary>
         /// <param name="id"></param>
         /// <param name="option"></param>
@@ -143,25 +143,37 @@ namespace Blazor.ECharts
         /// <exception cref="ArgumentNullException"></exception>
         public async Task DispatchAction(string id, DispatchActionOption option)
         {
-            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts¿Ø¼şid²»ÄÜÎª¿Õ");
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echartsæ§ä»¶idä¸èƒ½ä¸ºç©º");
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("echartsFunctions.dispatchAction", id, option.ToString());
         }
         /// <summary>
-        /// Ïú»Ùchart¶ÔÏó
+        /// é”€æ¯chartå¯¹è±¡
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         public async Task DisposeChart(string id)
         {
-            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts¿Ø¼şid²»ÄÜÎª¿Õ");
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echartsæ§ä»¶idä¸èƒ½ä¸ºç©º");
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("echartsFunctions.dispose", id);
         }
+        /// <summary>
+        /// æ¸…ç©ºå½“å‰å®ä¾‹ï¼Œä¼šç§»é™¤å®ä¾‹ä¸­æ‰€æœ‰çš„ç»„ä»¶å’Œå›¾è¡¨ã€‚
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async Task ClearChart(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echartsæ§ä»¶idä¸èƒ½ä¸ºç©º");
+            var module = await moduleTask.Value;
+            await module.InvokeVoidAsync("echartsFunctions.clear", id);
+        }
 #nullable enable
         /// <summary>
-        /// Í¸Ã÷´«µİ
+        /// é€æ˜ä¼ é€’
         /// </summary>
         /// <param name="identifier"></param>
         /// <param name="args"></param>

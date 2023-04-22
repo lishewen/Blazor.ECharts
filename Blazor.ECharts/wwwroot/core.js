@@ -94,6 +94,12 @@ export class echartsFunctions {
             chart.dispose();
         }
     }
+    static clear(id) {
+        let chart = this.getChart(id);
+        if (chart) {
+            chart.clear();
+        }
+    }
     static invokeOnResize(objReference) {
         if (this.debounceResize[objReference._id])
             objReference.invokeMethodAsync("OnResize");

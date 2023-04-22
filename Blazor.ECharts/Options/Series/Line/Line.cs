@@ -68,6 +68,11 @@ namespace Blazor.ECharts.Options.Series.Line
         public bool? ShowSymbol { set; get; }
 
         /// <summary>
+        /// 本系列特定的 tooltip 设定。
+        /// </summary>
+        public Tooltip Tooltip { set; get; }
+
+        /// <summary>
         /// 只在主轴为类目轴（axis.type 为 'category'）时有效。 可选值：
         /// <para>'auto'：默认，如果有足够空间则显示标志图形，否则随主轴标签间隔隐藏策略。</para>
         /// <para>true：显示所有图形。</para>
