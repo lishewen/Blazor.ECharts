@@ -20,12 +20,14 @@
 		<PackageTags>Blazor,.net core,ECharts,WordCloud</PackageTags>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<PackageIcon>favicon.png</PackageIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
 		<None Include=".\readme.md" Pack="true" PackagePath="\" />
 		<None Include="..\LICENSE" Pack="true" PackagePath="\" />
+		<None Include="..\favicon.png" Pack="true" PackagePath="\" />
 	</ItemGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net6.0' ">
