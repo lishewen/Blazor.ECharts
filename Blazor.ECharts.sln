@@ -9,10 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.ECharts.Demo", "Blaz
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0528F049-D3E9-402D-8C96-C30BC5368495}"
 	ProjectSection(SolutionItems) = preProject
+		favicon.png = favicon.png
 		LICENSE = LICENSE
 		README.md = README.md
 		Version.props = Version.props
-		favicon.png = favicon.png
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.ECharts.WordCloud", "Blazor.ECharts.WordCloud\Blazor.ECharts.WordCloud.csproj", "{F5875D53-A4CD-4200-824F-BBA3F1020CB7}"
