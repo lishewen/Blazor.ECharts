@@ -18,7 +18,8 @@ namespace Blazor.ECharts.Options
                 Converters =
                 {
                     new JsonStringEnumConverter(JsonNamingPolicy.CamelCase),
-                    new JFuncConverter()
+                    new JFuncConverter(),
+                    new Array2DConverter()
                 }
             };
         }
