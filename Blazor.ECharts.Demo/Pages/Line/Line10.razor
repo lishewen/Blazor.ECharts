@@ -4,5 +4,5 @@
 @using L = Blazor.ECharts.Options.Series.Line
 
 <div class="container">
-    <ELine Option="@Option" Class="chart-fill"></ELine>
+    <ELine Option="@Option" Class="chart-fill" @ref="eLine" EventTypes="EventTypes" OnEventCallback="OnEchartsEvent" OnResizeEventCallback="UpdatePosition"></ELine>
 </div>

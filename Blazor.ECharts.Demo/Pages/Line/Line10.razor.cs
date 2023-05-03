@@ -1,6 +1,13 @@
-﻿using Blazor.ECharts.Demo.Utils;
+﻿using Blazor.ECharts.Components;
+using Blazor.ECharts.Demo.Utils;
 using Blazor.ECharts.Options;
 using Blazor.ECharts.Options.Enum;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using L = Blazor.ECharts.Options.Series.Line;
 namespace Blazor.ECharts.Demo.Pages.Line
 {
@@ -16,6 +23,9 @@ namespace Blazor.ECharts.Demo.Pages.Line
             { -63.5, 40 },
             { -22.1, 50 }
         };
+        ELine eLine;
+        // 添加事件
+        private List<EventType> EventTypes = new() { EventType.datazoom };
         protected override void OnInitialized()
         {
             base.OnInitialized();
@@ -111,6 +121,52 @@ namespace Blazor.ECharts.Demo.Pages.Line
                     }
                 }
             };
+        }
+
+        private void ShowTooltip(int dataIndex)
+        {
+            eLine.DispatchAction(new()
+            {
+                Type = "showTip",
+                SeriesIndex = 0,
+                DataIndex = dataIndex
+            });
+        }
+
+        private void HideTooltip()
+        {
+            eLine.DispatchAction(new()
+            {
+                Type = "hideTip"
+            });
+        }
+
+        private async Task UpdatePosition()
+        {
+            ArrayList arrayList = new();
+            for (int i = 0; i < 5; i++)
+            {
+                double[] row = data.Cast<double>().Skip(i * 2).Take(2).ToArray();
+                arrayList.Add(await eLine.ConvertToPixel("grid", row));
+            }
+            _ = eLine.SetupOptionAsync(new EChartsOption<L.Line>()
+            {
+                Graphic = new()
+                {
+                    new GraphicCircle()
+                    {
+                        Position = arrayList.ToArray()
+                    }
+                }
+            });
+        }
+
+        private void OnEchartsEvent(EchartsEventArgs args)
+        {
+            if (args.EventType == EventType.datazoom)
+            {
+                _ = UpdatePosition();
+            }
         }
     }
 }

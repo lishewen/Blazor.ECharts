@@ -84,6 +84,10 @@ export class echartsFunctions {
         let chart = this.getChart(id);
         chart.dispatchAction(opt);
     }
+    static convertToPixel(id, finder, value) {
+        let chart = this.getChart(id);
+        return chart.convertToPixel(finder, value);
+    }
     static resize(id) {
         let chart = this.getChart(id);
         chart.resize();

@@ -80,7 +80,12 @@ namespace Blazor.ECharts.Options
     public record GraphicImage : Graphic
     {
         public GraphicImage() : base("image") { }
+    }
+    public record GraphicCircle : Graphic
+    {
+        public GraphicCircle() : base("circle") { }
 
+        public object Position { get; set; }
     }
     public record GraphicStyle
     {

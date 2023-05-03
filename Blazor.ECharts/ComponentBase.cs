@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Rendering;
 using Microsoft.AspNetCore.Components.RenderTree;
 using Microsoft.JSInterop;
+using Microsoft.VisualBasic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,11 @@ namespace Blazor.ECharts
         /// </summary>
         [Parameter]
         public EventCallback<EchartsEventArgs> OnEventCallback { get; set; }
+        /// <summary>
+        /// 自定义resize事件
+        /// </summary>
+        [Parameter]
+        public EventCallback OnResizeEventCallback { get; set; }
 
         private EventInvokeHelper _eventInvokeHelper;
         /// <summary>
@@ -210,6 +216,10 @@ namespace Blazor.ECharts
             if (ISResize)
             {
                 _ = ResizeAsync();
+                if (OnResizeEventCallback.HasDelegate)
+                {
+                    _ = OnResizeEventCallback.InvokeAsync();
+                }
             }
         }
         private async Task AddResizeListener()
@@ -256,7 +266,15 @@ namespace Blazor.ECharts
         {
             _ = JsInterop.DispatchAction(Id, option);
         }
-
+        /// <summary>
+        /// 转换坐标系上的点到像素坐标值
+        /// </summary>
+        /// <param name="finder"></param>
+        /// <param name="value"></param>
+        public async ValueTask<double> ConvertToPixel(string finder, object value)
+        {
+            return await JsInterop.ConvertToPixel(Id, finder, value);
+        }
 
         public async ValueTask DisposeAsync()
         {
