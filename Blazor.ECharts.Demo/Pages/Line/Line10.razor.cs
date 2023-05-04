@@ -2,6 +2,7 @@
 using Blazor.ECharts.Demo.Utils;
 using Blazor.ECharts.Options;
 using Blazor.ECharts.Options.Enum;
+using Microsoft.JSInterop;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -115,6 +116,7 @@ namespace Blazor.ECharts.Demo.Pages.Line
                 {
                     new L.Line()
                     {
+                        Id = "a",
                         Smooth = true,
                         SymbolSize = symbolSize,
                         Data = data
@@ -123,7 +125,43 @@ namespace Blazor.ECharts.Demo.Pages.Line
             };
         }
 
-        private void ShowTooltip(int dataIndex)
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+            await base.OnAfterRenderAsync(firstRender);
+
+            if (firstRender)
+            {
+                List<object> list = new();
+                for (int i = 0; i < 5; i++)
+                {
+                    double[] row = data.Cast<double>().Skip(i * 2).Take(2).ToArray();
+                    list.Add(new GraphicCircle()
+                    {
+                        Position = await eLine.ConvertToPixel<double[]>("grid", row),
+                        Shape = new()
+                        {
+                            Cx = 0,
+                            Cy = 0,
+                            R = symbolSize / 2
+                        },
+                        Invisible = true,
+                        Draggable = true,
+                        Ondrag = new("function () { echartsFunctions.getDotnet('" + eLine.Id + "').invokeMethodAsync('OnPointDragging'," + i + ",[this.x, this.y]) }"),
+                        Onmousemove = new("function () { echartsFunctions.getDotnet('" + eLine.Id + "').invokeMethod('ShowTooltip'," + i + ") }"),
+                        Onmouseout = new("function () { echartsFunctions.getDotnet('" + eLine.Id + "').invokeMethod('HideTooltip') }"),
+                        Z = 100
+                    });
+                }
+                await eLine.SetupOptionAsync(new EChartsOption<L.Line>()
+                {
+                    Graphic = list
+                });
+                await eLine.AssignDotNetHelper(DotNetObjectReference.Create(this));
+            }
+        }
+
+        [JSInvokable]
+        public void ShowTooltip(int dataIndex)
         {
             eLine.DispatchAction(new()
             {
@@ -132,8 +170,8 @@ namespace Blazor.ECharts.Demo.Pages.Line
                 DataIndex = dataIndex
             });
         }
-
-        private void HideTooltip()
+        [JSInvokable]
+        public void HideTooltip()
         {
             eLine.DispatchAction(new()
             {
@@ -143,21 +181,18 @@ namespace Blazor.ECharts.Demo.Pages.Line
 
         private async Task UpdatePosition()
         {
-            ArrayList arrayList = new();
+            List<object> list = new();
             for (int i = 0; i < 5; i++)
             {
                 double[] row = data.Cast<double>().Skip(i * 2).Take(2).ToArray();
-                arrayList.Add(await eLine.ConvertToPixel("grid", row));
-            }
-            _ = eLine.SetupOptionAsync(new EChartsOption<L.Line>()
-            {
-                Graphic = new()
+                list.Add(new GraphicCircle()
                 {
-                    new GraphicCircle()
-                    {
-                        Position = arrayList.ToArray()
-                    }
-                }
+                    Position = await eLine.ConvertToPixel<double[]>("grid", row)
+                });
+            }
+            await eLine.SetupOptionAsync(new EChartsOption<L.Line>()
+            {
+                Graphic = list
             });
         }
 
@@ -167,6 +202,28 @@ namespace Blazor.ECharts.Demo.Pages.Line
             {
                 _ = UpdatePosition();
             }
+        }
+        [JSInvokable]
+        public async Task OnPointDragging(int dataIndex, double[] pos)
+        {
+            var item = await eLine.ConvertFromPixel<double[]>("grid", pos);
+            for (int i = 0; i < item.Length; i++)
+            {
+                data[dataIndex, i] = item[i];
+            }
+
+            // Update data
+            await eLine.SetupOptionAsync(new EChartsOption<L.Line>()
+            {
+                Series = new()
+                {
+                     new L.Line()
+                     {
+                         Id = "a",
+                         Data = data
+                     }
+                }
+            });
         }
     }
 }

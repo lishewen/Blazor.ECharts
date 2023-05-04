@@ -16,7 +16,7 @@ namespace Blazor.ECharts
 {
     public class ComponentBase<T> : ComponentBase, IAsyncDisposable where T : class
     {
-        protected string Id = "echerts_" + Guid.NewGuid().ToString("N");
+        public readonly string Id = "echerts_" + Guid.NewGuid().ToString("N");
         private DotNetObjectReference<ComponentBase<T>> _objectReference;
         private string _theme;
         /// <summary>
@@ -143,6 +143,17 @@ namespace Blazor.ECharts
         {
             if (Option == null && string.IsNullOrWhiteSpace(OptionRaw) && ChildContent == null) return;
 
+            // 事件
+            // 注意：建议在调用 setOption 前注册相关事件，否则在动画被禁用时，注册的事件回调可能因时序问题而不被执行。
+            if (EventTypes.Count > 0 && OnEventCallback.HasDelegate && !hasBindEvent)
+            {
+                foreach (var eventType in EventTypes)
+                {
+                    await JsInterop.ChartOn(Id, eventType, DotNetObjectReference.Create(_eventInvokeHelper));
+                }
+                hasBindEvent = true;
+            }
+
             if (ChildContent != null)
             {
                 var sb = new StringBuilder();
@@ -167,15 +178,6 @@ namespace Blazor.ECharts
             else
                 await JsInterop.SetupChart(Id, Theme, Option, NotMerge);
 
-            // 事件
-            if (EventTypes.Count > 0 && OnEventCallback.HasDelegate && !hasBindEvent)
-            {
-                foreach (var eventType in EventTypes)
-                {
-                    await JsInterop.ChartOn(Id, eventType, DotNetObjectReference.Create(_eventInvokeHelper));
-                }
-                hasBindEvent = true;
-            }
             if (ISResize)
             {
                 await AddResizeListener();
@@ -234,7 +236,15 @@ namespace Blazor.ECharts
         {
             StateHasChanged();
         }
-
+        /// <summary>
+        /// 注入.net类型和方法
+        /// </summary>
+        /// <typeparam name="TD"></typeparam>
+        /// <param name="dotNetObject"></param>
+        public async Task AssignDotNetHelper<TD>(DotNetObjectReference<TD> dotNetObject) where TD : class
+        {
+            await JsInterop.InvokeVoidAsync("echartsFunctions.assignDotNetHelper", Id, dotNetObject);
+        }
         /// <summary>
         /// 显示加载UI
         /// </summary>
@@ -271,11 +281,21 @@ namespace Blazor.ECharts
         /// </summary>
         /// <param name="finder"></param>
         /// <param name="value"></param>
-        public async ValueTask<double> ConvertToPixel(string finder, object value)
+        public async ValueTask<TN> ConvertToPixel<TN>(string finder, object value)
         {
-            return await JsInterop.ConvertToPixel(Id, finder, value);
+            return await JsInterop.ConvertToPixel<TN>(Id, finder, value);
         }
-
+        /// <summary>
+        /// 转换像素坐标值到逻辑坐标系上的点。是 convertToPixel 的逆运算。
+        /// </summary>
+        /// <typeparam name="TN">Array|number</typeparam>
+        /// <param name="finder"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public async ValueTask<TN> ConvertFromPixel<TN>(string finder, object value)
+        {
+            return await JsInterop.ConvertFromPixel<TN>(Id, finder, value);
+        }
         public async ValueTask DisposeAsync()
         {
             if (IsPrerenderPhase) return;

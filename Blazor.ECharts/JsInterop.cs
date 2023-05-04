@@ -103,6 +103,7 @@ namespace Blazor.ECharts
 
         public async Task ChartOn(string id, EventType eventType, DotNetObjectReference<EventInvokeHelper> objectReference)
         {
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
             var module = await moduleTask.Value;
             await module.InvokeVoidAsync("echartsFunctions.on", id, eventType.ToString(), objectReference);
         }
@@ -156,11 +157,26 @@ namespace Blazor.ECharts
         /// <returns></returns>
         /// <exception cref="ArgumentNullException"></exception>
         /// TODO: finder 类型
-        public async ValueTask<double> ConvertToPixel(string id, string finder, object value)
+        public async ValueTask<T> ConvertToPixel<T>(string id, string finder, object value)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
             var module = await moduleTask.Value;
-            return await module.InvokeAsync<double>("echartsFunctions.convertToPixel", id, finder, value);
+            return await module.InvokeAsync<T>("echartsFunctions.convertToPixel", id, finder, value);
+        }
+        /// <summary>
+        /// 转换像素坐标值到逻辑坐标系上的点。是 convertToPixel 的逆运算。
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="finder"></param>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        /// TODO: finder 类型
+        public async ValueTask<T> ConvertFromPixel<T>(string id, string finder, object value)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
+            var module = await moduleTask.Value;
+            return await module.InvokeAsync<T>("echartsFunctions.convertFromPixel", id, finder, value);
         }
         /// <summary>
         /// 销毁chart对象

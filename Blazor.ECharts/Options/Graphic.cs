@@ -86,6 +86,18 @@ namespace Blazor.ECharts.Options
         public GraphicCircle() : base("circle") { }
 
         public object Position { get; set; }
+        public GraphicCircleShape Shape { get; set; }
+        public bool? Invisible { get; set; }
+        public bool? Draggable { get; set; }
+        public JFunc Ondrag { get; set; }
+        public JFunc Onmousemove { get; set; }
+        public JFunc Onmouseout { get; set; }
+    }
+    public record GraphicCircleShape
+    {
+        public int? Cx { get; set; }
+        public int? Cy { get; set; }
+        public double? R { get; set; }
     }
     public record GraphicStyle
     {

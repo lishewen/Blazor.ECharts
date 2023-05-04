@@ -7,6 +7,22 @@ export function showPrompt(message) {
 
 export class echartsFunctions {
     static liChart = new Array();
+    static assignDotNetHelper(id, dotNetHelper) {
+        for (let i = 0; i < this.liChart.length; i++) {
+            if (this.liChart[i].Id == id) {
+                this.liChart[i].DotNetHelper = dotNetHelper;
+                return;
+            }
+        }
+    }
+    static getDotnet(id) {
+        for (let i = 0; i < this.liChart.length; i++) {
+            if (this.liChart[i].Id === id) {
+                return !this.liChart[i].Chart.isDisposed() ? this.liChart[i].DotNetHelper : null;
+            }
+        }
+        return null;
+    }
     static getChart(id) {
         for (let i = 0; i < this.liChart.length; i++) {
             if (this.liChart[i].Id === id) {
@@ -22,7 +38,7 @@ export class echartsFunctions {
                 return;
             }
         }
-        this.liChart.push({ Id: id, Chart: chart });
+        this.liChart.push({ Id: id, Chart: chart, DotNetHelper: null });
     }
     static initChart(id, theme = 'light') {
         let chart = this.getChart(id);
@@ -86,7 +102,13 @@ export class echartsFunctions {
     }
     static convertToPixel(id, finder, value) {
         let chart = this.getChart(id);
-        return chart.convertToPixel(finder, value);
+        if (chart)
+            return chart.convertToPixel(finder, value);
+    }
+    static convertFromPixel(id, finder, value) {
+        let chart = this.getChart(id);
+        if (chart)
+            return chart.convertFromPixel(finder, value);
     }
     static resize(id) {
         let chart = this.getChart(id);
