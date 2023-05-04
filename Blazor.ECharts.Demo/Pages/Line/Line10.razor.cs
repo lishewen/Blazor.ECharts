@@ -25,6 +25,8 @@ namespace Blazor.ECharts.Demo.Pages.Line
             { -22.1, 50 }
         };
         ELine eLine;
+        private System.Timers.Timer timer;
+        bool firstRender = true;
         // 添加事件
         private List<EventType> EventTypes = new() { EventType.datazoom };
         protected override void OnInitialized()
@@ -123,12 +125,14 @@ namespace Blazor.ECharts.Demo.Pages.Line
                     }
                 }
             };
+
+            timer = new(1000);
+            timer.Elapsed += (sender, eventArgs) => _ = InitGraphicCircle();
+            timer.Start();
         }
 
-        protected override async Task OnAfterRenderAsync(bool firstRender)
+        private async Task InitGraphicCircle()
         {
-            await base.OnAfterRenderAsync(firstRender);
-
             if (firstRender)
             {
                 List<object> list = new();
@@ -157,6 +161,14 @@ namespace Blazor.ECharts.Demo.Pages.Line
                     Graphic = list
                 });
                 await eLine.AssignDotNetHelper(DotNetObjectReference.Create(this));
+
+                StateHasChanged();
+
+                firstRender = false;
+            }
+            else
+            {
+                timer.Stop();
             }
         }
 

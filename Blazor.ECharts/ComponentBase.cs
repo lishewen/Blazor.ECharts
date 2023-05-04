@@ -143,17 +143,6 @@ namespace Blazor.ECharts
         {
             if (Option == null && string.IsNullOrWhiteSpace(OptionRaw) && ChildContent == null) return;
 
-            // 事件
-            // 注意：建议在调用 setOption 前注册相关事件，否则在动画被禁用时，注册的事件回调可能因时序问题而不被执行。
-            if (EventTypes.Count > 0 && OnEventCallback.HasDelegate && !hasBindEvent)
-            {
-                foreach (var eventType in EventTypes)
-                {
-                    await JsInterop.ChartOn(Id, eventType, DotNetObjectReference.Create(_eventInvokeHelper));
-                }
-                hasBindEvent = true;
-            }
-
             if (ChildContent != null)
             {
                 var sb = new StringBuilder();
@@ -177,7 +166,15 @@ namespace Blazor.ECharts
                 await JsInterop.SetupChart(Id, Theme, OptionRaw, NotMerge);
             else
                 await JsInterop.SetupChart(Id, Theme, Option, NotMerge);
-
+            // 事件
+            if (EventTypes.Count > 0 && OnEventCallback.HasDelegate && !hasBindEvent)
+            {
+                foreach (var eventType in EventTypes)
+                {
+                    await JsInterop.ChartOn(Id, eventType, DotNetObjectReference.Create(_eventInvokeHelper));
+                }
+                hasBindEvent = true;
+            }
             if (ISResize)
             {
                 await AddResizeListener();
