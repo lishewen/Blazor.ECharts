@@ -27,6 +27,25 @@ namespace Blazor.ECharts.Options.Series.Bar
 
         public object LineStyle { set; get; }
 
+        public ItemStyle ItemStyle { set; get; }
+
+        /// <summary>
+        /// 坐标轴是否是静态无法交互。
+        /// </summary>
+        public bool? Silent { get; set; }
+
+        /// <summary>
+        /// 不同系列的柱间距离，为百分比（如 '30%'，表示柱子宽度的 30%）。
+        /// 如果想要两个系列的柱子重叠，可以设置 barGap 为 '-100%'。这在用柱子做背景的时候有用。
+        /// 在同一坐标系上，此属性会被多个 'bar' 系列共享。此属性应设置于此坐标系中最后一个 'bar' 系列上才会生效，并且是对此坐标系中所有 'bar' 系列生效。
+        /// </summary>
+        public string BarGap { get; set; }
+
+        /// <summary>
+        /// z 方向的高度，决定层叠关系。
+        /// </summary>
+        public int? Z { set; get; }
+
         /// <summary>
         /// 使用的 x 轴的 index，在单个图表实例中存在多个 x 轴的时候有用。
         /// </summary>
