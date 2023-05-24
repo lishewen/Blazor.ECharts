@@ -111,6 +111,11 @@ namespace Blazor.ECharts.Options
         //在多个 y 轴为数值轴的时候，可以开启该配置项自动对齐刻度。只对'value'和'log'类型的轴有效。
         /// </summary>
         public bool? AlignTicks { set; get; }
+        /// <summary>
+        /// X/Y 轴相对于默认位置的偏移，在相同的 position 上有多个 X/Y 轴的时候有用。
+        /// 注：若未将 x/yAxis.axisLine.onZero 设为 false , 则该项无法生效
+        /// </summary>
+        public double? Offset { set; get; }
     }
     public record XAxis : Axis
     {
