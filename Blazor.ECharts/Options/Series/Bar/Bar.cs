@@ -55,8 +55,19 @@ namespace Blazor.ECharts.Options.Series.Bar
         /// 使用的 y 轴的 index，在单个图表实例中存在多个 y轴的时候有用。
         /// </summary>
         public int? YAxisIndex { set; get; }
-
+        /// <summary>
+        /// 柱条的宽度，不设时自适应。
+        /// 可以是绝对值例如 40 或者百分数例如 '60%'。百分数基于自动计算出的每一类目的宽度。
+        /// 在同一坐标系上，此属性会被多个 'bar' 系列共享。此属性应设置于此坐标系中最后一个 'bar' 系列上才会生效，并且是对此坐标系中所有 'bar' 系列生效。
+        /// </summary>
         public string BarWidth { get; set; }
+        /// <summary>
+        /// 柱条的最大宽度。
+        /// 比 barWidth 优先级高。
+        /// 可以是绝对值例如 40 或者百分数例如 '60%'。百分数基于自动计算出的每一类目的宽度。
+        /// 在同一坐标系上，此属性会被多个 'bar' 系列共享。此属性应设置于此坐标系中最后一个 'bar' 系列上才会生效，并且是对此坐标系中所有 'bar' 系列生效。
+        /// </summary>
+        public string BarMaxWidth { get; set; }
 
         public Encode Encode { get; set; }
 

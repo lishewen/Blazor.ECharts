@@ -116,6 +116,12 @@ namespace Blazor.ECharts.Options
         /// 注：若未将 x/yAxis.axisLine.onZero 设为 false , 则该项无法生效
         /// </summary>
         public double? Offset { set; get; }
+        /// <summary>
+        /// 强制设置坐标轴分割间隔。
+        /// 因为 splitNumber 是预估的值，实际根据策略计算出来的刻度可能无法达到想要的效果，这时候可以使用 interval 配合 min、max 强制设定刻度划分，一般不建议使用。
+        /// 无法在类目轴中使用。在时间轴（type: 'time'）中需要传时间戳，在对数轴（type: 'log'）中需要传指数值。
+        /// </summary>
+        public object Interval { get; set; }
     }
     public record XAxis : Axis
     {
