@@ -57,13 +57,14 @@ export class echartsFunctions {
     static registerMap(name, svg) {
         echarts.registerMap(name, { svg: svg });
     }
-    static setupChart(id, theme, option, notMerge) {
+    static setupChart(id, theme, option, setupoption) {
         let opt = eval('(' + option + ')');
+        let opts = eval('(' + setupoption + ')');
         let chart = this.getChart(id);
         if (chart === null) {
             chart = this.initChart(id, theme);
         }
-        chart.setOption(opt, notMerge);
+        chart.setOption(opt, opts);
     }
     static hideLoading(id) {
         let chart = this.getChart(id);

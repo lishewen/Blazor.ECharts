@@ -57,9 +57,9 @@ namespace Blazor.ECharts
         /// <param name="theme">主题</param>
         /// <param name="option">参数</param>
         /// <returns></returns>
-        public async Task SetupChart<T>(string id, string theme, EChartsOption<T> option, bool notMerge = false)
+        public async Task SetupChart<T>(string id, string theme, EChartsOption<T> option, EChartsSetupOption opts)
         {
-            await SetupChart(id, theme, option.ToString(), notMerge);
+            await SetupChart(id, theme, option.ToString(), opts.ToString());
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Blazor.ECharts
         /// <param name="theme">主题</param>
         /// <param name="option">参数</param>
         /// <returns></returns>
-        public async Task SetupChart(string id, string theme, string option, bool notMerge = false)
+        public async Task SetupChart(string id, string theme, string option, string opts)
         {
             if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
             if (option == null) throw new ArgumentNullException(nameof(option), "echarts参数不能为空");
@@ -77,14 +77,14 @@ namespace Blazor.ECharts
             var module = await moduleTask.Value;
             try
             {
-                await module.InvokeVoidAsync("echartsFunctions.setupChart", id, theme, option, notMerge);
+                await module.InvokeVoidAsync("echartsFunctions.setupChart", id, theme, option, opts);
             }
             catch
             {
                 Console.WriteLine("id:" + id);
                 Console.WriteLine("theme:" + theme);
                 Console.WriteLine("option:" + option);
-                Console.WriteLine("notMerge:" + notMerge);
+                Console.WriteLine("opts:" + opts);
             }
         }
 

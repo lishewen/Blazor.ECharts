@@ -13,10 +13,10 @@
 <div class="chart-container">
     <ELine Option="@Option1" Class="chart-fill" @ref="eLine"></ELine>
     <!--设置NotMerge方法-->
-    <ELine Option="@Option1" Class="chart-fill" NotMerge="true"></ELine>
+    <ELine Option="@Option1" Class="chart-fill" NotMerge="true" ReplaceMerge="@(new string[]{"xAxis","yAxis","series"})"></ELine>
 </div>
 
-@code{
+@code {
     private EChartsOption<L.Line> Option1;
     private ELine eLine;
 
@@ -24,19 +24,19 @@
     {
         base.OnInitialized();
         Option1 = new()
-        {
-            Title = new Title()
             {
-                Text = "堆叠折线图"
-            },
-            YAxis = new List<YAxis>()
+                Title = new Title()
+                {
+                    Text = "堆叠折线图"
+                },
+                YAxis = new List<YAxis>()
             {
                 new YAxis()
                 {
                     Type = AxisType.Value
                 }
             },
-            XAxis = new List<XAxis>()
+                XAxis = new List<XAxis>()
             {
                 new XAxis()
                 {
@@ -45,7 +45,7 @@
                     BoundaryGap = false
                 }
             },
-            Series = new List<object>() {
+                Series = new List<object>() {
                 new L.Line()
                 {
                     Type = "line",
@@ -82,24 +82,24 @@
                     Data = new[] {820, 932, 901, 934, 1290, 1330, 1320 },
                 }
             },
-            Tooltip = new Tooltip()
-            {
-                Trigger = TooltipTrigger.Axis,
-                AxisPointer = new TooltipAxisPointer()
+                Tooltip = new Tooltip()
                 {
-                    Type = AxisPointerType.Cross,
-                    Label = new AxisPointerLabel()
+                    Trigger = TooltipTrigger.Axis,
+                    AxisPointer = new TooltipAxisPointer()
                     {
-                        BackgroundColor = "#6a7985"
+                        Type = AxisPointerType.Cross,
+                        Label = new AxisPointerLabel()
+                        {
+                            BackgroundColor = "#6a7985"
+                        }
                     }
-                }
-            },
-            Legend = new Legend()
-            {
-                Data = new[] { "邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎" }
-            },
-            Toolbox = new Toolbox() { Feature = new Feature() { SaveAsImage = new SaveAsImage() } },
-            Grid = new List<Grid>()
+                },
+                Legend = new Legend()
+                {
+                    Data = new[] { "邮件营销", "联盟广告", "视频广告", "直接访问", "搜索引擎" }
+                },
+                Toolbox = new Toolbox() { Feature = new Feature() { SaveAsImage = new SaveAsImage() } },
+                Grid = new List<Grid>()
             {
                 new Grid()
                 {
@@ -109,7 +109,7 @@
                     ContainLabel = true
                 }
             }
-        };
+            };
     }
     /// <summary>
     /// 正常删除，设置NotMerge为true
@@ -142,10 +142,10 @@
     {
         (Option1.Series[2] as L.Line).ShowSymbol = false;
         (Option1.Series[2] as L.Line).LineStyle = new()
-        {
-            Width = 0,
-            Color = "rgba(0,0,0,0)"
-        };
+            {
+                Width = 0,
+                Color = "rgba(0,0,0,0)"
+            };
         (Option1.Series[2] as L.Line).Tooltip = new() { Show = false };
         Option1.Legend.Data = new[] { "邮件营销", "联盟广告", "直接访问", "搜索引擎" };
         //通知组件其状态已更改。 如果适用，这将导致重新呈现组件

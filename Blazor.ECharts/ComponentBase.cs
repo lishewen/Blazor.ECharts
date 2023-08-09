@@ -96,10 +96,25 @@ namespace Blazor.ECharts
         public string Class { get; set; }
 
         /// <summary>
-        /// 是否不跟之前设置的 option 进行合并。默认为 false。即表示合并。合并的规则，详见 组件合并模式。如果为 true，表示所有组件都会被删除，然后根据新 option 创建所有新组件。
+        /// 可选。是否不跟之前设置的 option 进行合并。默认为 false。即表示合并。合并的规则，详见 组件合并模式。如果为 true，表示所有组件都会被删除，然后根据新 option 创建所有新组件。
         /// </summary>
         [Parameter]
         public bool NotMerge { get; set; } = false;
+        /// <summary>
+        /// 可选。用户可以在这里指定一个或多个组件，如：xAxis, series，这些指定的组件会进行 "replaceMerge"。如果用户想删除部分组件，也可使用 "replaceMerge"。详见 组件合并模式。
+        /// </summary>
+        [Parameter]
+        public string[] ReplaceMerge { get; set; } = Array.Empty<string>();
+        /// <summary>
+        /// 可选。在设置完 option 后是否不立即更新图表，默认为 false，即同步立即更新。如果为 true，则会在下一个 animation frame 中，才更新图表。
+        /// </summary>
+        [Parameter]
+        public bool LazyUpdate { get; set; } = false;
+        /// <summary>
+        /// 可选。阻止调用 setOption 时抛出事件，默认为 false，即抛出事件。
+        /// </summary>
+        [Parameter]
+        public bool Silent { get; set; } = false;
 
         /// <summary>
         /// Whether or not in the prerender phase.
@@ -160,12 +175,30 @@ namespace Blazor.ECharts
                 var output = sb.ToString().Trim();
 
                 if (!string.IsNullOrWhiteSpace(output))
-                    await JsInterop.SetupChart(Id, Theme, output, NotMerge);
+                    await JsInterop.SetupChart(Id, Theme, output, new EChartsSetupOption
+                    {
+                        NotMerge = NotMerge,
+                        ReplaceMerge = ReplaceMerge,
+                        LazyUpdate = LazyUpdate,
+                        Silent = Silent
+                    }.ToString());
             }
             else if (!string.IsNullOrWhiteSpace(OptionRaw))
-                await JsInterop.SetupChart(Id, Theme, OptionRaw, NotMerge);
+                await JsInterop.SetupChart(Id, Theme, OptionRaw, new EChartsSetupOption
+                {
+                    NotMerge = NotMerge,
+                    ReplaceMerge = ReplaceMerge,
+                    LazyUpdate = LazyUpdate,
+                    Silent = Silent
+                }.ToString());
             else
-                await JsInterop.SetupChart(Id, Theme, Option, NotMerge);
+                await JsInterop.SetupChart(Id, Theme, Option, new EChartsSetupOption
+                {
+                    NotMerge = NotMerge,
+                    ReplaceMerge = ReplaceMerge,
+                    LazyUpdate = LazyUpdate,
+                    Silent = Silent
+                });
             // 事件
             if (EventTypes.Count > 0 && OnEventCallback.HasDelegate && !hasBindEvent)
             {
@@ -199,11 +232,17 @@ namespace Blazor.ECharts
         }
         public async Task SetupOptionAsync(string opt)
         {
-            await JsInterop.SetupChart(Id, Theme, opt, NotMerge);
+            await JsInterop.SetupChart(Id, Theme, opt, new EChartsSetupOption { NotMerge = NotMerge, ReplaceMerge = ReplaceMerge, LazyUpdate = LazyUpdate, Silent = Silent }.ToString());
         }
         public async Task SetupOptionAsync(EChartsOption<T> opt)
         {
-            await JsInterop.SetupChart(Id, Theme, opt, NotMerge);
+            await JsInterop.SetupChart(Id, Theme, opt, new EChartsSetupOption
+            {
+                NotMerge = NotMerge,
+                ReplaceMerge = ReplaceMerge,
+                LazyUpdate = LazyUpdate,
+                Silent = Silent
+            });
         }
         public async Task ResizeAsync()
         {
