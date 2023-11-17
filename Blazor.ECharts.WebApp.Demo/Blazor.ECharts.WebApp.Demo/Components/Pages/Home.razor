@@ -1,0 +1,43 @@
+﻿@page "/"
+@attribute [RouteName("目录")]
+@using System.Reflection;
+@using Blazor.ECharts.WebApp.Demo.Client.Pages
+
+<PageTitle>目录</PageTitle>
+
+<h1>目录</h1>
+<hr />
+<ul>
+    @foreach (var item in dict.OrderBy(d => d.Key))
+    {
+        <li>
+            <a class="nav-link" href="@item.Value">
+                <span class="oi oi-file" aria-hidden="true"></span> @item.Key
+            </a>
+        </li>
+    }
+</ul>
+
+@code {
+    private Dictionary<string, string> dict;
+
+    protected override void OnInitialized()
+    {
+        dict = new();
+        Assembly info = typeof(Counter).Assembly;
+        foreach (var type in info.GetTypes())
+        {
+            var routename = type.GetCustomAttribute<RouteNameAttribute>()?.Name;
+            var route = type.GetCustomAttributes<RouteAttribute>().Select(r => r.Template).FirstOrDefault();
+            if (!string.IsNullOrWhiteSpace(routename))
+            {
+                dict.Add(routename, route);
+            }
+            else if (!string.IsNullOrWhiteSpace(route))
+            {
+                dict.Add(route, route);
+            }
+        }
+        base.OnInitialized();
+    }
+}

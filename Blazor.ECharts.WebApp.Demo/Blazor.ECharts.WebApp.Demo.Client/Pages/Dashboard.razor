@@ -1,0 +1,20 @@
+﻿@page "/dashboard"
+@rendermode InteractiveWebAssembly
+@inject HttpClient Http
+@inject NavigationManager navigationManager
+
+<PageTitle>Dashboard</PageTitle>
+
+<div class="chart-container">
+    <EChart OptionRaw="@Option1" Class="chart-fill" Theme="dark"></EChart>
+</div>
+
+@code {
+    private string Option1;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Http.BaseAddress = new Uri(navigationManager.BaseUri);
+        Option1 = await Http.GetStringAsync("sample-data/dashboard.json");
+    }
+}
