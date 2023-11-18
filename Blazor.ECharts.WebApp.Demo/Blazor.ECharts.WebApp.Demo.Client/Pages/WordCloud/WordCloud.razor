@@ -1,0 +1,77 @@
+﻿@page "/wordcloud/wordcloud"
+@attribute [RouteName("词云")]
+@rendermode InteractiveWebAssembly
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using Blazor.ECharts.WordCloud.Components
+@using W = Blazor.ECharts.WordCloud.Options
+
+<PageTitle>词云</PageTitle>
+
+<div class="chart-container">
+    <EWordCloud Option="@Option1" Class="chart-fill"></EWordCloud>
+</div>
+
+@code{
+    private EChartsOption<W.WordCloud> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new()
+        {
+            Tooltip = new()
+            {
+                Show = true
+            },
+            Series = new()
+            {
+                new W.WordCloud()
+                {
+                    GridSize = 6,
+                    Shape = W.Shape.Circle,
+                    SizeRange = new int[] { 12, 45 },
+                    Width = 900,
+                    Height = 500,
+                    TextStyle = new()
+                    {
+                        Emphasis = new()
+                        {
+                            ShadowBlur = 10,
+                            ShadowColor = "#333"
+                        }
+                    },
+                    Data = new[]
+                    {
+                        new W.WordCloudData() { Name = "算神", Value = 30, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "梧州公交", Value = 24, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "WordCloud", Value = 21, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "Blazor", Value = 19, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "Visual Studio", Value = 18, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = ".Net Core", Value = 18, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "C#", Value = 17, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "一个", Value = 12, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "不好", Value = 12, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "质量", Value = 11, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "快递", Value = 11, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "问题", Value = 10, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "物流", Value = 9, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "几天", Value = 9, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "一般", Value = 9, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "就是", Value = 9, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "使用", Value = 8, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "怎么", Value = 8, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "电池", Value = 8, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "不能", Value = 8, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "速度", Value = 8, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "客服", Value = 8, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "一星", Value = 8, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "拍照", Value = 8, TextStyle = new() { Color = Utils.Util.GetRandomColor() } },
+                        new W.WordCloudData() { Name = "摄像头", Value = 7, TextStyle = new() { Color = Utils.Util.GetRandomColor() } }
+                    }
+                }
+            }
+        };
+    }
+}
