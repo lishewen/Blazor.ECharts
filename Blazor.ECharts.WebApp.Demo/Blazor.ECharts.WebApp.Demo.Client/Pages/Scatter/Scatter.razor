@@ -1,0 +1,72 @@
+﻿@page "/scatter/scatter"
+@rendermode InteractiveWebAssembly
+@attribute [RouteName("Scatter(散点图)")]
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using S = Blazor.ECharts.Options.Series.Scatter
+
+<PageTitle>Scatter(散点图)</PageTitle>
+
+<div class="chart-container">
+    <EScatter Option="@Option1" Class="chart-fill"></EScatter>
+</div>
+
+@code{
+    private EChartsOption<S.Scatter> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new()
+        {
+            XAxis = new() {
+                new()
+            },
+            YAxis = new() { 
+                new()
+            },
+            Legend = new()
+            {
+                Data = new[] { "类别1", "类别2" }
+            },
+            Series = new()
+            {
+                new S.Scatter()
+                {
+                    Name = "类别1",
+                    Data = new[] {
+                        new[]{ 2.0, 8.04, 10 },
+                        new[]{ 3.0, 6.95, 20 },
+                        new[]{ 23.0, 7.58, 30 },
+                        new[]{ 18.0, 8.81, 15},
+                        new[]{ 12.0, 8.33, 16 },
+                        new[]{ 4.0, 9.96, 5 },
+                        new[]{ 16.0, 7.24, 18 },
+                        new[]{ 14.0, 4.26, 35 },
+                        new[]{ 12.0, 10.84, 20 },
+                        new[]{ 10.0, 4.82, 50 },
+                        new[]{ 7.0, 5.68, 13 }
+                    }
+                },
+                new S.Scatter()
+                {
+                    Name= "类别2",
+                    Data = new[] {
+                        new[]{ 1.0, 2.04 },
+                        new[]{ 2.0, 15.95 },
+                        new[]{ 26.0, 17.58 },
+                        new[]{ 13.0, 7.81 },
+                        new[]{ 22.0, 5.33 },
+                        new[]{ 14.0, 9.96 },
+                        new[]{ 6.0, 4.24 },
+                        new[]{ 4.0, 4.26 },
+                        new[]{ 22.0, 13.84 },
+                        new[]{ 16.0, 14.82 },
+                        new[]{ 17.0, 15.68 }
+                    }
+                }
+            }
+        };
+    }
+}
