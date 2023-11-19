@@ -1,0 +1,72 @@
+﻿@page "/sankey/sankey"
+@rendermode InteractiveWebAssembly
+@attribute [RouteName("Sankey(桑基图)")]
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using S = Blazor.ECharts.Options.Series.Sankey
+
+<PageTitle>Sankey(桑基图)</PageTitle>
+
+<div class="chart-container">
+    <ESankey Option="@Option1" Class="chart-fill"></ESankey>
+</div>
+
+@code{
+    private EChartsOption<S.Sankey> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new()
+        {
+            Series = new()
+            {
+                new S.Sankey()
+                {
+                    Data = new[] {
+                        new{ Name="输入1" },
+                        new{ Name="输入2" },
+                        new{ Name="输出1" },
+                        new{ Name="输出2" },
+                        new{ Name="中间层" },
+                        new{ Name="输出3" }
+                    },
+                    Links = new()
+                    {
+                        new()
+                        {
+                            Source = "输入1",
+                            Target = "输出2",
+                            Value = 4
+                        },
+                        new()
+                        {
+                            Source = "输入2",
+                            Target = "中间层",
+                            Value = 6
+                        },
+                        new()
+                        {
+                            Source = "输入1",
+                            Target = "中间层",
+                            Value = 2
+                        },
+                        new()
+                        {
+                            Source = "中间层",
+                            Target = "输出1",
+                            Value = 3
+                        },
+                        new()
+                        {
+                            Source = "中间层",
+                            Target = "输出3",
+                            Value = 2
+                        },
+                    }
+                }
+            }
+        };
+    }
+}

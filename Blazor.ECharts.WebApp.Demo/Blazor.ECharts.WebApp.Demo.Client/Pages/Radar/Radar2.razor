@@ -1,0 +1,208 @@
+﻿@page "/radar/radar2"
+@rendermode InteractiveWebAssembly
+@attribute [RouteName("AQI - 雷达图")]
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using Blazor.ECharts.Options.Series
+@using R = Blazor.ECharts.Options.Series.Radar
+
+<PageTitle>AQI - 雷达图</PageTitle>
+
+<div class="chart-container">
+    <ERadar Option="@Option1" Class="chart-fill"></ERadar>
+</div>
+
+@code {
+    private EChartsOption<R.Radar> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        List<object> dataBJ = new List<object>()
+        {
+            new List<double>(){55,9,56,0.46,18,6,1 },
+            new List<double>(){25,11,21,0.65,34,9,2 },
+            new List<double>(){56,7,63,0.3,14,5,3},
+            new List<double>(){33,7,29,0.33,16,6,4 },
+            new List<double>(){42,24,44,0.76,40,16,5 },
+            new List<double>(){82,58,90,1.77,68,33,6 },
+            new List<double>(){74,49,77,1.46,48,27,7 },
+            new List<double>(){78,55,80,1.29,59,29,8 },
+            new List<double>(){267,216,280,4.8,108,64,9 },
+            new List<double>(){185,127,216,2.52,61,27,10 },
+            new List<double>(){39,19,38,0.57,31,15,11 },
+            new List<double>(){41,11,40,0.43,21,7,12 },
+            new List<double>(){64,38,74,1.04,46,22,13 },
+            new List<double>(){108,79,120,1.7,75,41,14 },
+            new List<double>(){108,63,116,1.48,44,26,15 },
+            new List<double>(){33,6,29,0.34,13,5,16 },
+            new List<double>(){94,66,110,1.54,62,31,17 },
+            new List<double>(){186,142,192,3.88,93,79,18 },
+            new List<double>(){57,31,54,0.96,32,14,19 },
+            new List<double>(){22,8,17,0.48,23,10,20 },
+            new List<double>(){39,15,36,0.61,29,13,21 },
+            new List<double>(){94,69,114,2.08,73,39,22 },
+            new List<double>(){99,73,110,2.43,76,48,23 },
+            new List<double>(){31,12,30,0.5,32,16,24 },
+            new List<double>(){42,27,43,1,53,22,25},
+            new List<double>(){154,117,157,3.05,92,58,26 },
+            new List<double>(){234,185,230,4.09,123,69,27 },
+            new List<double>(){160,120,186,2.77,91,50,28 },
+            new List<double>(){134,96,165,2.76,83,41,29 },
+            new List<double>(){52,24,60,1.03,50,21,30 },
+            new List<double>(){46,5,49,0.28,10,6,31 }
+        };
+        List<object> dataGZ = new List<object>()
+        {
+            new List<double>(){26,37,27,1.163,27,13,1},
+            new List<double>(){85,62,71,1.195,60,8,2},
+            new List<double>(){78,38,74,1.363,37,7,3},
+            new List<double>(){21,21,36,0.634,40,9,4},
+            new List<double>(){41,42,46,0.915,81,13,5},
+            new List<double>(){56,52,69,1.067,92,16,6},
+            new List<double>(){64,30,28,0.924,51,2,7},
+            new List<double>(){55,48,74,1.236,75,26,8},
+            new List<double>(){76,85,113,1.237,114,27,9},
+            new List<double>(){91,81,104,1.041,56,40,10},
+            new List<double>(){84,39,60,0.964,25,11,11},
+            new List<double>(){64,51,101,0.862,58,23,12},
+            new List<double>(){70,69,120,1.198,65,36,13},
+            new List<double>(){77,105,178,2.549,64,16,14},
+            new List<double>(){109,68,87,0.996,74,29,15},
+            new List<double>(){73,68,97,0.905,51,34,16},
+            new List<double>(){54,27,47,0.592,53,12,17},
+            new List<double>(){51,61,97,0.811,65,19,18},
+            new List<double>(){91,71,121,1.374,43,18,19},
+            new List<double>(){73,102,182,2.787,44,19,20},
+            new List<double>(){73,50,76,0.717,31,20,21},
+            new List<double>(){84,94,140,2.238,68,18,22},
+            new List<double>(){93,77,104,1.165,53,7,23},
+            new List<double>(){99,130,227,3.97,55,15,24},
+            new List<double>(){146,84,139,1.094,40,17,25},
+            new List<double>(){113,108,137,1.481,48,15,26},
+            new List<double>(){81,48,62,1.619,26,3,27},
+            new List<double>(){56,48,68,1.336,37,9,28},
+            new List<double>(){82,92,174,3.29,0,13,29},
+            new List<double>(){106,116,188,3.628,101,16,30},
+            new List<double>(){118,50,0,1.383,76,11,31}
+        };
+        List<object> dataSH = new List<object>()
+        {
+            new List<double>(){91,45,125,0.82,34,23,1},
+            new List<double>(){65,27,78,0.86,45,29,2},
+            new List<double>(){83,60,84,1.09,73,27,3},
+            new List<double>(){109,81,121,1.28,68,51,4},
+            new List<double>(){106,77,114,1.07,55,51,5},
+            new List<double>(){109,81,121,1.28,68,51,6},
+            new List<double>(){106,77,114,1.07,55,51,7},
+            new List<double>(){89,65,78,0.86,51,26,8},
+            new List<double>(){53,33,47,0.64,50,17,9},
+            new List<double>(){80,55,80,1.01,75,24,10},
+            new List<double>(){117,81,124,1.03,45,24,11},
+            new List<double>(){99,71,142,1.1,62,42,12},
+            new List<double>(){95,69,130,1.28,74,50,13},
+            new List<double>(){116,87,131,1.47,84,40,14},
+            new List<double>(){108,80,121,1.3,85,37,15},
+            new List<double>(){134,83,167,1.16,57,43,16},
+            new List<double>(){79,43,107,1.05,59,37,17},
+            new List<double>(){71,46,89,0.86,64,25,18},
+            new List<double>(){97,71,113,1.17,88,31,19},
+            new List<double>(){84,57,91,0.85,55,31,20},
+            new List<double>(){87,63,101,0.9,56,41,21},
+            new List<double>(){104,77,119,1.09,73,48,22},
+            new List<double>(){87,62,100,1,72,28,23},
+            new List<double>(){168,128,172,1.49,97,56,24},
+            new List<double>(){65,45,51,0.74,39,17,25},
+            new List<double>(){39,24,38,0.61,47,17,26},
+            new List<double>(){39,24,39,0.59,50,19,27},
+            new List<double>(){93,68,96,1.05,79,29,28},
+            new List<double>(){188,143,197,1.66,99,51,29},
+            new List<double>(){174,131,174,1.55,108,50,30},
+            new List<double>(){187,143,201,1.39,89,53,31}
+        };
+
+        LineStyle lineStyle = new LineStyle()
+            {
+                Width = 1,
+                Opacity = 0.5
+            };
+        Option1 = new()
+            {
+                BackgroundColor = "#161627",
+                Title = new Title()
+                {
+                    Text = "AQI - 雷达图",
+                    Left = "center",
+                    TextStyle = new TextStyle() { Color = "#eee" }
+                },
+                Legend = new Legend()
+                {
+                    Bottom = 5,
+                    ItemGap = 20,
+                    SelectedMode = SelectedMode.Single,
+                    TextStyle = new TextStyle() { Color = "#fff", FontSize = 14 },
+                    Data = new[] { "北京", "上海", "广州" }
+                },
+                Radar = new()
+                {
+                    Indicator = new List<RadarIndicator>()
+                {
+                    new RadarIndicator(){Name="AQI",Max=300 },
+                    new RadarIndicator(){Name="PM2.5",Max=250 },
+                    new RadarIndicator(){Name="PM10",Max=300 },
+                    new RadarIndicator(){Name="CO",Max=5 },
+                    new RadarIndicator(){Name="NO2",Max=200 },
+                    new RadarIndicator(){Name="SO2",Max=100 }
+                },
+                    Shape = RadarShape.Circle,
+                    SplitNumber = 5,
+                    Name = new RadarName() { TextStyle = new TextStyle() { Color = "rgb(238, 197, 102)" } },
+                    SplitLine = new SplitLine()
+                    {
+                        LineStyle = new LineStyle()
+                        {
+                            Color = new[] { "rgba(238, 197, 102, 0.1)", "rgba(238, 197, 102, 0.2)",
+                    "rgba(238, 197, 102, 0.4)", "rgba(238, 197, 102, 0.6)",
+                    "rgba(238, 197, 102, 0.8)", "rgba(238, 197, 102, 1)"}.Reverse()
+                        }
+                    },
+                    SplitArea = new SplitArea() { Show = false },
+                    AxisLine = new AxisLine()
+                    {
+                        LineStyle = new LineStyle() { Color = "rgba(238, 197, 102, 0.5)" }
+                    }
+                },
+                Series = new List<object>()
+            {
+                new R.Radar()
+                {
+                    Name="北京",
+                    LineStyle=lineStyle,
+                    Data=dataBJ,
+                    Symbol="none",
+                    ItemStyle=new ItemStyle(){ Color="#F9713C"},
+                    AreaStyle=new AreaStyle(){Opacity=0.1 }
+                },
+                new R.Radar()
+                {
+                    Name="上海",
+                    LineStyle=lineStyle,
+                    Data=dataSH,
+                    Symbol="none",
+                    ItemStyle=new ItemStyle(){ Color="#B3E4A1"},
+                    AreaStyle=new AreaStyle(){Opacity=0.05 }
+                },
+                new R.Radar()
+                {
+                    Name="广州",
+                    LineStyle=lineStyle,
+                    Data=dataGZ,
+                    Symbol="none",
+                    ItemStyle=new ItemStyle(){ Color="rgb(238, 197, 102)"},
+                    AreaStyle=new AreaStyle(){Opacity=0.05 }
+                }
+            }
+            };
+    }
+}

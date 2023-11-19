@@ -1,0 +1,116 @@
+﻿@page "/pie/pie1"
+@rendermode InteractiveWebAssembly
+@attribute [RouteName("Pie(饼图)")]
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using P = Blazor.ECharts.Options.Series.Pie
+
+<PageTitle>Pie(饼图)</PageTitle>
+
+<div class="chart-container">
+    <EPie Option="@Option1" Class="chart-normal"></EPie>
+    <EPie Option="@Option2" Class="chart-normal"></EPie>
+</div>
+
+@code{
+    private EChartsOption<P.Pie> Option1;
+    private EChartsOption<P.Pie> Option2;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new()
+        {
+            Tooltip = new()
+            {
+                Trigger = TooltipTrigger.Item,
+                Formatter = "{a} <br/>{b}: {c} ({d}%)"
+            },
+            Legend = new()
+            {
+                Orient = Orient.Vertical,
+                Left = 10,
+                Data = new[] { "直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎" }
+            },
+            Series = new()
+            {
+                new P.Pie()
+                {
+                    Name = "访问来源",
+                    Radius = new[] { "50%", "70%" },
+                    AvoidLabelOverlap = false,
+                    Label = new()
+                    {
+                        Show = false,
+                        Position = LabelPosition.Center,
+                        Emphasis = new()
+                        {
+                            Show = true,
+                            TextStyle = new()
+                            {
+                                FontSize = 30,
+                                FontWeight = FontWeight.Bold
+                            }
+                        }
+                    },
+                    LabelLine = new() { Show = false },
+                    Data = new[]
+                    {
+                        new { name = "直接访问", value = 335 },
+                        new { name = "邮件营销", value = 310 },
+                        new { name = "联盟广告", value = 234 },
+                        new { name = "视频广告", value = 135 },
+                        new { name = "搜索引擎", value = 1548 }
+                    }
+                }
+            }
+        };
+        Option2 = new()
+        {
+            Title = new()
+            {
+                Text = "某站点用户访问来源",
+                Subtext = "纯属虚构",
+                Left = "center"
+            },
+            Tooltip = new()
+            {
+                Trigger = TooltipTrigger.Item,
+                Formatter = "{a} <br/>{b}: {c} ({d}%)"
+            },
+            Legend = new()
+            {
+                Orient = Orient.Vertical,
+                Left = "left",
+                Data = new[] { "直接访问", "邮件营销", "联盟广告", "视频广告", "搜索引擎" }
+            },
+            Series = new()
+            {
+                new P.Pie()
+                {
+                    Name = "访问来源",
+                    Radius = "55%",
+                    Center = new[] { "50%", "60%" },
+                    Data = new[]
+                    {
+                        new { name = "直接访问", value = 335 },
+                        new { name = "邮件营销", value = 310 },
+                        new { name = "联盟广告", value = 234 },
+                        new { name = "视频广告", value = 135 },
+                        new { name = "搜索引擎", value = 1548 }
+                    },
+                    Emphasis = new()
+                    {
+                        ItemStyle = new()
+                        {
+                            ShadowBlur = 10,
+                            ShadowOffsetX = 0,
+                            ShadowColor = "rgba(0, 0, 0, 0.5)"
+                        }
+                    }
+                }
+            }
+        };
+    }
+}
