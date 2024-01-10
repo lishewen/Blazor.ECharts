@@ -69,6 +69,9 @@ namespace Blazor.ECharts.Options.Series.Bar
         /// </summary>
         public string BarMaxWidth { get; set; }
 
+        /// <summary>
+        /// 可以定义 data 的哪个维度被编码成什么。
+        /// </summary>
         public Encode Encode { get; set; }
 
         /// <summary>

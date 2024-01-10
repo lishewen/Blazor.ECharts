@@ -170,5 +170,6 @@ namespace Blazor.ECharts.Options.Series.Line
         /// 图表标线。
         /// </summary>
         public MarkLine MarkLine { set; get; }
+        public Encode Encode { get; set; }
     }
 }

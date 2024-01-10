@@ -8,6 +8,7 @@ namespace Blazor.ECharts.Options
 {
     public class DataSet
     {
+        public string[] Dimensions { get; set; }
         public dynamic Source { get; set; }
     }
 }
