@@ -178,7 +178,7 @@ namespace Blazor.ECharts.Options
         /// <summary>
         /// 雷达图坐标系组件，只适用于雷达图。
         /// </summary>
-        public Radar Radar { set; get; }
+        public List<Radar> Radar { set; get; }
 
         /// <summary>
         /// 区域选择组件，用户可以选择图中一部分数据，从而便于向用户展示被选中数据，或者他们的一些统计计算结果。

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Blazor.ECharts.Options
 {
-    public class Radar
+    public record Radar
     {
         /// <summary>
         /// 雷达图每个指示器名称的配置项。
@@ -43,20 +43,27 @@ namespace Blazor.ECharts.Options
         /// 坐标轴轴线相关设置。
         /// </summary>
         public AxisLine AxisLine { set; get; }
+
+        public List<string> Center { get; set; }
+
+        public int? Radius { get; set; }
+
     }
     /// <summary>
     /// 雷达图每个指示器名称的配置项。
     /// </summary>
-    public class RadarName
+    public record RadarName
     {
         public TextStyle TextStyle { set; get; }
     }
-    public class RadarIndicator
+    public record RadarIndicator
     {
         /// <summary>
         /// 指示器名称。
         /// </summary>
         public string Name { set; get; }
+
+        public string Text { set; get; }
 
         /// <summary>
         /// 指示器的最大值，可选，建议设置

@@ -17,5 +17,10 @@ namespace Blazor.ECharts.Options.Series.Radar
         public ItemStyle ItemStyle { set; get; }
 
         public AreaStyle AreaStyle { set; get; }
+        /// <summary>
+        /// 提示框组件。
+        /// </summary>
+        public Tooltip Tooltip { set; get; }
+        public int? RadarIndex { get; set; }
     }
 }
