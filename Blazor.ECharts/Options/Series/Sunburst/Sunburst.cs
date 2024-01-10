@@ -19,9 +19,5 @@ namespace Blazor.ECharts.Options.Series.Sunburst
         /// Array.<number|string>：数组的第一项是内半径，第二项是外半径。每一项遵从上述 number string 的描述。
         /// </summary>
         public object Radius { set; get; }
-        /// <summary>
-        /// 描述了每个扇形块中，文本标签的样式。
-        /// </summary>
-        public Label Label { set; get; }
     }
 }

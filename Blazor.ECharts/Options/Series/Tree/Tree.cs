@@ -20,7 +20,6 @@ namespace Blazor.ECharts.Options.Series.Tree
         public object Width { get; set; }
         public object Height { get; set; }
         public object SymbolSize { set; get; }
-        public Label Label { get; set; }
         public Leaves Leaves { get; set; }
     }
 }

@@ -10,9 +10,14 @@ namespace Blazor.ECharts.Options.Series
     public record Label
     {
         /// <summary>
-        /// 
+        /// 是否显示标签。
         /// </summary>
         public bool? Show { set; get; }
+
+        /// <summary>
+        /// 距离图形元素的距离。
+        /// </summary>
+        public double? Distance {  set; get; }
 
         /// <summary>
         /// 标签的位置。
@@ -92,5 +97,9 @@ namespace Blazor.ECharts.Options.Series
         /// </summary>
         public object Rotate { get; set; }
         public TextStyle TextStyle { get; set; }
+        /// <summary>
+        /// 是否对文字进行偏移。默认不偏移。例如：[30, 40] 表示文字在横向上偏移 30，纵向上偏移 40。
+        /// </summary>
+        public List<int> Offset { set; get; }
     }
 }

@@ -12,7 +12,6 @@ namespace Blazor.ECharts.Options.Series.Map
         public Map() : base("map") { }
 
         public string MapType { set; get; }
-        public Label Label { set; get; }
 
         /// <summary>
         /// 自定义地区的名称映射

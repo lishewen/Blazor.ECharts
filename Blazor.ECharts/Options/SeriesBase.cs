@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blazor.ECharts.Options.Series;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,11 @@ namespace Blazor.ECharts.Options
         /// 系列名称，用于tooltip的显示，legend 的图例筛选，在 setOption 更新数据和配置项时用于指定对应的系列。
         /// </summary>
         public string Name { set; get; }
+
+        /// <summary>
+        /// 图形上的文本标签
+        /// </summary>
+        public Label Label { set; get; }
 
         /// <summary>
         /// 初始动画的延迟，支持回调函数，可以通过每个数据返回不同的 delay 时间实现更戏剧的初始动画效果。

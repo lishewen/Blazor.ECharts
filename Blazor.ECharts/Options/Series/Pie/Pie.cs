@@ -28,11 +28,6 @@ namespace Blazor.ECharts.Options.Series.Pie
         public bool? AvoidLabelOverlap { set; get; }
 
         /// <summary>
-        /// 饼图图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等，label选项在 ECharts 2.x 中放置于itemStyle下，在 ECharts 3 中为了让整个配置项结构更扁平合理，label 被拿出来跟 itemStyle 平级，并且跟 itemStyle 一样拥有 emphasis 状态。
-        /// </summary>
-        public Label Label { set; get; }
-
-        /// <summary>
         /// 标签的视觉引导线样式，在 label 位置 设置为'outside'的时候会显示视觉引导线。
         /// </summary>
         public LabelLine LabelLine { set; get; }

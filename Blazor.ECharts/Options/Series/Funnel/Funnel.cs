@@ -70,10 +70,6 @@ namespace Blazor.ECharts.Options.Series.Funnel
         /// </summary>
         public int Gap { get; set; } = 0;
         /// <summary>
-        /// 漏斗图图形上的文本标签，可用于说明图形的一些数据信息，比如值，名称等。
-        /// </summary>
-        public Label Label { set; get; }
-        /// <summary>
         /// 图形样式。
         /// </summary>
         public ItemStyle ItemStyle { set; get; }

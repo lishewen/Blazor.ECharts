@@ -23,7 +23,6 @@ namespace Blazor.ECharts.Options.Series.Graph
         /// </summary>
         public bool FocusNodeAdjacency { get; set; }
         public List<GraphCategory> Categories { get; set; }
-        public Label Label { get; set; }
         public GraphForce Force { get; set; }
         public Label EdgeLabel { get; set; }
         public List<GraphLink> Links { get; set; }
