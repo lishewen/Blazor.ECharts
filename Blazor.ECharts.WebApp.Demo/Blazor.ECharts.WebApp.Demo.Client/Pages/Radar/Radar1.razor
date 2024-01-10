@@ -23,28 +23,30 @@
             Title = new() { Text = "基础雷达图" },
             Tooltip = new(),
             Legend = new() { Data = new[] { "预算分配（Allocated Budget）", "实际开销（Actual Spending）" } },
-            Radar = new()
-            {
-                Name = new()
+            Radar = [
+                new()
                 {
-                    TextStyle = new()
+                    Name = new()
                     {
-                        Color = "#fff",
-                        BackgroundColor = "#999",
-                        BorderRadius = 3,
-                        Padding = new[] { 3, 5 }
-                    }
-                },
-                Indicator = new()
-                {
+                        TextStyle = new()
+                        {
+                            Color = "#fff",
+                            BackgroundColor = "#999",
+                            BorderRadius = 3,
+                            Padding = new[] { 3, 5 }
+                        }
+                    },
+                    Indicator = new()
+                    {
                     new() { Name = "销售（sales）", Max = 6500 },
                     new() { Name = "管理（Administration）", Max = 16000 },
                     new() { Name = "信息技术（Information Techology）", Max = 30000 },
                     new() { Name = "客服（Customer Support）", Max = 38000 },
                     new() { Name = "研发（Development）", Max = 52000 },
                     new() { Name = "市场（Marketing）", Max = 25000 },
+                    }
                 }
-            },
+            ],
             Series = new()
             {
                 new R.Radar()

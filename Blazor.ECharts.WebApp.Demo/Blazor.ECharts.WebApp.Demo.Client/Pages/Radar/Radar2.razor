@@ -128,52 +128,54 @@
                 Opacity = 0.5
             };
         Option1 = new()
+        {
+            BackgroundColor = "#161627",
+            Title = new Title()
             {
-                BackgroundColor = "#161627",
-                Title = new Title()
-                {
-                    Text = "AQI - 雷达图",
-                    Left = "center",
-                    TextStyle = new TextStyle() { Color = "#eee" }
-                },
-                Legend = new Legend()
-                {
-                    Bottom = 5,
-                    ItemGap = 20,
-                    SelectedMode = SelectedMode.Single,
-                    TextStyle = new TextStyle() { Color = "#fff", FontSize = 14 },
-                    Data = new[] { "北京", "上海", "广州" }
-                },
-                Radar = new()
-                {
-                    Indicator = new List<RadarIndicator>()
-                {
-                    new RadarIndicator(){Name="AQI",Max=300 },
-                    new RadarIndicator(){Name="PM2.5",Max=250 },
-                    new RadarIndicator(){Name="PM10",Max=300 },
-                    new RadarIndicator(){Name="CO",Max=5 },
-                    new RadarIndicator(){Name="NO2",Max=200 },
-                    new RadarIndicator(){Name="SO2",Max=100 }
-                },
-                    Shape = RadarShape.Circle,
-                    SplitNumber = 5,
-                    Name = new RadarName() { TextStyle = new TextStyle() { Color = "rgb(238, 197, 102)" } },
-                    SplitLine = new SplitLine()
-                    {
-                        LineStyle = new LineStyle()
+                Text = "AQI - 雷达图",
+                Left = "center",
+                TextStyle = new TextStyle() { Color = "#eee" }
+            },
+            Legend = new Legend()
+            {
+                Bottom = 5,
+                ItemGap = 20,
+                SelectedMode = SelectedMode.Single,
+                TextStyle = new TextStyle() { Color = "#fff", FontSize = 14 },
+                Data = new[] { "北京", "上海", "广州" }
+            },
+            Radar = [
+                        new()
                         {
-                            Color = new[] { "rgba(238, 197, 102, 0.1)", "rgba(238, 197, 102, 0.2)",
-                    "rgba(238, 197, 102, 0.4)", "rgba(238, 197, 102, 0.6)",
-                    "rgba(238, 197, 102, 0.8)", "rgba(238, 197, 102, 1)"}.Reverse()
+                            Indicator = new List<RadarIndicator>()
+                            {
+                                new RadarIndicator(){Name="AQI",Max=300 },
+                                new RadarIndicator(){Name="PM2.5",Max=250 },
+                                new RadarIndicator(){Name="PM10",Max=300 },
+                                new RadarIndicator(){Name="CO",Max=5 },
+                                new RadarIndicator(){Name="NO2",Max=200 },
+                                new RadarIndicator(){Name="SO2",Max=100 }
+                            },
+                            Shape = RadarShape.Circle,
+                            SplitNumber = 5,
+                            Name = new RadarName() { TextStyle = new TextStyle() { Color = "rgb(238, 197, 102)" } },
+                            SplitLine = new SplitLine()
+                            {
+                                LineStyle = new LineStyle()
+                                {
+                                    Color = new[] { "rgba(238, 197, 102, 0.1)", "rgba(238, 197, 102, 0.2)",
+                                    "rgba(238, 197, 102, 0.4)", "rgba(238, 197, 102, 0.6)",
+                                    "rgba(238, 197, 102, 0.8)", "rgba(238, 197, 102, 1)"}.Reverse()
+                                }
+                            },
+                            SplitArea = new SplitArea() { Show = false },
+                            AxisLine = new AxisLine()
+                            {
+                                LineStyle = new LineStyle() { Color = "rgba(238, 197, 102, 0.5)" }
+                            }
                         }
-                    },
-                    SplitArea = new SplitArea() { Show = false },
-                    AxisLine = new AxisLine()
-                    {
-                        LineStyle = new LineStyle() { Color = "rgba(238, 197, 102, 0.5)" }
-                    }
-                },
-                Series = new List<object>()
+                    ],
+            Series = new List<object>()
             {
                 new R.Radar()
                 {
@@ -203,6 +205,6 @@
                     AreaStyle=new AreaStyle(){Opacity=0.05 }
                 }
             }
-            };
+        };
     }
 }
