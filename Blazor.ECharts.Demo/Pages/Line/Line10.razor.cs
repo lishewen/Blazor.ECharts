@@ -28,7 +28,7 @@ namespace Blazor.ECharts.Demo.Pages.Line
         private System.Timers.Timer timer;
         bool firstRender = true;
         // 添加事件
-        private List<EventType> EventTypes = new() { EventType.datazoom };
+        private List<EventType> EventTypes = [EventType.datazoom];
         protected override void OnInitialized()
         {
             base.OnInitialized();
@@ -53,16 +53,16 @@ namespace Blazor.ECharts.Demo.Pages.Line
                         }
                         """)
                 },
-                Grid = new()
-                {
+                Grid =
+                [
                     new()
                     {
                         Top = "8%",
                         Bottom = "12%"
                     }
-                },
-                XAxis = new()
-                {
+                ],
+                XAxis =
+                [
                     new()
                     {
                         Min = -100,
@@ -73,9 +73,9 @@ namespace Blazor.ECharts.Demo.Pages.Line
                             OnZero = false
                         }
                     }
-                },
-                YAxis = new()
-                {
+                ],
+                YAxis =
+                [
                     new()
                     {
                         Min = -30,
@@ -86,9 +86,9 @@ namespace Blazor.ECharts.Demo.Pages.Line
                             OnZero = false
                         }
                     }
-                },
-                DataZoom = new()
-                {
+                ],
+                DataZoom =
+                [
                     new
                     {
                         type = "slider",
@@ -113,9 +113,9 @@ namespace Blazor.ECharts.Demo.Pages.Line
                         yAxisIndex = 0,
                         filterMode = "none"
                     }
-                },
-                Series = new()
-                {
+                ],
+                Series =
+                [
                     new L.Line()
                     {
                         Id = "a",
@@ -123,7 +123,7 @@ namespace Blazor.ECharts.Demo.Pages.Line
                         SymbolSize = symbolSize,
                         Data = data
                     }
-                }
+                ]
             };
 
             timer = new(1000);
@@ -135,7 +135,7 @@ namespace Blazor.ECharts.Demo.Pages.Line
         {
             if (firstRender)
             {
-                List<object> list = new();
+                List<object> list = [];
                 for (int i = 0; i < 5; i++)
                 {
                     double[] row = data.Cast<double>().Skip(i * 2).Take(2).ToArray();
@@ -193,7 +193,7 @@ namespace Blazor.ECharts.Demo.Pages.Line
 
         private async Task UpdatePosition()
         {
-            List<object> list = new();
+            List<object> list = [];
             for (int i = 0; i < 5; i++)
             {
                 double[] row = data.Cast<double>().Skip(i * 2).Take(2).ToArray();
@@ -227,14 +227,14 @@ namespace Blazor.ECharts.Demo.Pages.Line
             // Update data
             await eLine.SetupOptionAsync(new EChartsOption<L.Line>()
             {
-                Series = new()
-                {
+                Series =
+                [
                      new L.Line()
                      {
                          Id = "a",
                          Data = data
                      }
-                }
+                ]
             });
         }
     }

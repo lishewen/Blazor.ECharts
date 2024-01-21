@@ -54,5 +54,12 @@ namespace Blazor.ECharts.Options
         /// <para>zlevel 大的 Canvas 会放在 zlevel 小的 Canvas 的上面。</para>
         /// </summary>
         public int? Zlevel { set; get; }
+
+        /// <summary>
+        /// 可以定义 data 的哪个维度被编码成什么。
+        /// </summary>
+        public Encode Encode { get; set; }
+
+        public int? DatasetIndex { get; set; }
     }
 }

@@ -18,12 +18,13 @@ namespace Blazor.ECharts.Demo.Pages.Line
             Option1 = new()
             {
                 Tooltip = new Tooltip(),
-                Dataset = new DataSet
-                {
-                    Dimensions = ["Income", "Life Expectancy", "Population"],
-                    Source = sr
-
-                },
+                Dataset = [
+                    new DataSet
+                    {
+                        Dimensions = ["Income", "Life Expectancy", "Population"],
+                        Source = sr
+                    }
+                ],
                 Title = new()
                 {
                     Text = "折线图"
@@ -46,18 +47,18 @@ namespace Blazor.ECharts.Demo.Pages.Line
                     }
                 ],
                 Series = [
-                new L.Line()
-                {
-                    Type = "line",
-                    // Data = new[] { 820, 932, 901, 934, 1290, 1330, 1320 }
-                    Encode = new Options.Series.Encode()
+                    new L.Line()
                     {
-                        X = "Income",
-                        Y = "Population",
-                        Tooltip = new int[3] { 0, 1, 2 }
+                        Type = "line",
+                        // Data = new[] { 820, 932, 901, 934, 1290, 1330, 1320 }
+                        Encode = new Options.Series.Encode()
+                        {
+                            X = "Income",
+                            Y = "Population",
+                            Tooltip = new int[3] { 0, 1, 2 }
+                        }
                     }
-                }
-            ]
+                ]
             };
 
         }

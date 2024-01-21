@@ -19,9 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.ECharts.WordCloud", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.ECharts.Server.Demo", "Blazor.ECharts.Server.Demo\Blazor.ECharts.Server.Demo.csproj", "{2895072D-FC2E-445D-84BE-ED94FA54BC71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.ECharts.WebApp.Demo", "Blazor.ECharts.WebApp.Demo\Blazor.ECharts.WebApp.Demo\Blazor.ECharts.WebApp.Demo.csproj", "{F34F6D00-8852-4930-B6AF-C56C458061A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.ECharts.WebApp.Demo", "Blazor.ECharts.WebApp.Demo\Blazor.ECharts.WebApp.Demo\Blazor.ECharts.WebApp.Demo.csproj", "{F34F6D00-8852-4930-B6AF-C56C458061A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.ECharts.WebApp.Demo.Client", "Blazor.ECharts.WebApp.Demo\Blazor.ECharts.WebApp.Demo.Client\Blazor.ECharts.WebApp.Demo.Client.csproj", "{A7BF723E-4668-4988-95B9-682FB58D0A25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.ECharts.WebApp.Demo.Client", "Blazor.ECharts.WebApp.Demo\Blazor.ECharts.WebApp.Demo.Client\Blazor.ECharts.WebApp.Demo.Client.csproj", "{A7BF723E-4668-4988-95B9-682FB58D0A25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

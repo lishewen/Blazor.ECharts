@@ -70,11 +70,6 @@ namespace Blazor.ECharts.Options.Series.Bar
         public string BarMaxWidth { get; set; }
 
         /// <summary>
-        /// 可以定义 data 的哪个维度被编码成什么。
-        /// </summary>
-        public Encode Encode { get; set; }
-
-        /// <summary>
         //数据堆叠，同个类目轴上系列配置相同的 stack 值可以堆叠放置。关于如何定制数值的堆叠方式，参见 stackStrategy。
         //注：目前 stack 只支持堆叠于 'value' 和 'log' 类型的类目轴上，不支持 'time' 和 'category' 类型的类目轴。        
         /// </summary>
