@@ -179,6 +179,19 @@ namespace Blazor.ECharts
             return await module.InvokeAsync<T>("echartsFunctions.convertFromPixel", id, finder, value);
         }
         /// <summary>
+        /// 导出图表图片，返回一个 base64 的 URL，可以设置为Image的src。
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="opts"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentNullException"></exception>
+        public async ValueTask<string> GetDataURL(string id, DataURLOption opts)
+        {
+            if (string.IsNullOrWhiteSpace(id)) throw new ArgumentNullException(nameof(id), "echarts控件id不能为空");
+            var module = await moduleTask.Value;
+            return await module.InvokeAsync<string>("echartsFunctions.getDataURL", id, opts);
+        }
+        /// <summary>
         /// 销毁chart对象
         /// </summary>
         /// <param name="id"></param>

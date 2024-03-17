@@ -332,6 +332,15 @@ namespace Blazor.ECharts
         {
             return await JsInterop.ConvertFromPixel<TN>(Id, finder, value);
         }
+        /// <summary>
+        /// 导出图表图片，返回一个 base64 的 URL，可以设置为Image的src。
+        /// </summary>
+        /// <param name="opts"></param>
+        /// <returns></returns>
+        public async ValueTask<string> GetDataURL(DataURLOption opts)
+        {
+            return await JsInterop.GetDataURL(Id, opts);
+        }
         public async ValueTask DisposeAsync()
         {
             if (IsPrerenderPhase) return;

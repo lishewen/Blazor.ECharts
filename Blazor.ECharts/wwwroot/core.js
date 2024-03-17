@@ -113,7 +113,13 @@ export class echartsFunctions {
     }
     static resize(id) {
         let chart = this.getChart(id);
-        chart.resize();
+        if (chart)
+            chart.resize();
+    }
+    static getDataURL(id, opts) {
+        let chart = this.getChart(id);
+        if (chart)
+            return chart.getDataURL(opts);
     }
     static dispose(id) {
         let chart = this.getChart(id);

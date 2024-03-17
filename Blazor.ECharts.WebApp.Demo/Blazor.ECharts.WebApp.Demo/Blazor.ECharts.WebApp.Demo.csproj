@@ -9,7 +9,7 @@
     <ProjectReference Include="..\..\Blazor.ECharts.WordCloud\Blazor.ECharts.WordCloud.csproj" />
     <ProjectReference Include="..\..\Blazor.ECharts\Blazor.ECharts.csproj" />
     <ProjectReference Include="..\Blazor.ECharts.WebApp.Demo.Client\Blazor.ECharts.WebApp.Demo.Client.csproj" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.3" />
   </ItemGroup>
 
 </Project>

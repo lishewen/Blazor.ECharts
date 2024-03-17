@@ -1,5 +1,15 @@
 ﻿@page "/boxplot/boxplot1"
 
 <div class="chart-container">
-    <EBoxplot Option="Option1" Class="chart-fill"></EBoxplot>
+    <EBoxplot @ref="eBoxplot" Option="Option1" Class="chart-fill"></EBoxplot>
 </div>
+<hr />
+<p>
+    <button @onclick="()=>GetDataUrl()">导出图片</button>
+</p>
+@if (!string.IsNullOrWhiteSpace(imageSource))
+{
+    <p>
+        <img src="@imageSource" />
+    </p>
+}

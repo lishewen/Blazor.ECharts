@@ -1,15 +1,28 @@
-﻿using Blazor.ECharts.Demo.Utils;
+﻿using Blazor.ECharts.Components;
+using Blazor.ECharts.Demo.Utils;
 using Blazor.ECharts.Options;
 using Blazor.ECharts.Options.Enum;
+using System.Threading.Tasks;
 using B = Blazor.ECharts.Options.Series.Boxplot;
 using S = Blazor.ECharts.Options.Series.Scatter;
 
 namespace Blazor.ECharts.Demo.Pages.Boxplot
 {
-    [RouteName("基础盒须图(Michelson-Morley Experiment)")]
+    [RouteName("基础盒须图(Michelson-Morley Experiment)/getDataUrl")]
     public partial class Boxplot1
     {
+        EBoxplot eBoxplot;
         private EChartsOption<B.Boxplot> Option1;
+        private string imageSource;
+
+        private async Task GetDataUrl()
+        {
+            imageSource = await eBoxplot.GetDataURL(new()
+            {
+                PixelRatio = 2,
+                BackgroundColor = "#fff"
+            });
+        }
 
         protected override void OnInitialized()
         {
