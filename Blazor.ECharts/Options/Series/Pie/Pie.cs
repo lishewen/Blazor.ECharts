@@ -44,5 +44,41 @@ namespace Blazor.ECharts.Options.Series.Pie
         /// <para>可使用枚举值 SelectedMode</para>
         /// </summary>
         public object SelectedMode { set; get; }
+
+        /// <summary>
+        /// 选中扇区的偏移距离。
+        /// </summary>
+        public int? SelectedOffset { set; get; }
+
+        /// <summary>
+        /// 饼图的扇区是否是顺时针排布。
+        /// </summary>
+        public bool? Clockwise { set; get; }
+
+        /// <summary>
+        /// 起始角度，支持范围[0, 360]。
+        /// </summary>
+        public int? StartAngle { get; set; }
+
+        /// <summary>
+        /// 结束角度，默认值是 'auto'。
+        /// 当值为 'auto' 时，根据 startAngle 自动计算结束角度，以确保是一个完整的圆。
+        /// </summary>
+        public object EndAngle { get; set; }
+
+        /// <summary>
+        /// 最小的扇区角度（0 ~ 360），用于防止某个值过小导致扇区太小影响交互。
+        /// </summary>
+        public int? MinAngle { get; set; }
+
+        /// <summary>
+        /// 饼图扇区之间的间隔角度（0 ~ 360）。
+        /// </summary>
+        public int? PadAngle { get; set; }
+
+        /// <summary>
+        /// 小于这个角度（0 ~ 360）的扇区，不显示标签（label 和 labelLine）。
+        /// </summary>
+        public int? MinShowLabelAngle { get; set; }
     }
 }
