@@ -210,6 +210,7 @@ namespace Blazor.ECharts
             }
             if (ISResize)
             {
+                await RemoveResizeListener();
                 await AddResizeListener();
             }
         }
