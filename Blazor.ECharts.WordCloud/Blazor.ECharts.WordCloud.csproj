@@ -11,7 +11,7 @@
 			开源地址：https://github.com/lishewen/Blazor.ECharts
 			使用方式见Demo项目
 		</Description>
-		<AssemblyName>Blazor.ECharts.WordCloud</AssemblyName>
+		<AssemblyName>Quick.Blazor.ECharts.WordCloud</AssemblyName>
 		<RootNamespace>Blazor.ECharts.WordCloud</RootNamespace>
 		<PackageProjectUrl>https://github.com/lishewen/Blazor.ECharts</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/lishewen/Blazor.ECharts</RepositoryUrl>

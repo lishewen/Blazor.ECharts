@@ -11,7 +11,7 @@
 			开源地址：https://github.com/lishewen/Blazor.ECharts
 			使用方式见Demo项目
 		</Description>
-		<AssemblyName>Blazor.ECharts</AssemblyName>
+		<AssemblyName>Quick.Blazor.ECharts</AssemblyName>
 		<RootNamespace>Blazor.ECharts</RootNamespace>
 		<PackageProjectUrl>https://github.com/lishewen/Blazor.ECharts</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/lishewen/Blazor.ECharts</RepositoryUrl>
