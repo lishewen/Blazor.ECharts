@@ -18,6 +18,10 @@ namespace Blazor.ECharts
     {
         public readonly string Id = "echerts_" + Guid.NewGuid().ToString("N");
         private DotNetObjectReference<ComponentBase<T>> _objectReference;
+        /// <summary>
+        /// 是否添加了大小改变监听器
+        /// </summary>
+        private bool isResizeListenerAdded = false;
         private string _theme;
         /// <summary>
         /// 主题
@@ -64,7 +68,7 @@ namespace Blazor.ECharts
         /// 事件类型.
         /// </summary>
         [Parameter]
-        public List<EventType> EventTypes { get; set; } = new List<EventType>();
+        public List<EventType> EventTypes { get; set; } = [];
 
         /// <summary>
         /// 事件回调函数
@@ -104,7 +108,7 @@ namespace Blazor.ECharts
         /// 可选。用户可以在这里指定一个或多个组件，如：xAxis, series，这些指定的组件会进行 "replaceMerge"。如果用户想删除部分组件，也可使用 "replaceMerge"。详见 组件合并模式。
         /// </summary>
         [Parameter]
-        public string[] ReplaceMerge { get; set; } = Array.Empty<string>();
+        public string[] ReplaceMerge { get; set; } = [];
         /// <summary>
         /// 可选。在设置完 option 后是否不立即更新图表，默认为 false，即同步立即更新。如果为 true，则会在下一个 animation frame 中，才更新图表。
         /// </summary>
@@ -260,13 +264,19 @@ namespace Blazor.ECharts
                 }
             }
         }
+        
         private async Task AddResizeListener()
         {
-            await JsInterop.InvokeVoidAsync("echartsFunctions.addResizeListener", _objectReference);
+            if (!isResizeListenerAdded)
+            {
+                await JsInterop.InvokeVoidAsync("echartsFunctions.addResizeListener", _objectReference);
+                isResizeListenerAdded = true;
+            }
         }
         private async Task RemoveResizeListener()
         {
             await JsInterop.InvokeVoidAsync("echartsFunctions.removeResizeListener", _objectReference);
+            isResizeListenerAdded = false;
         }
         public void Refresh()
         {
@@ -346,6 +356,7 @@ namespace Blazor.ECharts
             if (IsPrerenderPhase) return;
             await RemoveResizeListener();
             _objectReference?.Dispose();
+            GC.SuppressFinalize(this);
         }
     }
 }

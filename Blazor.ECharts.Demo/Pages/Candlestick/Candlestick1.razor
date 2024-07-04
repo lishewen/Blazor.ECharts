@@ -1,0 +1,52 @@
+﻿@page "/candlestick/candlestick1"
+@attribute [RouteName("基础 K 线图")]
+@using Blazor.ECharts.Options
+@using Blazor.ECharts.Options.Enum
+@using C = Blazor.ECharts.Options.Series.Candlestick
+
+<div class="chart-container">
+    <ECandlestick Option="@Option1" Class="chart-fill"></ECandlestick>
+</div>
+
+@code {
+    private EChartsOption<C.Candlestick> Option1;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+
+        Option1 = new()
+        {
+            XAxis = [
+                    new()
+                    {
+                        Data = new []
+                        {
+                            "2017-10-24", "2017-10-25", "2017-10-26", "2017-10-27"
+                        }
+                    }
+                ],
+            YAxis = [new()],
+            Series = [
+                new C.Candlestick()
+                {
+                    Data = new [, ]
+                    {
+                        {
+                            20, 34, 10, 38
+                        },
+                        {
+                            40, 35, 30, 50
+                        },
+                        {
+                            31, 38, 33, 44
+                        },
+                        {
+                            38, 15, 5, 42
+                        }
+                    }
+                }
+            ]
+        };
+    }
+}
