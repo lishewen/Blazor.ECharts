@@ -20,7 +20,7 @@ namespace Blazor.ECharts
     public class JsInterop(IJSRuntime jsRuntime) : IAsyncDisposable
     {
         private readonly Lazy<Task<IJSObjectReference>> moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-               "import", "./_content/Blazor.ECharts/core.js").AsTask());
+               "import", "./_content/Quick.Blazor.ECharts/core.js").AsTask());
 
         public async ValueTask<string> Prompt(string message)
         {
