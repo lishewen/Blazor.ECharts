@@ -18,6 +18,10 @@ namespace Blazor.ECharts
     {
         public readonly string Id = "echerts_" + Guid.NewGuid().ToString("N");
         private DotNetObjectReference<ComponentBase<T>> _objectReference;
+        /// <summary>
+        /// 是否添加了大小改变监听器
+        /// </summary>
+        private bool isResizeListenerAdded = false;
         private string _theme;
         /// <summary>
         /// 主题
@@ -260,13 +264,19 @@ namespace Blazor.ECharts
                 }
             }
         }
+        
         private async Task AddResizeListener()
         {
-            await JsInterop.InvokeVoidAsync("echartsFunctions.addResizeListener", _objectReference);
+            if (!isResizeListenerAdded)
+            {
+                await JsInterop.InvokeVoidAsync("echartsFunctions.addResizeListener", _objectReference);
+                isResizeListenerAdded = true;
+            }
         }
         private async Task RemoveResizeListener()
         {
             await JsInterop.InvokeVoidAsync("echartsFunctions.removeResizeListener", _objectReference);
+            isResizeListenerAdded = false;
         }
         public void Refresh()
         {
