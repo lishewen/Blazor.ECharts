@@ -56,12 +56,12 @@ namespace Blazor.ECharts.Options
         /// <summary>
         /// 数据窗口范围的起始百分比。范围是：0 ~ 100。表示 0% ~ 100%。
         /// </summary>
-        public int? Start { set; get; }
+        public double? Start { set; get; }
 
         /// <summary>
         /// 数据窗口范围的结束百分比。范围是：0 ~ 100。表示 0% ~ 100%。
         /// </summary>
-        public int? End { set; get; }
+        public double? End { set; get; }
 
         /// <summary>
         /// 数据窗口范围的起始数值
